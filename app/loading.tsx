@@ -12,8 +12,8 @@ const override = {
 const loading = ({ loading }: any) => {
   return (
     <ClipLoader
-      color="#3B82F6"
-      size={150}
+      color="#ffffff"
+      size={60}
       loading={loading}
       cssOverride={override}
       aria-label="Loading..."

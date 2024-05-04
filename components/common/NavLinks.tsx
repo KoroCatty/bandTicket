@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // 現在のパス名を取得するためのフック
 
+// react-icons
+import { FaGoogle } from "react-icons/fa";
+
+// next auth
+import { signOut } from "next-auth/react";
+
 // roleプロパティをオプショナルで受け取る
 const NavLinks = ({ session }: { session?: boolean }) => {
   const links = [
@@ -18,7 +24,7 @@ const NavLinks = ({ session }: { session?: boolean }) => {
   const currentPath = usePathname();
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-6 mx-3 ">
       {links
         // .filter((link) => !link.adminOnly || role === "ADMIN") // adminOnlyがtrueのリンクはADMINロールのみ表示
         .filter((link) => !link.session || link.session === session) // ログインしている場合のみ表示
@@ -37,6 +43,34 @@ const NavLinks = ({ session }: { session?: boolean }) => {
             {link.label}
           </Link>
         ))}
+
+      {!session ? (
+        <div className="">
+          <Link
+            href="/login"
+            className="flex items-center bg-slate-900 text-white rounded-md"
+          >
+            <FaGoogle className="mr-1" />
+            Login
+          </Link>
+        </div>
+      ) : (
+        <div></div>
+      )}
+
+      {session && (
+        <button
+          onClick={() => {
+            signOut();
+          }}
+          className="flex items-center bg-blue-500 p-1 text-white rounded-md"
+          role="menuitem"
+          tabIndex={-1}
+          id="user-menu-item-2"
+        >
+          Sign Out
+        </button>
+      )}
     </div>
   );
 };

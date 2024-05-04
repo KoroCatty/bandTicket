@@ -24,7 +24,6 @@ const LoginPage = () => {
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
   > | null>(null);
-  console.log(providers);
 
   // 認証情報を取得
   useEffect(() => {
