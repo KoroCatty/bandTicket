@@ -29,8 +29,7 @@ const Header = () => {
   const currentPath = usePathname();
 
   const { data: session } = useSession();
-  console.log(session);
-
+  // console.log(session);
 
   // 認証情報
   // const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider
@@ -52,13 +51,22 @@ const Header = () => {
   return (
     <header
       // Only Home page has a absolute header
-      className={`${currentPath == '/'
-        ? "bg-slate-950/25 absolute w-screen shadow-cyan-500-lg z-10"
-        : "relative"
-        }`}>
-      <nav className="max-w-[1080px]  mx-auto flex justify-between items-center ">
+      className={`max-[480px]:py-4 
+      ${
+        currentPath == "/"
+          ? "bg-slate-950/25 absolute w-screen shadow-cyan-500-lg z-10"
+          : "relative"
+      }`}
+    >
+      <nav className="max-w-[1080px]  mx-auto flex justify-between items-center overflow-x-scroll ">
         <Link href="/">
-          <Image src="/images/logo.png" alt="logo" width={100} height={50} />
+          <Image
+            src="/images/logo.png"
+            alt="logo"
+            width={100}
+            height={50}
+            className="d-block max-[480px]:w-[80px] max-[768px]:w-16 cursor-pointer"
+          />
         </Link>
 
         {/* Component */}
@@ -66,27 +74,31 @@ const Header = () => {
 
         {!session ? (
           <div>
-            <Link href="/login" className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md">
-              <FaGoogle className="mr-2" />
+            <Link
+              href="/login"
+              className="flex items-center px-2 py-1 bg-slate-900 text-white rounded-md"
+            >
+              <FaGoogle className="mr-1" />
               Login
             </Link>
           </div>
-        ) : <div></div>}
+        ) : (
+          <div></div>
+        )}
 
         {session && (
           <button
             onClick={() => {
               signOut();
             }}
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md"
+            className="flex items-center px-2 py-1 bg-blue-500 text-white rounded-md"
             role="menuitem"
             tabIndex={-1}
             id="user-menu-item-2"
           >
             Sign Out
           </button>
-        )
-        }
+        )}
       </nav>
     </header>
   );

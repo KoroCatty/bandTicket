@@ -17,7 +17,8 @@ const Footer = () => {
         </div>
         <div>
           <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; {new Date().getFullYear()} Band Tickets. All rights reserved. KZ-DEV
+            &copy; {new Date().getFullYear()} Band Tickets. All rights reserved.
+            KZ-DEV
           </p>
         </div>
       </div>

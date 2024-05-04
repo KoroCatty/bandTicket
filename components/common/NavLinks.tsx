@@ -4,11 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation"; // 現在のパス名を取得するためのフック
 
 // roleプロパティをオプショナルで受け取る
-const NavLinks = ({
-  session,
-}: {
-  session?: boolean;
-}) => {
+const NavLinks = ({ session }: { session?: boolean }) => {
   const links = [
     { label: "Home", href: "/", providers: false },
     { label: "About", href: "/about", providers: false },
@@ -31,9 +27,10 @@ const NavLinks = ({
             href={link.href}
             className={` 
               ${link.session && "bg-red-500 text-white"}
-              ${currentPath == link.href
-                ? "cursor-default shadow-1 text-primary/70 hover:text-primary/60"
-                : ""
+              ${
+                currentPath == link.href
+                  ? "cursor-default shadow-1 text-primary/70 hover:text-primary/60"
+                  : ""
               }`}
             key={link.label}
           >

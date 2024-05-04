@@ -26,7 +26,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     // <GlobalProvider>
     <AuthProvider>
       <html lang="en">
-        <body >
+        <body>
           <Header />
           <main>{children}</main>
           <Footer />

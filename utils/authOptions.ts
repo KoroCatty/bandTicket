@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
   ],
   // Take 2 callbacks ⬇︎⬇︎
   callbacks: {
-    //! Sign In (First callback)
+    //! 1. Sign In (First callback)
     async signIn({ profile }) {
       // 1. connect to DB
       await connectDB();
@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = {
       // 4. return true to allow sign in
       return true;
     },
-    //! Session (another callback)
+    //! 2. Session (another callback)
     async session({ session, token }) {
       // Exist check
       if (!session.user) {

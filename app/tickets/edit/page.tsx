@@ -1,8 +1,5 @@
-
 const EditPage = () => {
-  return (
-    <div>EditPage</div>
-  )
-}
+  return <div>EditPage</div>;
+};
 
-export default EditPage
+export default EditPage;

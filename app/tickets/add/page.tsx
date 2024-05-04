@@ -1,9 +1,5 @@
-
-
 const TicketAddPage = () => {
-  return (
-    <div>TicketAddPage</div>
-  )
-}
+  return <div>TicketAddPage</div>;
+};
 
-export default TicketAddPage
+export default TicketAddPage;
