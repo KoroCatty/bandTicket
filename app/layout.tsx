@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
 
 // components
-import Navbar from "@/components/common/Navbar";
+import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-// import AuthProvider from "@/components/common/AuthProvider"; // next-auth
+import AuthProvider from "@/components/common/AuthProvider"; // next-auth
 
 // context
 // import { GlobalProvider } from "@/context/GlobalContext";
 
-// react toastify & its css
+// react Toastify &  css
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,27 +24,27 @@ export const metadata = {
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     // <GlobalProvider>
-    //   <AuthProvider>
-    <html lang="en">
-      <body >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </body>
-    </html>
-    //   </AuthProvider>
+    <AuthProvider>
+      <html lang="en">
+        <body >
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </body>
+      </html>
+    </AuthProvider>
     // </GlobalProvider>
   );
 };
