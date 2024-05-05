@@ -7,8 +7,8 @@ const Hero = () => {
       <section className="mb-4 relative z-0">
         <h1
           className="text-[7rem] font-bold text-white absolute top-[12%] left-[7%] z-10 
-        max-[1000px]:text-[5.5rem] max-[768px]:text-[5rem] max-[768px]:top-[15%] max-[650px]:text-[4rem] max-[650px]:top-[18%] max-[480px]:text-[3rem] max-[480px]:top-[15%]
-        max-[400px]:text-[2.9rem] max-[400px]:top-[16%] max-[400px]:left-[3%] max-[350px]:text-[2.5rem] max-[350px]:top-[18%] max-[350px]:left-[4%]
+        max-[1000px]:text-[5.8rem] max-[768px]:text-[5.5rem] max-[768px]:top-[15%] max-[650px]:text-[5rem] max-[650px]:top-[18%] max-[480px]:text-[3.6rem] max-[480px]:top-[15%]
+        max-[400px]:text-[3.2rem] max-[400px]:top-[16%] max-[400px]:left-[3%] max-[350px]:text-[2.9rem] max-[350px]:top-[18%] max-[350px]:left-[4%]
         "
         >
           FIND THE
@@ -20,15 +20,15 @@ const Hero = () => {
           autoPlay
           loop
           muted
-          preload="none"
+          preload="metadata"
         >
           <source src="/videos/resized_band_video2.mp4" type="video/mp4" />
-          <track
+          {/* <track
             src="/videos/resized_band_video2.mp4"
             kind="subtitles"
             srcLang="en"
             label="English"
-          />
+          /> */}
           Your browser does not support the video tag.
         </video>
 

@@ -22,7 +22,7 @@ const config: Config = {
         'section-lg': '8rem', 
       },
       backgroundColor: {
-        "btnBg": "#b490ab",
+        "AccentBg": "#b490ab",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],

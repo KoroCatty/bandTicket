@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Hero from "@/components/features/Home/Hero";
 import Loading from "@/app/loading";
 import Ticket from "@/components/features/Home/Tickets";
+import SNS from "@/components/common/SNS";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
 
       <div className="max-w-[1080px] mx-auto px-4 ">
         <Ticket />
+        <SNS />
       </div>
     </section>
   );
