@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 
 // react-icons
 import { FaGoogle } from "react-icons/fa";
@@ -19,13 +19,13 @@ const NavLinks = () => {
   const { data: session } = useSession();
 
   const links = [
-    { label: "Home", href: "/", providers: false },
-    { label: "About", href: "/about", providers: false },
-    { label: "Songs", href: "/songs", session: false },
-    { label: "Merch", href: "/merch", session: false },
-    { label: "Contact", href: "/contact", session: false },
-    { label: "Tickets", href: "/tickets", session: false },
-    { label: "Admin", href: "/tickets", session: true },
+    { label: "HOME", href: "/", providers: false },
+    { label: "ABOUT", href: "/about", providers: false },
+    { label: "SONGS", href: "/songs", session: false },
+    { label: "MERCH", href: "/merch", session: false },
+    { label: "CONTACT", href: "/contact", session: false },
+    { label: "TICKETS", href: "/tickets", session: false },
+    { label: "ADMIN", href: "/tickets", session: true },
   ];
 
   // プロフィール画像をセッションから取得
@@ -43,9 +43,10 @@ const NavLinks = () => {
             href={link.href}
             className={` 
               ${link.session && "bg-red-500 text-white"}
-              ${currentPath == link.href
-                ? "cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
-                : ""
+              ${
+                currentPath == link.href
+                  ? "cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
+                  : ""
               }`}
             key={link.label}
           >
@@ -60,7 +61,7 @@ const NavLinks = () => {
             className="flex items-center bg-slate-900 text-white rounded-md max-[767px]:w-[fit-content]"
           >
             <FaGoogle className="mr-1" />
-            Login
+            LOGIN
           </Link>
         </div>
       ) : (

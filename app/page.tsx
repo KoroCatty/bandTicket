@@ -14,10 +14,7 @@ export default function Home() {
 
       <div className="max-w-[1080px] mx-auto px-4 ">
         <Ticket />
-
       </div>
-
-
     </section>
   );
 }

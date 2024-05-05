@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // 現在のパス名を取得するためのフック
+import { usePathname } from "next/navigation";
 // Components
 import NavLinks from "./NavLinks";
 import Hamburger from "./Hamburger";

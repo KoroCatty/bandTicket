@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
+import { useEffect } from "react";
 
 export default function Merch() {
   useEffect(() => {
-    console.log("Merch")
-  }, [])
+    console.log("Merch");
+  }, []);
 
-  return <div>Merch</div>
+  return <div>Merch</div>;
 }
-

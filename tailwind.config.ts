@@ -24,6 +24,9 @@ const config: Config = {
       backgroundColor: {
         "btnBg": "#b490ab",
       },
+      fontFamily: {
+        Inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
