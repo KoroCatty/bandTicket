@@ -9,9 +9,22 @@ const nextConfig = {
         filename: 'static/chunks/[path][name].[hash][ext]', // Customize output path
       }
     });
-
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: "lh3.googleusercontent.com", // Google user icon
+        pathname: '**' // Match all paths
+      },
+      {
+        protocol: 'https',
+        hostname: "res.cloudinary.com", // Cloudinary
+        pathname: '**' // Match all paths
+      },
+    ]
+  }
 };
 
 export default nextConfig;

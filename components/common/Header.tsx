@@ -2,22 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
 import { usePathname } from "next/navigation"; // 現在のパス名を取得するためのフック
-// Images
-import profileDefault from "/public/images/profile.png";
-
-// next auth
-import { useSession } from "next-auth/react";
-
 // Components
 import NavLinks from "./NavLinks";
+import Hamburger from "./Hamburger";
 
 const Header = () => {
   const currentPath = usePathname();
-
-  const { data: session } = useSession();
-
   return (
     <header
       // Only Home page has a absolute header
@@ -28,7 +19,7 @@ const Header = () => {
           : "relative"
       }`}
     >
-      <nav className="max-w-[1080px] mx-auto flex justify-between items-center  ">
+      <nav className="max-w-[1080px] mx-auto flex justify-between items-center  max-[767px]:hidden">
         <Link href="/">
           <Image
             src="/images/logo.png"
@@ -38,10 +29,11 @@ const Header = () => {
             className="d-block max-[480px]:w-[60px] cursor-pointer"
           />
         </Link>
-
         {/* Component */}
-        <NavLinks session={!!session} />
+        <NavLinks />
       </nav>
+
+      <Hamburger />
     </header>
   );
 };
