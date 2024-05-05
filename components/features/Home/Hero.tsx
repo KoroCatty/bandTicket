@@ -5,9 +5,10 @@
 const Hero = () => {
   return (
     <>
-      <section className="mb-4 relative h-[600px]">
+      <section className="mb-4 relative ">
         <video
-          className="w-full -z-10 absolute top-0 left-0 brightness-75"
+          // className="w-full -z-10 absolute top-0 left-0 brightness-75"
+          className="w-full -z-10  brightness-75"
           playsInline
           autoPlay
           loop
@@ -24,15 +25,16 @@ const Hero = () => {
           Your browser does not support the video tag.
         </video>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center ">
-          {/* <div className="text-center">
-            <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl ">
+        <div className="max-w-7xl mx-auto px-4 w-[100%] flex flex-col items-center absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2
+        max-[480px]:top-[70%] ">
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl max-[480px]:text-3xl">
               No Name band Tickets
             </h1>
-            <p className="my-4 text-xl text-white">
+            <p className="my-4 text-xl text-white max-[480px]:text-base">
               Find the band tickets
             </p>
-          </div> */}
+          </div>
 
           {/* <SearchForm /> */}
         </div>

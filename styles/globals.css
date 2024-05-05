@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color:rgb(20, 20, 20);
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --font-family: "freight-display-pro", "STKaiti", "essonnes-display", serif;
+  --font-color: rgb(250, 250, 250);
+}
 
 body {
-  background-color: rgb(40, 40, 40);
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  font-family: var(--font-family);
 }

@@ -15,7 +15,15 @@ const config: Config = {
       },
       width: {
         'fit-content': 'fit-content'
-      }
+      },
+      margin: {
+        'section-sm': '2rem', 
+        'section-md': '6rem', 
+        'section-lg': '8rem', 
+      },
+      backgroundColor: {
+        "btnBg": "#b490ab",
+      },
     },
   },
   plugins: [],

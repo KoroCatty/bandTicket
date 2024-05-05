@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { usePathname } from "next/navigation"; // 現在のパス名を取得するためのフック
+import { usePathname } from "next/navigation"; 
 
 // react-icons
 import { FaGoogle } from "react-icons/fa";
@@ -149,9 +149,6 @@ const NavLinks = () => {
           </div>
         )}
       </div>
-
-      
-
     </div>
   );
 };

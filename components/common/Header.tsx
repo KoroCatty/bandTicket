@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header
       // Only Home page has a absolute header
-      className={`max-[480px]:py4 max-[480px]:px-4 max-[700px]:overflow-x-scroll px-10
+      className={`max-[480px]:py4 max-[480px]:px-4 px-10 z-10 
       ${
         currentPath == "/"
           ? "bg-slate-950/25 absolute w-[100%] shadow-cyan-500-lg z-10"
