@@ -9,11 +9,13 @@ import { FaGoogle } from "react-icons/fa";
 
 // next auth
 import { signOut, useSession } from "next-auth/react";
-import Hamburger from "./Hamburger";
+
+type PropsType = {
+  propClass: string;
+};
 
 // roleプロパティをオプショナルで受け取る
-const NavLinks = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const NavLinks = ({ propClass }: PropsType) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   // next auth
   const { data: session } = useSession();
@@ -35,17 +37,19 @@ const NavLinks = () => {
 
   return (
     // SP Hamburger Menu 対応
-    <div className="flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%]">
+    <div
+      className={`flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
+    >
       {links
         .filter((link) => !link.session || link.session === !!session) // ログインしている場合のみ表示
         .map((link) => (
           <Link
             href={link.href}
-            className={` 
+            className={`w-[fit-content] hover:bg-slate-700 hover:text-primary/60 px-3 py-2 rounded-md text-sm font-medium cursor-pointer text-[1.1rem]
               ${link.session && "bg-red-500 text-white"}
               ${
                 currentPath == link.href
-                  ? "cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
+                  ? "bg-slate-700 cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
                   : ""
               }`}
             key={link.label}

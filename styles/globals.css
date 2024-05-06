@@ -7,16 +7,13 @@
   --secondary-color: #6c757d;
   --success-color: #28a745;
   --error-color: #dc3545;
-  --font-family: "freight-display-pro", "STKaiti", "essonnes-display", serif;
-  --font-family2: "__Zen_Kaku_Gothic_New_2a6e8c,__Zen_Kaku_Gothic_New_Fallback_2a6e8c";
-  --font-family3: "Inter", "sans-serif";
   --font-color: rgb(250, 250, 250);
 }
 
 body {
   background-color: var(--primary-color);
   color: var(--font-color);
-  font-family: var(--font-family3);
+  font-family: "Inter", "sans-serif";
 }
 
 .rainbowText {

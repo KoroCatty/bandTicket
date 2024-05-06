@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+// components
+import TitleComponent from "@/components/common/Title";
+import ButtonComponent from "@/components/common/Button";
+
 const allTickets = [
   {
     id: 1,
@@ -47,12 +51,7 @@ const Tickets = () => {
   return (
     <>
       <section className="my-section-lg max-w-[860px] mx-auto max-[480px]:my-section-sm px-10 max-[480px]:px-1">
-        <div className="relative text-[7rem] max-[1000px]:text-[5.5rem]  max-[768px]:text-[5rem] max-[650px]:text-[4rem] max-[480px]:text-[3rem]">
-          <h2 className="text-center mb-6  font-bold leading-[1.2]">EVENTS</h2>
-          <span className=" absolute top-[-30%] left-[10%] opacity-10 mb-6 font-bold leading-[1.2] max-[1000px]:left-[20%] max-[768px]:left-[10%] max-[480px]:left-[10%]">
-            EVENTS
-          </span>
-        </div>
+        <TitleComponent>EVENT</TitleComponent>
 
         <div className="">
           <div className="flex gap-20 pb-4 border-b-2 border-gray-200">
@@ -84,12 +83,7 @@ const Tickets = () => {
           ))}
 
           {/* Button */}
-          <Link
-            href="/tickets"
-            className="bg-AccentBg text-xl text-white py-6 mt-10 block text-center tracking-wide hover:bg-AccentBg/80 hover:scale-105 transition-all duration-300 max-[480px]:w-[70%] max-[480px]:mx-auto max-[480px]:py-4"
-          >
-            SHOW ALL TICKETS
-          </Link>
+          <ButtonComponent href="/tickets">SHOW ALL TICKETS</ButtonComponent>
         </div>
       </section>
     </>

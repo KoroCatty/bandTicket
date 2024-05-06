@@ -26,6 +26,8 @@ const config: Config = {
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
+        Freight: ["freight-display-pro", "STKaiti", "essonnes-display", 'serif'],
+        Zen_kaku: ["__Zen_Kaku_Gothic_New_2a6e8c", "sans-serif"],
       },
     },
   },

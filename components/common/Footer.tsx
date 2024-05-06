@@ -1,25 +1,99 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// img
+import FB from "/public/icons/Fb_w.svg";
+import Insta from "/public/icons/Insta_w.svg";
+import Spotify from "/public/icons/Spotify_w.svg";
+import Twitter from "/public/icons/Twitter_w.svg";
+import YT from "/public/icons/YouTube_w.svg";
+
+const images = [
+  {
+    src: FB,
+    alt: "Facebook Icon",
+    link: "https://icons8.com",
+  },
+  {
+    src: Insta,
+    alt: "Instagram Icon",
+    link: "https://icons8.com",
+  },
+  {
+    src: Spotify,
+    alt: "Spotify Icon",
+    link: "https://icons8.com",
+  },
+  {
+    src: Twitter,
+    alt: "Twitter Icon",
+    link: "https://icons8.com",
+  },
+  {
+    src: YT,
+    alt: "YouTube Icon",
+    link: "https://icons8.com",
+  },
+];
+
+// components
+import NavLinks from "./NavLinks";
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 py-4 mt-24">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        <div className="mb-4 md:mb-0">
-          {/* <Image src={logoImg} alt="Logo" className="h-8 w-auto" /> */}
+    // md:flex-col-reverse
+    <footer className="font-Freight bg-[rgb(40,40,40)] pt-20 pb-20 sm:py-10 text-white px-4">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex flex-col md:flex-row  justify-between ">
+          <div className="flex flex-col ">
+            <h3 className="text-4xl mb-10 sm:text-3xl sm:mt-15">
+              LATEST ON TWITTER
+            </h3>
+
+            <div className="flex mt-10">
+              {images.map((image, index) => (
+                <a
+                  href={image.link}
+                  key={index}
+                  className={index === 0 ? "first:ml-0 ml-4" : "ml-6"}
+                >
+                  <Image
+                    width={120}
+                    height={120}
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-8 h-8 sm:w-6 sm:h-6"
+                  />
+                </a>
+              ))}
+              ;
+            </div>
+
+            <h3 className="font-thin text-[3rem] mt-[9rem] mb-10 sm:mt-15">
+              NO NAME
+            </h3>
+
+            <p className="text-sm mt-2 mb-5">
+              &copy; {new Date().getFullYear()} Band Tickets. All rights
+              reserved.
+              <br className="sm:hidden" /> | KZ-DEV
+            </p>
+          </div>
+
+          <div className="mt-10 md:mt-0 mr-[20rem] ">
+            <NavLinks propClass="flex-col" />
+          </div>
         </div>
-        <div className="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0">
-          <ul className="flex space-x-4 text-blue-900">
-            <li>
-              <Link href="/terms">Terms of Service</Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; {new Date().getFullYear()} Band Tickets. All rights reserved.
-            KZ-DEV
-          </p>
+
+        <div className="underline tracking-wide flex center justify-center gap-8 mt-10 text-xl ">
+          <Link href="/terms" className="hover:text-blue-400 ">
+            {" "}
+            Terms of Service{" "}
+          </Link>
+          <Link href="/privacy" className="hover:text-blue-400 ">
+            {" "}
+            Privacy Policy{" "}
+          </Link>
         </div>
       </div>
     </footer>

@@ -4,7 +4,7 @@
 const Hero = () => {
   return (
     <>
-      <section className="mb-4 relative z-0">
+      <section className="mb-4 relative z-0 font-Inter">
         <h1
           className="text-[7rem] font-bold text-white absolute top-[12%] left-[7%] z-10 
         max-[1000px]:text-[5.8rem] max-[768px]:text-[5.5rem] max-[768px]:top-[15%] max-[650px]:text-[5rem] max-[650px]:top-[18%] max-[480px]:text-[3.6rem] max-[480px]:top-[15%]
@@ -22,13 +22,7 @@ const Hero = () => {
           muted
           preload="metadata"
         >
-          <source src="/videos/resized_band_video2.mp4" type="video/mp4" />
-          {/* <track
-            src="/videos/resized_band_video2.mp4"
-            kind="subtitles"
-            srcLang="en"
-            label="English"
-          /> */}
+          {/* <source src="/videos/resized_band_video2.mp4" type="video/mp4" /> */}
           Your browser does not support the video tag.
         </video>
 

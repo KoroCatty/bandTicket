@@ -21,7 +21,7 @@ const SNS = () => {
   // const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/${ticket._id}`;
 
   return (
-    <>
+    <section className="my-[20rem]">
       <h2 className="text-3xl text-center pt-2 pb-10 tracking-[0.2rem]">
         FOLLOW US
         <span className="block h-1 w-[60%] bg-gray-500 mx-auto mt-9"></span>
@@ -60,7 +60,7 @@ const SNS = () => {
           <EmailIcon size={40} round={true} />
         </EmailShareButton>
       </div>
-    </>
+    </section>
   );
 };
 export default SNS;

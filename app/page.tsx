@@ -5,6 +5,7 @@ import Hero from "@/components/features/Home/Hero";
 import Loading from "@/app/loading";
 import Ticket from "@/components/features/Home/Tickets";
 import SNS from "@/components/common/SNS";
+import Merch from "@/components/features/Home/Merch";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 
       <div className="max-w-[1080px] mx-auto px-4 ">
         <Ticket />
+        <Merch />
         <SNS />
       </div>
     </section>
