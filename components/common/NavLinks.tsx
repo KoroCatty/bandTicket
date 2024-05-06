@@ -65,7 +65,8 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
         <div className="">
           <Link
             href="/login"
-            className="flex items-center bg-slate-900 text-white rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]"
+            className="flex items-center rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]
+            hover:scale-105 transform transition duration-300 ease-in-out hover:text-blue-500"
           >
             <FaGoogle className="mr-1" />
             LOGIN

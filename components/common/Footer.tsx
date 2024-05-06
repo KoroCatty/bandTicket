@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row  justify-between ">
           <div className="flex flex-col ">
             <h3 className="text-4xl mb-10 sm:text-3xl sm:mt-15">
-              LATEST ON <span className="textShadow_wt text-5xl ml-3">X</span>
+              LATEST ON <span className="textShadow_wt text-4xl ml-3">X</span>
             </h3>
 
             <div className="flex mt-4 ml-4">

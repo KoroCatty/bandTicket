@@ -8,7 +8,7 @@ import ButtonComponent from "@/components/common/Button";
 
 const Merch = () => {
   const options = {
-    height: "600px",
+    height: "500px",
     width: "360px",
     interval: 6000,
   };
