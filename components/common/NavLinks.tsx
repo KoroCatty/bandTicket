@@ -11,7 +11,7 @@ import { FaGoogle } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 
 type PropsType = {
-  propClass: string;
+  propClass?: string;
 };
 
 // roleプロパティをオプショナルで受け取る
