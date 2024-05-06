@@ -42,15 +42,15 @@ import NavLinks from "./NavLinks";
 const Footer = () => {
   return (
     // md:flex-col-reverse
-    <footer className="font-Freight bg-[rgb(40,40,40)] pt-20 pb-20 sm:py-10 text-white px-4">
-      <div className="max-w-7xl mx-auto px-4">
+    <footer className="font-Freight  bg-[rgb(40,40,40)] pt-20 pb-20 sm:py-10 text-white px-4">
+      <div className="mx-auto px-4 max-w-[860px]">
         <div className="flex flex-col md:flex-row  justify-between ">
           <div className="flex flex-col ">
             <h3 className="text-4xl mb-10 sm:text-3xl sm:mt-15">
-              LATEST ON TWITTER
+              LATEST ON <span className="textShadow_wt text-5xl ml-3">X</span>
             </h3>
 
-            <div className="flex mt-10">
+            <div className="flex mt-4 ml-4">
               {images.map((image, index) => (
                 <a
                   href={image.link}
@@ -66,10 +66,9 @@ const Footer = () => {
                   />
                 </a>
               ))}
-              ;
             </div>
 
-            <h3 className="font-thin text-[3rem] mt-[9rem] mb-10 sm:mt-15">
+            <h3 className="font-thin text-[3rem] mt-[6rem] mb-10 sm:mt-15 max-[768px]:mt-[4rem] textShadow_wt">
               NO NAME
             </h3>
 
@@ -80,7 +79,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="mt-10 md:mt-0 mr-[20rem] ">
+          <div className="mt-10 md:mt-0  mr-[4rem] max-[768px]:mr-0 ">
             <NavLinks propClass="flex-col" />
           </div>
         </div>

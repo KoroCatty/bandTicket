@@ -27,7 +27,7 @@ const SNS = () => {
         <span className="block h-1 w-[60%] bg-gray-500 mx-auto mt-9"></span>
       </h2>
 
-      <div className="flex gap-8 justify-center pb-1">
+      <div className="flex gap-8 justify-center pb-1 max-[480px]:gap-3">
         <FacebookShareButton
           // url={shareUrl}
           url={``}

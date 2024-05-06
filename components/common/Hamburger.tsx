@@ -69,7 +69,7 @@ const Hamburger = () => {
 
             {/* Additional links or content */}
             <div>
-              <NavLinks />
+              <NavLinks setIsMenuOpen={setIsMenuOpen} />
             </div>
           </div>
         </div>

@@ -12,10 +12,11 @@ import { signOut, useSession } from "next-auth/react";
 
 type PropsType = {
   propClass?: string;
+  setIsMenuOpen?: (arg0: boolean) => void;
 };
 
 // roleプロパティをオプショナルで受け取る
-const NavLinks = ({ propClass }: PropsType) => {
+const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   // next auth
   const { data: session } = useSession();
@@ -36,16 +37,18 @@ const NavLinks = ({ propClass }: PropsType) => {
   const currentPath = usePathname();
 
   return (
-    // SP Hamburger Menu 対応
     <div
+      // SP Hamburger Menu 対応
       className={`flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
     >
       {links
         .filter((link) => !link.session || link.session === !!session) // ログインしている場合のみ表示
         .map((link) => (
           <Link
+            //? ハンバーガーメニューを閉じる
+            onClick={() => setIsMenuOpen && setIsMenuOpen(false)}
             href={link.href}
-            className={`w-[fit-content] hover:bg-slate-700 hover:text-primary/60 px-3 py-2 rounded-md text-sm font-medium cursor-pointer text-[1.1rem]
+            className={`w-[fit-content] hover:bg-slate-700 hover:text-primary/60 px-3 py-1 rounded-md text-sm font-medium cursor-pointer text-[1.1rem]
               ${link.session && "bg-red-500 text-white"}
               ${
                 currentPath == link.href
@@ -62,7 +65,7 @@ const NavLinks = ({ propClass }: PropsType) => {
         <div className="">
           <Link
             href="/login"
-            className="flex items-center bg-slate-900 text-white rounded-md max-[767px]:w-[fit-content]"
+            className="flex items-center bg-slate-900 text-white rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]"
           >
             <FaGoogle className="mr-1" />
             LOGIN

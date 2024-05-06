@@ -29,6 +29,9 @@ const config: Config = {
         Freight: ["freight-display-pro", "STKaiti", "essonnes-display", 'serif'],
         Zen_kaku: ["__Zen_Kaku_Gothic_New_2a6e8c", "sans-serif"],
       },
+      textShadow: {
+        white: '0 0 10px rgba(255, 255, 255, 0.8)'
+      }
     },
   },
   plugins: [],

@@ -51,7 +51,7 @@ const Tickets = () => {
   return (
     <>
       <section className="my-section-lg max-w-[860px] mx-auto max-[480px]:my-section-sm px-10 max-[480px]:px-1">
-        <TitleComponent>EVENT</TitleComponent>
+        <TitleComponent>EVENTS</TitleComponent>
 
         <div className="">
           <div className="flex gap-20 pb-4 border-b-2 border-gray-200">
