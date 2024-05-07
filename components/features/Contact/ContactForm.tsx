@@ -64,7 +64,7 @@ export default function ContactForm() {
 
   return (
     <section className="max-w-4xl mx-auto p-6 shadow-lg my-12 ">
-      <TitleComponent>Contact Us</TitleComponent>
+      {/* <TitleComponent>Contact Us</TitleComponent> */}
       {!isSending ? (
         <form
           ref={formRef}

@@ -3,6 +3,9 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 
+// components
+import HeroSongs from "@/components/features/Songs/HeroSongs";
+
 // songs MP3
 import song1 from "/public/songs/music1.mp3";
 import song2 from "/public/songs/music2.mp3";
@@ -61,7 +64,9 @@ const SongsPage = () => {
 
   return (
     <>
-      <section className="max-w-[1080px] mx-auto px-4">
+      <HeroSongs />
+
+      <section className="max-w-[1080px] mx-auto px-4 py-8 ">
         <h2 className="text-3xl font-bold text-center mb-10">Music List</h2>
 
         <div className="flex justify-center items-center gap-10 max-[480px]:flex-wrap max-[768px]:gap-5">
@@ -105,6 +110,7 @@ const SongsPage = () => {
           ))}
         </div>
       </section>
+
     </>
   );
 };
