@@ -82,6 +82,10 @@ const Map = ({ selectedTicket }: MapProps) => {
     return <SpinnerClient />;
   }
 
+  if (loading || !position) {
+    return <SpinnerClient />;
+  }
+
   return (
     <section className="flex w-[45%] max-[1000px]:w-[80%] mx-auto mt-8">
       <div className="w-[100%]">
@@ -89,9 +93,10 @@ const Map = ({ selectedTicket }: MapProps) => {
           <SpinnerClient />
         ) : (
           <MapContainer
+            key={selectedTicket?.id} // Stop Map container is already initialized error
             center={position}
             zoom={14}
-            className="h-[700px] w-[100%]"
+            className="h-[700px] w-[100%] mx-aut max-[1000px]:h-[400px] max-[480px]:h-[320px] o"
           >
             {/* 地図の背景レイヤーを設定。このURLはOpenStreetMapの無料タイルを指す */}
             <TileLayer
