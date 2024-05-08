@@ -53,7 +53,9 @@ const Members = () => {
           >
             <h3 className="text-[3rem] leading-11">{member.name}</h3>
             <p className="text-[1.4rem] font-bold">{member.role}</p>
-            <p className="text-[1rem] max-[480px]:text-start max-[480px]:mt-2 max-[480px]:mb-6 max-[480px]:text-[0.9rem] ">{member.desc}</p>
+            <p className="text-[1rem] max-[480px]:text-start max-[480px]:mt-2 max-[480px]:mb-6 max-[480px]:text-[0.9rem] ">
+              {member.desc}
+            </p>
           </div>
         </div>
       ))}

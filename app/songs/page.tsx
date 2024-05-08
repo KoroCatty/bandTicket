@@ -110,7 +110,6 @@ const SongsPage = () => {
           ))}
         </div>
       </section>
-
     </>
   );
 };

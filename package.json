@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.3.3",
     "@hookform/resolvers": "^3.3.4",
     "cloudinary": "^2.2.0",
+    "leaflet": "^1.9.4",
     "mongodb": "^6.6.0",
     "mongoose": "^8.3.3",
     "next": "^14.2.3",
@@ -21,6 +22,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
     "react-icons": "^5.0.1",
+    "react-leaflet": "^4.2.1",
     "react-responsive-3d-carousel": "^1.4.3",
     "react-share": "^5.1.0",
     "react-spinners": "^0.13.8",
@@ -29,6 +31,7 @@
     "zod": "^3.23.6"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.12",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
