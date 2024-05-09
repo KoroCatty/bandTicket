@@ -17,6 +17,8 @@ export const GET = async (req: any, { params }: { params: ParamsType }) => {
   try {
     await connectDB();
 
+    console.log(params.ticketId); // URL から取得した ID (ticketId
+
     // URL と同じ ID の property をDBから取得
     const ticket = await Ticket.findById(params.ticketId);
 

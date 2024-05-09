@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // photoswippe css
-// import "photoswipe/dist/photoswipe.css";
+import "photoswipe/dist/photoswipe.css";
 
 export const metadata = {
   title: "Band Tickets| KZ-DEV",
