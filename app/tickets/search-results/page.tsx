@@ -15,10 +15,7 @@ import SearchForm from "@/components/common/SearchForm";
 import { useSearchParams } from "next/navigation";
 
 // TYPES
-import type { TicketType, Ticket } from "@/types/ticket";
-type MapProps = {
-  selectedTicket: Ticket | null;
-};
+import type { Ticket } from "@/types/ticket";
 
 const SearchResultsPage = () => {
   const searchParams = useSearchParams();
@@ -51,8 +48,6 @@ const SearchResultsPage = () => {
     fetchSearchResults();
   }, [location, ticketStatus]);
 
-  console.log(tickets);
-
   return (
     <>
       <SearchForm />
@@ -69,9 +64,17 @@ const SearchResultsPage = () => {
               <FaArrowAltCircleLeft className="mr-2 mb-1" />
               Go Back to tickets
             </Link>
-            <h1 className="text-3xl mb-4">
+            <h1 className="text-3xl mb-4 max-[480px]:text-[1.4rem]">
               Search Results
-              <span className="ml-4 text-[4rem] d-block">{tickets.length}</span>
+              <span className="ml-4 text-[4rem] d-block max-[768px]:text-[3rem] max-[480px]:text-[2rem]">
+                {tickets.length}
+              </span>
+              {/* 全ての ticket を表示する場合のみ */}
+              <span className="ml-4">
+                {searchParams.get("ticketStatus") === "All" &&
+                  searchParams.get("location") === "" &&
+                  "(All Tickets)"}
+              </span>
             </h1>
             {tickets.length === 0 ? (
               <p>No search results found</p>

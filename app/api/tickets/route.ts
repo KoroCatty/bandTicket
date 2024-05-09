@@ -4,6 +4,8 @@ import cloudinary from "@/config/cloudinary"; // Cloudinary
 
 import sharp from "sharp"; // Image processing
 
+//* Stop Build error
+export const dynamic = "force-dynamic";
 //! =========================================================
 //! GET ALL /api/tickets (Pagination あり)
 //! =========================================================
@@ -12,20 +14,20 @@ export const GET = async (request: any) => {
     // connect to the DB
     await connectDB();
 
-    // pagination // todo: build error
+    // pagination
     // nextUrl extends the native URL API with additional convenience methods
-    // const page = request.nextUrl.searchParams.get("page") || 1; // ページの総数
-    // const pageSize = request.nextUrl.searchParams.get("pageSize") || 8; //! 何個の物件を表示するか
+    const page = request.nextUrl.searchParams.get("page") || 1; // ページの総数
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 10; //! 何個の物件を表示するか
 
     // skip some tickets
-    // const skip = (page - 1) * pageSize;
+    const skip = (page - 1) * pageSize;
 
     // DB から全てのチケットの数を取得
     const totalTickets = await Ticket.countDocuments({}); // ex) 5
 
     //! get limited tickets
-    const tickets = await Ticket.find({});
-    // const tickets = await Ticket.find({}).skip(skip).limit(pageSize);
+    // const tickets = await Ticket.find({});
+    const tickets = await Ticket.find({}).skip(skip).limit(pageSize);
 
     // 上の２つを結合
     const result = {

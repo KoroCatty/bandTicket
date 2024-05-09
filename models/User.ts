@@ -17,7 +17,7 @@ const UserSchema = new Schema(
     bookmarks: [
       {
         type: Schema.Types.ObjectId, // mongoose の ObjectId という型
-        ref: "Ticket", // Property というモデルに対応
+        ref: "Ticket", // Ticket というモデルに対応
       },
     ],
   },

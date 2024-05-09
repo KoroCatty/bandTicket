@@ -3,6 +3,8 @@
 import connectDB from "@/config/db";
 import Ticket from "@/models/Tickets"; // Model
 
+//* Stop Build error
+export const dynamic = "force-dynamic";
 //! ===============================================
 //! GET /api/tickets/search
 //! request はフォームからの入力
@@ -16,16 +18,13 @@ export const GET = async (request: any) => {
     const location = searchParams.get("location"); // 入力されたクエリを取得
     const ticketStatus = searchParams.get("ticketStatus"); // 選択された ticketStatus を取得
 
- // 直接 req.query を使用してパラメータを取得
-//  const { location, ticketStatus } = request.query;
-
     //! location 検索
     // locationを基に 部分一致検索 を行うための正規表現パターンを作成（大文字小文字を区別なし）
     const locationPattern = new RegExp(location || "", "i"); // case-insensitive
 
     // Match location pattern against DB fields
     // データベースの様々なフィールドに対して、作成したパターンで検索を行う
-    // $or 演算子で、property コレクションの中の全ての filed に対して、locationPattern で検索を行う
+    // $or ticket コレクションの中の全ての filed に対して、locationPattern で検索を行う
     // Form で例えば、"Melbourne" と入力した場合、locationPattern は /Melbourne/i となる
     let query: any = {
       $or: [
@@ -39,7 +38,7 @@ export const GET = async (request: any) => {
     };
 
     //! Ticket Status 検索
-    // propertyTypeが"All"以外の場合は、プロパティタイプに基づいてさらに絞り込みを行う
+    // ticketStatus が"All"以外の場合は、プロパティタイプに基づいてさらに絞り込みを行う
     if (ticketStatus && ticketStatus !== "All") {
       const statusPattern = new RegExp(ticketStatus, "i"); // case-insensitive
       query.status = statusPattern;

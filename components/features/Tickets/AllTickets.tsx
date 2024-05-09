@@ -44,7 +44,7 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
           className="w-[60%] h-[600px] overflow-y-scroll overflow-x-hidden pl-[4rem] 
         max-[1000px]:w-[100%] max-[1000px]:pl-0 max-[480px]:h-[400px] "
         >
-          <h1 className="text-[3rem] font-bold pb-4">All Tickets</h1>
+          <h1 className="text-[3rem] font-bold pb-4">10 Tickets</h1>
           <div className="flex gap-20 pb-4 border-b-2 border-gray-200 ">
             <p className="">Dates</p>
             <p className="">Name</p>

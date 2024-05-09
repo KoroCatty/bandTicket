@@ -7,7 +7,6 @@ const SearchForm = () => {
   const router = useRouter();
   const [location, setLocation] = useState(""); // input
   const [ticketStatus, setTicketStatus] = useState("All"); // select
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -30,7 +29,7 @@ const SearchForm = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="mt-3 mx-auto max-w-2xl w-full flex flex-col md:flex-row items-center"
+        className="mt-3 mx-auto px-8 max-w-2xl w-full flex flex-col md:flex-row items-center"
       >
         <div className="w-full md:w-3/5 md:pr-2 mb-4 md:mb-0">
           <label htmlFor="location" className="sr-only">
@@ -41,7 +40,7 @@ const SearchForm = () => {
             value={location}
             type="text"
             id="location"
-            placeholder="Enter Location (City, State, postcode, etc"
+            placeholder="Location (City, State, postcode, etc)"
             className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
@@ -64,8 +63,8 @@ const SearchForm = () => {
         </div>
         <button
           type="submit"
-          className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-500 text-white
-           hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
+          className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-300 text-white text-xl
+           hover:scale-110  transition-all duration-300 focus:outline-none focus:ring focus:ring-blue-500"
         >
           Search
         </button>
