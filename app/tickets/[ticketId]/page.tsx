@@ -6,7 +6,6 @@ const apiDomain = process.env.NEXT_PUBLIC_DOMAIN || null;
 // コンポーネント内のインポートと定義
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 
 // components
 import type { Ticket } from "@/types/ticket";

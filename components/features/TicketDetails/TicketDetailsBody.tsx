@@ -14,14 +14,9 @@ const TicketDetailsMap = dynamic(
 import type { Ticket } from "@/types/ticket";
 
 const TicketDetailsBody = ({ ticket }: { ticket: Ticket }) => {
-  // const { ticketId }: { ticketId: string } = useParams();
-  // console.log(ticketId);
-
-  console.log(ticket);
-
   return (
     <section className="">
-        <TicketDetailsMap ticket={ticket} />
+      <TicketDetailsMap ticket={ticket} />
     </section>
   );
 };

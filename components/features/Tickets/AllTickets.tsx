@@ -41,14 +41,16 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
       </div>
       <div className="w-[100%] opacity-90 my-[3rem] min-[1000px]:flex max-[1000px]:mt-[1rem] max-[480px]:w-[80%] max-[480px]:mx-auto">
         <div
-          className="w-[60%] h-[600px] overflow-y-scroll overflow-x-hidden pl-[4rem] 
-        max-[1000px]:w-[100%] max-[1000px]:pl-0 max-[480px]:h-[400px] "
+          className="w-[60%] h-[680px] overflow-y-scroll overflow-x-hidden pl-[6rem] 
+           max-[1000px]:w-[100%] max-[1000px]:pl-0 max-[480px]:h-[200px] "
         >
-          <h1 className="text-[3rem] font-bold pb-4">10 Tickets</h1>
+          <h1 className="text-[3rem] font-bold pb-4 max-[480px]:text-[2rem] ">
+            10 Tickets
+          </h1>
           <div className="flex gap-20 pb-4 border-b-2 border-gray-200 ">
-            <p className="">Dates</p>
+            {/* <p className="">Dates</p>
             <p className="">Name</p>
-            <p className="">Venues</p>
+            <p className="">Venues</p> */}
           </div>
           {allTickets?.tickets &&
             allTickets?.tickets.map((ticket) => (
@@ -59,9 +61,9 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
             ${selectedTicket?._id === ticket?._id ? "bg-blue-300/20 " : "bg-neutral-900/70 "}`}
                 onClick={() => handleTicketClick(ticket)}
               >
-                <div className={`gap-4 min-[600px]:flex max-[600px]:pl-6`}>
+                <div className={`gap-4 min-[1200px]:flex max-[1200px]:pl-6`}>
                   <p className="text-lg  max-[480px]:text-[0.8rem] ">
-                    {ticket.date}
+                    {ticket.date.slice(0, 10)}
                   </p>
                   <p className="text-lg font-bold">{ticket.name}</p>
                   <p className="text-lg max-[480px]:text-[0.9rem]">

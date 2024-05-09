@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 import SpinnerClient from "@/components/common/SpinnerClient";
 
 // TYPES
-import type { TicketType, Ticket } from "@/types/ticket";
+import type { Ticket } from "@/types/ticket";
 type MapProps = {
   selectedTicket: Ticket | null;
 };
@@ -32,7 +32,6 @@ const MapComponent = ({ position }: any) => {
   useEffect(() => {
     map.flyTo(position, map.getZoom()); // Fly to the selected ticket
   }, [position, map]);
-
   return (
     <Marker position={position} icon={markerIcon}>
       <Popup>{position[2]}</Popup>
@@ -87,7 +86,7 @@ const Map = ({ selectedTicket }: MapProps) => {
   }
 
   return (
-    <section className="flex w-[45%] max-[1000px]:w-[80%] mx-auto mt-8">
+    <section className="flex w-[45%] max-[1000px]:w-[80%] max-[480px]:w-[100%] mx-auto mt-8">
       <div className="w-[100%]">
         {!position ? (
           <SpinnerClient />
@@ -96,7 +95,7 @@ const Map = ({ selectedTicket }: MapProps) => {
             key={selectedTicket?._id} // Stop Map container is already initialized error
             center={position}
             zoom={14}
-            className="h-[700px] w-[100%] mx-aut max-[1000px]:h-[400px] max-[480px]:h-[320px] o"
+            className="h-[700px] w-[100%] mx-aut max-[1000px]:h-[400px] max-[480px]:h-[320px] "
           >
             {/* 地図の背景レイヤーを設定。このURLはOpenStreetMapの無料タイルを指す */}
             <TileLayer
