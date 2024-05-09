@@ -7,9 +7,9 @@ import "leaflet/dist/leaflet.css";
 import SpinnerClient from "@/components/common/SpinnerClient";
 
 // TYPES
-import type { TicketType } from "@/types/ticket";
+import type { TicketType, Ticket } from "@/types/ticket";
 type MapProps = {
-  selectedTicket: TicketType;
+  selectedTicket: Ticket | null;
 };
 
 import L from "leaflet";
@@ -93,7 +93,7 @@ const Map = ({ selectedTicket }: MapProps) => {
           <SpinnerClient />
         ) : (
           <MapContainer
-            key={selectedTicket?.id} // Stop Map container is already initialized error
+            key={selectedTicket?._id} // Stop Map container is already initialized error
             center={position}
             zoom={14}
             className="h-[700px] w-[100%] mx-aut max-[1000px]:h-[400px] max-[480px]:h-[320px] o"

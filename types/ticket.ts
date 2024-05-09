@@ -1,6 +1,6 @@
-export type TicketType = {
-  id: number;
-  userId: number;
+export type Ticket = {
+  _id: string;
+  userId: string;
   name: string;
   description: string;
   location: {
@@ -15,4 +15,9 @@ export type TicketType = {
   date: string;
   venue: string;
   isFeatured: boolean;
+};
+
+export type TicketType = {
+  totalTickets: number;
+  tickets: Ticket[];
 };
