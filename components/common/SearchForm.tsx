@@ -10,14 +10,20 @@ const SearchForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const query = `?location=${location}&ticketStatus=${ticketStatus}`;
     // redirecting
-    if (location === "" && ticketStatus === "All") {
-      router.push("/tickets");
-    } else {
-      // フォームの内容を入れてリダイレクト
-      const query = `?location=${location}&ticketStatus=${ticketStatus}`;
-      router.push(`/tickets/search-results${query}`);
-    }
+    router.push(`/tickets/search-results${query}`);
+
+    // redirecting
+    // if (location === "" && ticketStatus === "All") {
+    //   const query = `?location=${location}&ticketStatus=${ticketStatus}`;
+    //   router.push(`/tickets/search-results${query}`);
+    // } else {
+    //   // フォームの内容を入れてリダイレクト
+    //   const query = `?location=${location}&ticketStatus=${ticketStatus}`;
+    //   router.push(`/tickets/search-results${query}`);
+    // }
   };
 
   return (
@@ -53,7 +59,7 @@ const SearchForm = () => {
             <option value="All">All</option>
             <option value="Active">Active</option>
             <option value="Finished">Finished</option>
-            <option value="Canceled">Canceled</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
         </div>
         <button

@@ -12,7 +12,7 @@ export const GET = async (request: any) => {
     // connect to the DB
     await connectDB();
 
-    // pagination
+    // pagination // todo: build error
     // nextUrl extends the native URL API with additional convenience methods
     // const page = request.nextUrl.searchParams.get("page") || 1; // ページの総数
     // const pageSize = request.nextUrl.searchParams.get("pageSize") || 8; //! 何個の物件を表示するか

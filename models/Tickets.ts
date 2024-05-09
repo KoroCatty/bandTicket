@@ -41,7 +41,7 @@ const TicketSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["active", "finished", "canceled"],
+    enum: ["active", "finished", "cancelled"],
     required: [true, "Status is required"],
   },
   date: {
