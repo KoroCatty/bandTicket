@@ -20,10 +20,8 @@ const TicketDetailsBody = ({ ticket }: { ticket: Ticket }) => {
   console.log(ticket);
 
   return (
-    <section className="bg-blue-50">
-      <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+    <section className="">
         <TicketDetailsMap ticket={ticket} />
-      </div>
     </section>
   );
 };

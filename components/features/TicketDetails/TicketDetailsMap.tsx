@@ -62,14 +62,14 @@ const Map = ({ ticket }: { ticket: Ticket }) => {
   }
 
   return (
-    <div>
+    <section className="">
       {loading && <SpinnerClient />}
       {!loading && (
         // {/* MapContainerコンポーネントを使って地図のコンテナを作成。ここで地図の初期位置とズームレベルを指定 */}
         <MapContainer
           center={[lat, lon]}
           zoom={13}
-          style={{ height: "400px", width: "100%" }}
+          style={{ height: "300px", width: "80%", margin: "0 auto" }}
         >
           {/* TileLayerコンポーネントを使って地図の背景レイヤーを設定。このURLはOpenStreetMapの無料タイルを指す */}
           <TileLayer
@@ -91,7 +91,7 @@ const Map = ({ ticket }: { ticket: Ticket }) => {
           </CircleMarker>
         </MapContainer>
       )}
-    </div>
+    </section>
   );
 };
 

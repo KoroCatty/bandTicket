@@ -42,7 +42,7 @@ const TicketDetailsPage = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       if (!ticketId) return;
-      const ticketData = await fetchTicket(ticketId);
+      const ticketData = await fetchTicket(ticketId.toString());
       setTicket(ticketData);
       setLoading(false);
     };
