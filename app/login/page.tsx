@@ -12,6 +12,9 @@ import {
 } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
 
+// components
+import LoginForm from "@/components/features/Login/LoginForm";
+
 const LoginPage = () => {
   const { data: session } = useSession();
   // 認証情報を取得したらリダイレクト
@@ -35,7 +38,7 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <>
+    <section className="h-[70vh] ">
       {!session && (
         <div className="">
           {/* //! Google, GitHub などでログインする可能性もあるので map 使用 */}
@@ -47,7 +50,12 @@ const LoginPage = () => {
             ))}
         </div>
       )}
-    </>
+      <br />
+      <br />
+      <br />
+
+      <LoginForm />
+    </section>
   );
 };
 

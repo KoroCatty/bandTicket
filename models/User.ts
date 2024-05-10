@@ -11,6 +11,11 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Username is required"],
     },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      // select: false,// パスワードを取得しないようにする
+    },
     image: {
       type: String,
     },
@@ -20,6 +25,10 @@ const UserSchema = new Schema(
         ref: "Ticket", // Ticket というモデルに対応
       },
     ],
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
