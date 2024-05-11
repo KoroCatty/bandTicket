@@ -35,10 +35,10 @@ const Hamburger = () => {
       {isMenuOpen && (
         <div className="navbar-menu relative z-50">
           <div
-            className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"
+            className="navbar-backdrop fixed inset-0 bg-neutral-800 opacity-75"
             onClick={() => setIsMenuOpen(false)}
           ></div>
-          <div className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-neutral-950/90 overflow-y-auto">
+          <div className="fixed top-0 left-0 bottom-0 flex flex-col w-3/6 max-w-sm py-6 px-6 bg-neutral-950/90 overflow-y-auto">
             {/* Logo & Close button */}
             <div className="flex items-center mb-8">
               <Link href="/">

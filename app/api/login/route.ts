@@ -7,8 +7,6 @@ import User from "@/models/User";
 export const POST = async (request: any) => {
   try {
     const { email, password } = await request.json();
-    //  console.log('🔥', password)
-
     await connectDB();
 
     //* Joi Validation

@@ -6,28 +6,17 @@ const JWT_SECRET = process.env.JWT_SECRET;
 export const GET = async (request: any) => {
   // console.log("Headers:", request.headers); // Log all headers
   // console.log("Cookies:", request.cookies._parsed); // Log all cookies
-  if (!request.cookies || !request.cookies._parsed) {
-    console.log("Cookies or _parsed is undefined");
-    return new Response(null, { status: 401 });
-  }
-
-  //  ensure that cookies and _parsed are defined
-  if (!request.cookies || !request.cookies._parsed) {
-    console.log("Cookies or _parsed is undefined");
-    return new Response(null, { status: 401 });
-  }
 
   // Map オブジェクトから 'BandTicketsJWT'を取得 (Mapのgetが必要)
   const bandTicketsJWT = request.cookies.get("BandTicketsJWT");
 
-  // クッキーがない場合、401を返す
+  // No content to send back
   if (!bandTicketsJWT) {
-    return new Response(null, { status: 401 });
+    return new Response(null, { status: 201 });
   }
 
-  // クッキーの値を取得
-  const token = bandTicketsJWT ? bandTicketsJWT.value : null;
-
+  // httpOnly Cookie から トークン を取得
+  const token = bandTicketsJWT.value;
   if (!token) {
     return new Response(null, { status: 401 });
   }

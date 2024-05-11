@@ -34,10 +34,32 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
     { label: "ADMIN", href: "/admin", session: true, user: true },
   ];
 
-  // プロフィール画像をセッションから取得
-  const profileImage = session?.user?.image || "/images/default_icon.png";
-
+  // プロフィール画像を Google / user / default image から取得
+  const profileImage =
+    session?.user?.image ||
+    (user && "/images/house.png") ||
+    "/images/default_icon.png";
   const currentPath = usePathname();
+
+  //! HttpOnly LOGOUT
+  const httpOnlySignOut = async () => {
+    try {
+      const res = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", //? httpOnly Cookie を送信
+      });
+      if (res.ok) {
+        window.location.reload();
+      } else {
+        console.error("ログアウトに失敗しました");
+      }
+    } catch (error) {
+      console.log("Failed to log out", error);
+    }
+  };
 
   return (
     <div
@@ -45,7 +67,6 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
       className={`flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
     >
       {links
-        // .filter((link) => !link.session || link.session === !!session) // ログインしている場合のみ表示
         .filter(
           (link) =>
             !link.session ||
@@ -86,35 +107,6 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
       ) : (
         ""
       )}
-
-      {/* {user ? (
-        <div className="">
-          <Link
-            href="/login"
-            className="flex items-center rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]
-            hover:scale-105 transform transition duration-300 ease-in-out hover:text-blue-500"
-          >
-            <FaGoogle className="mr-1" />
-            aaaa
-          </Link>
-        </div>
-      ) : (
-        ""
-      )} */}
-
-      {/* {session && (
-        <button
-          onClick={() => {
-            signOut();
-          }}
-          className="flex items-center bg-blue-500 p-1 text-white rounded-md"
-          role="menuitem"
-          tabIndex={-1}
-          id="user-menu-item-2"
-        >
-          Sign Out
-        </button>
-      )} */}
 
       {/* <-- Profile dropdown button --> */}
       <div className="relative ml-3">
@@ -169,18 +161,36 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
             >
               Saved tickets
             </Link>
-            <button
-              onClick={() => {
-                setProfileMenuOpen(false);
-                signOut();
-              }}
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="user-menu-item-2"
-            >
-              Sign Out
-            </button>
+            {/* Next Auth LOGOUT */}
+            {session && (
+              <button
+                onClick={() => {
+                  setProfileMenuOpen(false);
+                  signOut();
+                }}
+                className="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabIndex={-1}
+                id="user-menu-item-2"
+              >
+                Sign Out Next Auth
+              </button>
+            )}
+            {/* HttpOnly LOGOUT */}
+            {user && (
+              <button
+                onClick={() => {
+                  setProfileMenuOpen(false);
+                  httpOnlySignOut();
+                }}
+                className="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabIndex={-1}
+                id="user-menu-item-2"
+              >
+                Sign Out HttpOnly
+              </button>
+            )}
           </div>
         )}
       </div>

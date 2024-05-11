@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import connectDB from "@/config/db";
 import Joi from "joi";
-import jwt from "jsonwebtoken";
 import User from "@/models/User"; // model
 
 export const POST = async (req: any) => {

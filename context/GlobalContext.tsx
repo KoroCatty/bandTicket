@@ -2,27 +2,36 @@
 //! HttpOnly Cookie を使ったログイン状態をグローバル化するコンポーネント
 
 import { createContext, useContext, useState, useEffect } from "react";
-// Create context
-const GlobalContext = createContext({});
+const GlobalContext = createContext({}); // Create context
 
 // Create a provider
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState(null);
 
+  //! HttpOnly を送信してログイン状態を取得
   useEffect(() => {
-    const checkSession = async () => {
-      const response = await fetch("/api/cookie/check", {
-        method: "GET",
-        credentials: "include",
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setUser(data);
-      } else {
-        setUser(null);
-      }
-    };
-    checkSession();
+    try {
+      const checkSession = async () => {
+        const response = await fetch("/api/cookie/check", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (response.ok) {
+          // Only attempt to parse the JSON if the status indicates that content should be present
+          if (response.status === 200) {
+            const data = await response.json(); // assuming 200 means data(httpOnly cookie) is present
+            setUser(data);
+          } else if (response.status === 201) {
+            setUser(null); // No user data to parse, set user to null or handle accordingly
+          }
+        } else {
+          setUser(null);
+        }
+      };
+      checkSession();
+    } catch (error) {
+      console.log("Failed to check session", error);
+    }
   }, []);
 
   return (
@@ -35,7 +44,3 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
 export function useGlobalContext() {
   return useContext(GlobalContext);
 }
-
-// 使いたいコンポーネントで下記のように使う (この例では useState のように使用)
-// import { useGlobalContext } from "@/context/GlobalContext";
-// const { unreadCount, setUnreadCount } = useGlobalContext();
