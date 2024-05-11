@@ -29,13 +29,14 @@ const LoginForms = () => {
       if (response.status === 200) {
         const data = await response.json();
         console.log(data);
-        setLoggedInData(data); // todo (グローバルステートに保存
+        setLoggedInData(data);
         alert(`You logged in as ${data.username}さん`);
       }
       // router.push('/dashboard');
+      window.location.reload();
     } catch (error) {
       console.log("Failed to fetch data:", error);
-      alert("Login failed. Check console for more details.");
+      alert("Login failed.");
     }
   };
 
@@ -55,9 +56,11 @@ const LoginForms = () => {
       setLoggedInData(data);
       console.log("Logged in as guest:", data);
       alert("Welcome! You logged in as Guest User");
+      window.location.reload();
     } else {
       // Handle errors for guest login
       console.log("Failed to login as guest:", data.message);
+      alert("Failed to login as guest. ");
     }
   };
 

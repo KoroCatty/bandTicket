@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-
 // react-icons
 import { FaGoogle } from "react-icons/fa";
 
+// Context (HttpsOnly user login info)
+import { useGlobalContext } from "@/context/GlobalContext";
 // next auth
 import { signOut, useSession } from "next-auth/react";
 
@@ -17,18 +18,20 @@ type PropsType = {
 
 // roleプロパティをオプショナルで受け取る
 const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
+  // Contextを発動 (ユーザーデータを取得)
+  const { user }: any = useGlobalContext();
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   // next auth
   const { data: session } = useSession();
 
   const links = [
-    { label: "HOME", href: "/", providers: false },
-    { label: "ABOUT", href: "/about", providers: false },
-    { label: "SONGS", href: "/songs", session: false },
-    { label: "MERCH", href: "/merch", session: false },
-    { label: "CONTACT", href: "/contact", session: false },
-    { label: "TICKETS", href: "/tickets", session: false },
-    { label: "ADMIN", href: "/tickets", session: true },
+    { label: "HOME", href: "/", providers: false, user: false },
+    { label: "ABOUT", href: "/about", providers: false, user: false },
+    { label: "SONGS", href: "/songs", session: false, user: false },
+    { label: "MERCH", href: "/merch", session: false, user: false },
+    { label: "CONTACT", href: "/contact", session: false, user: false },
+    { label: "TICKETS", href: "/tickets", session: false, user: false },
+    { label: "ADMIN", href: "/admin", session: true, user: true },
   ];
 
   // プロフィール画像をセッションから取得
@@ -42,7 +45,14 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
       className={`flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
     >
       {links
-        .filter((link) => !link.session || link.session === !!session) // ログインしている場合のみ表示
+        // .filter((link) => !link.session || link.session === !!session) // ログインしている場合のみ表示
+        .filter(
+          (link) =>
+            !link.session ||
+            !link.user ||
+            (link.session || link.user) === !!session ||
+            !!user,
+        ) // ログインしている場合のみ表示
         .map((link) => (
           <Link
             //? ハンバーガーメニューを閉じる
@@ -61,7 +71,8 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
           </Link>
         ))}
 
-      {!session ? (
+      {/* どちらも存在しない場合表示 */}
+      {!session && !user ? (
         <div className="">
           <Link
             href="/login"
@@ -75,6 +86,21 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
       ) : (
         ""
       )}
+
+      {/* {user ? (
+        <div className="">
+          <Link
+            href="/login"
+            className="flex items-center rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]
+            hover:scale-105 transform transition duration-300 ease-in-out hover:text-blue-500"
+          >
+            <FaGoogle className="mr-1" />
+            aaaa
+          </Link>
+        </div>
+      ) : (
+        ""
+      )} */}
 
       {/* {session && (
         <button

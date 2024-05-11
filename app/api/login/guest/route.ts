@@ -34,7 +34,7 @@ export const POST = async (request: any) => {
     return new Response(JSON.stringify(user), {
       status: 200,
       headers: {
-        "Set-Cookie": `BandTicketsJWT=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict;`,
+        "Set-Cookie": `BandTicketsJWT=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict; Secure`,
       },
     });
   } catch (error) {

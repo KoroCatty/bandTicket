@@ -10,19 +10,25 @@ import {
   LiteralUnion,
   ClientSafeProvider,
 } from "next-auth/react";
+
+// Context (HttpsOnly user login info)
+import { useGlobalContext } from "@/context/GlobalContext";
+
 import { BuiltInProviderType } from "next-auth/providers/index";
 
 // components
 import LoginForm from "@/components/features/Login/LoginForm";
 
 const LoginPage = () => {
+  // Contextを発動 (ユーザーデータを取得)
+  const { user }: any = useGlobalContext();
   const { data: session } = useSession();
   // 認証情報を取得したらリダイレクト
-  if (session) {
+  if (session || user) {
     redirect("/");
   }
 
-  // 認証情報
+  // Next Auth 認証情報
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -36,6 +42,30 @@ const LoginPage = () => {
     };
     setAuthProviders();
   }, []);
+
+  // 自作 HttpOnly クッキーをチェック
+  // useEffect(() => {
+  //   const checkSession = async () => {
+  //     const response = await fetch('/api/cookie/check', {
+  //       method: 'GET',
+  //       credentials: 'include', // クッキーを含めるために必要
+  //     });
+
+  //     if (!response.ok) {
+  //       console.log('Not logged in');
+  //     } else {
+  //       // 認証成功の場合、追加のアクションをここに記述（例えば状態の更新など）
+  //       const data = await response.json();
+  //       console.log('🔥Logged in as:', data.username, "✅");
+  //       // alert(`You logged in as ${data.username}さん`);
+  //       console.log('🔥', data);
+  //       // router.push('/');
+  //       // ここでユーザーデータをグローバルステートやローカルステートに保存するなど
+  //       // localStorage.setItem('BandTicketLoggedIn', JSON.stringify(data));
+  //     }
+  //   };
+  //   checkSession();
+  // }, [router]);
 
   return (
     <section className="h-[70vh] ">

@@ -4,9 +4,8 @@ import "@/styles/globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import AuthProvider from "@/components/common/AuthProvider"; // next-auth
-
 // context
-// import { GlobalProvider } from "@/context/GlobalContext";
+import { GlobalProvider } from "@/context/GlobalContext";
 
 // react Toastify &  css
 import { ToastContainer } from "react-toastify";
@@ -23,29 +22,29 @@ export const metadata = {
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    // <GlobalProvider>
-    <AuthProvider>
-      <html lang="en">
-        <body>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-        </body>
-      </html>
-    </AuthProvider>
-    // </GlobalProvider>
+    <GlobalProvider>
+      <AuthProvider>
+        <html lang="en">
+          <body>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+          </body>
+        </html>
+      </AuthProvider>
+    </GlobalProvider>
   );
 };
 

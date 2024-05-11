@@ -39,7 +39,7 @@ export const POST = async (request: any) => {
     // get rid of password (No Send to Client)
     user.password = undefined;
 
-    // Creating the token
+    // Creating the token (ここで JWT トークンに情報を入れて作成)
     const jwtSecret = process.env.JWT_SECRET;
     const token = jwt.sign({ userId: user.username }, jwtSecret!, {
       expiresIn: "1h",
@@ -49,7 +49,7 @@ export const POST = async (request: any) => {
     return new Response(JSON.stringify(user), {
       status: 200,
       headers: {
-        "Set-Cookie": `BandTicketsJWT=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict;`,
+        "Set-Cookie": `BandTicketsJWT=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict; Secure`,
       },
     });
   } catch (error) {
