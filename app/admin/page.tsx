@@ -13,14 +13,7 @@ import { useGlobalContext } from "@/context/GlobalContext";
 // Data Fetch
 const allTickets = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin/`,
-    {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
+    `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin/`
   );
 
   if (!res.ok) {
