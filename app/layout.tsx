@@ -39,7 +39,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
 
-                  gtag('config', ${NEXT_PUBLIC_GA_ID});
+                  gtag('config', '${NEXT_PUBLIC_GA_ID}');
                  `
               }
             </Script>
