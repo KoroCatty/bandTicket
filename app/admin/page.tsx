@@ -11,8 +11,8 @@ import type { Ticket } from "@/types/ticket";
 // import { useGlobalContext } from "@/context/GlobalContext";
 
 // Data Fetch
-const allTickets = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tickets`,
+const allAdminTickets = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin`,
     // {
     //   method: "GET",
     //   credentials: "include",
@@ -25,13 +25,18 @@ const allTickets = async () => {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
+
+  if (res.status === 500) {
+    return { totalTickets: 0, tickets: [] };
+  }
+
   return res.json();
 };
 
 const AdminPage = async () => {
   // Contextを発動 (ユーザーデータを取得)
   //  const { user }: any = useGlobalContext();
-  const data = await allTickets();
+  const data = await allAdminTickets();
   
   return (
 
