@@ -13,7 +13,7 @@ import { useGlobalContext } from "@/context/GlobalContext";
 // Data Fetch
 const allTickets = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin`
   );
 
   if (!res.ok) {
@@ -34,7 +34,7 @@ const AdminPage = async () => {
           Add Ticket
         </Link>
         <h1 className="text-[3rem] font-bold mt-8 max-[480px]:text-[2rem] ">
-          All {data.totalTickets} Tickets
+          All {data?.totalTickets} Tickets
         </h1>
       </div>
 
