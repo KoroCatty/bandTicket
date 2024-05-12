@@ -42,7 +42,8 @@ const LoginForms = () => {
 
   //! GUEST LOGIN
   const handleGuestLogin = async () => {
-    const response = await fetch("/api/login/guest", {
+    // const response = await fetch("/api/login/guest", {
+    const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

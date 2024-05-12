@@ -21,6 +21,7 @@ export const POST = async (request: any) => {
       return new Response(error.message, { status: 400 });
     }
 
+    //* User データ取得
     const user = await User.findOne({ email: email }).select("+password");
 
     // db の password にアクセス
@@ -38,10 +39,15 @@ export const POST = async (request: any) => {
     user.password = undefined;
 
     // Creating the token (ここで JWT トークンに情報を入れて作成)
+    // userのID & Name をトークンに含め、ログインしてるユーザーのIdとNameを取得 (Add ticket などに活用)
     const jwtSecret = process.env.JWT_SECRET;
-    const token = jwt.sign({ userId: user.username }, jwtSecret!, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { username: user.username, userId: user._id },
+      jwtSecret!,
+      {
+        expiresIn: "1h",
+      },
+    );
 
     // Setting the HTTP-only cookie (1h)
     return new Response(JSON.stringify(user), {

@@ -23,10 +23,16 @@ export const GET = async (request: any) => {
 
   try {
     // payload はトークン内で実際に情報を保持する部分 (pull out userId from it)
-    const payload = jwt.verify(token, JWT_SECRET!) as { userId: string };
-    return new Response(JSON.stringify({ username: payload.userId }), {
-      status: 200,
-    });
+    const payload = jwt.verify(token, JWT_SECRET!) as {
+      userId: string;
+      username: string;
+    };
+    return new Response(
+      JSON.stringify({ userID: payload.userId, username: payload.username }),
+      {
+        status: 200,
+      },
+    );
   } catch (error) {
     console.error("Error verifying JWT:", error);
     return new Response(null, { status: 401 });

@@ -21,6 +21,7 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
           if (response.status === 200) {
             const data = await response.json(); // assuming 200 means data(httpOnly cookie) is present
             setUser(data);
+            console.log("User data:", data);
           } else if (response.status === 201) {
             setUser(null); // No user data to parse, set user to null or handle accordingly
           }
