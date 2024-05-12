@@ -3,7 +3,7 @@ import Ticket from "@/models/Tickets"; // Model
 import cloudinary from "@/config/cloudinary"; // Cloudinary
 
 //! =========================================================
-//! GET AllTickets /api/tickets
+//! GET AllTickets /api/tickets/admin
 //! =========================================================
 export const GET = async () => {
   try {
