@@ -64,7 +64,8 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
   return (
     <div
       // SP Hamburger Menu 対応
-      className={`flex gap-6 mx-3 max-[767px]:flex-col max-[767px]:text-white max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
+      className={`flex gap-3 mx-3 max-[767px]:flex-col max-[767px]:text-white 
+      max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
     >
       {links
         .filter(
