@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+// GOOGLE ANALYTICS
+import Script from 'next/script';
 
 // components
 import Header from "@/components/common/Header";
@@ -14,6 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 // photoswippe css
 import "photoswipe/dist/photoswipe.css";
 
+ const NEXT_PUBLIC_GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const NEXT_PUBLIC_GA_URL = process.env.NEXT_PUBLIC_GA_URL;
+
 export const metadata = {
   title: "Band Tickets| KZ-DEV",
   description: "Find the band tickets",
@@ -25,6 +30,20 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     <GlobalProvider>
       <AuthProvider>
         <html lang="en">
+          <head>
+            <Script async src={NEXT_PUBLIC_GA_URL}></Script>
+            <Script id='google-analytics'>
+              {
+                `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', ${NEXT_PUBLIC_GA_ID});
+                 `
+              }
+            </Script>
+          </head>
           <body>
             <Header />
             <main>{children}</main>
