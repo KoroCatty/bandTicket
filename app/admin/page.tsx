@@ -1,45 +1,50 @@
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 // TYPES
 import type { Ticket } from "@/types/ticket";
-// type AllTicketsProps = {
-//   allTickets: TicketType; // This is now correctly using TicketType which is an object containing an array of tickets.
-// };
-
-// Context (HttpsOnly user login info)
-// import { useGlobalContext } from "@/context/GlobalContext";
-
-// Data Fetch
-const allAdminTickets = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin`,
-    // {
-    //   method: "GET",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // },
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  if (res.status === 500) {
-    return { totalTickets: 0, tickets: [] };
-  }
-
-  return res.json();
+type AllTicketsProps = {
+  tickets: Ticket[]; // Array of tickets (mapに使用)
+  totalTickets: number;
 };
 
-const AdminPage = async () => {
-  // Contextを発動 (ユーザーデータを取得)
-  //  const { user }: any = useGlobalContext();
-  const data = await allAdminTickets();
-  
-  return (
+// Context (HttpsOnly user login info)
+import { useGlobalContext } from "@/context/GlobalContext";
+// next auth
+import { useSession } from "next-auth/react";
 
+const AdminPage = () => {
+  const [data, setData] = useState<AllTicketsProps>();
+
+  // Contextを発動 (ユーザーデータを取得)
+  const { user, userLoading }: any = useGlobalContext();
+  // next auth
+  const { data: session } = useSession();
+
+  // Fetch API Data
+  useEffect(() => {
+    const allAdminTickets = async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin`,
+      );
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await res.json();
+      setData(data);
+      return data;
+    };
+    allAdminTickets();
+  }, []);
+
+  if (userLoading) {
+    return <div>Loading...</div>; // ローディング中の表示
+  }
+
+  // Next Auth / HttpOnly Cookie　でログイン確認
+  return (!userLoading && user) || session ? (
     <section className="w-[100%]  ">
       <div className="w-[90%] mx-auto mt-12 ">
         <Link className="bg-blue-400 py-2 px-4" href="/admin/add">
@@ -108,6 +113,8 @@ const AdminPage = async () => {
         </div>
       </div>
     </section>
+  ) : (
+    "Please Login "
   );
 };
 

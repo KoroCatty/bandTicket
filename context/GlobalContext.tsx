@@ -7,9 +7,11 @@ const GlobalContext = createContext({}); // Create context
 // Create a provider
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
 
   //! HttpOnly を送信してログイン状態を取得
   useEffect(() => {
+    setUserLoading(true);
     try {
       const checkSession = async () => {
         const response = await fetch("/api/cookie/check", {
@@ -32,12 +34,16 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
       checkSession();
     } catch (error) {
       console.log("Failed to check session", error);
+    } finally {
+      setUserLoading(false);
     }
   }, []);
 
   return (
     // user はグローバルステートとして提供される
-    <GlobalContext.Provider value={{ user }}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={{ user, userLoading }}>
+      {children}
+    </GlobalContext.Provider>
   );
 }
 
