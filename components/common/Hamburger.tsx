@@ -7,7 +7,7 @@ const Hamburger = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="relative px-4 py-4 flex justify-between items-center text-slate-950 md:hidden ">
+    <nav className="relative px-8 py-4 flex justify-between items-center text-slate-950 md:hidden ">
       <Link href="/">
         <div className="text-3xl font-bold leading-none">
           <Image src="/images/logo.png" alt="logo" width={60} height={60} />
@@ -15,11 +15,11 @@ const Hamburger = () => {
       </Link>
 
       <button
-        className="navbar-burger flex items-center text-blue-600 p-3"
+        className="navbar-burger flex items-center text-white p-3 "
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <svg
-          className="block h-4 w-4 fill-current"
+          className="block h-6 w-6 fill-current"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >

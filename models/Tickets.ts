@@ -46,7 +46,7 @@ const TicketSchema = new Schema(
       required: [true, "Status is required"],
     },
     date: {
-      type: Date,
+      type: String,
       required: [true, "Date is required"],
     },
     venue: {

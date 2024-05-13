@@ -15,9 +15,12 @@ import { useGlobalContext } from "@/context/GlobalContext";
 // next auth
 import { useSession } from "next-auth/react";
 
+// components
+import SpinnerClient from "@/components/common/SpinnerClient";
+
 const AdminPage = () => {
   const [data, setData] = useState<AllTicketsProps>();
-
+  const [dataLoading, setDataLoading] = useState<boolean>(true);
   // Contextを発動 (ユーザーデータを取得)
   const { user, userLoading }: any = useGlobalContext();
   // next auth
@@ -26,6 +29,7 @@ const AdminPage = () => {
   // Fetch API Data
   useEffect(() => {
     const allAdminTickets = async () => {
+      setDataLoading(true);
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/tickets/admin`,
       );
@@ -34,13 +38,14 @@ const AdminPage = () => {
       }
       const data = await res.json();
       setData(data);
+      setDataLoading(false);
       return data;
     };
     allAdminTickets();
   }, []);
 
   if (userLoading) {
-    return <div>Loading...</div>; // ローディング中の表示
+    return <SpinnerClient />; // ローディング中の表示
   }
 
   // Next Auth / HttpOnly Cookie　でログイン確認
@@ -55,63 +60,67 @@ const AdminPage = () => {
         </h1>
       </div>
 
-      <div className="w-[100%] opacity-90  mb-[6rem] max-[1000px]:mt-[1rem] max-[480px]:w-[100%] max-[480px]:mx-auto">
-        <div
-          className="w-[90%] mx-auto h-[680px] overflow-y-scroll overflow-x-hidden 
-            max-[1000px]:pl-0 max-[480px]: "
-        >
-          <div className="pb-8 border-b-2 border-gray-200 max-[480px]:pb-0 "></div>
-          {data?.tickets &&
-            data?.tickets.map((ticket: Ticket) => (
-              <div
-                key={ticket._id}
-                className={`flex justify-between items-center py-4 border-b border-gray-200 pr-4
-                max-[480px]:justify-evenly max-[480px]:flex-col max-[480px]:border-b-2 max-[480px]:py-4
-              hover:bg-slate-800 
-              last:border-red-600 last:border-b-4
-              `}
-              >
-                <div className="flex gap-6  max-[768px]:block max-[480px]:flex ">
-                  <Image
-                    className=""
-                    src={ticket.images[0]}
-                    alt={ticket.name}
-                    width={100}
-                    height={100}
-                  />
-                  <div className="flex gap-4 max-[1000px]:block">
-                    <p className="text-lg  max-[480px]:text-[0.8rem] ">
-                      {ticket.date.slice(0, 10)}
-                    </p>
-                    <p className="text-lg font-bold">{ticket.name}</p>
-                    <p className="text-lg max-[480px]:text-[0.9rem]">
-                      {ticket.venue}
-                    </p>
+      {dataLoading ? (
+        <SpinnerClient />
+      ) : (
+        <div className="w-[100%] opacity-90  mb-[6rem] max-[1000px]:mt-[1rem] max-[480px]:w-[100%] max-[480px]:mx-auto">
+          <div
+            className="w-[90%] mx-auto h-[680px] overflow-y-scroll overflow-x-hidden 
+       max-[1000px]:pl-0 max-[480px]: "
+          >
+            <div className="pb-8 border-b-2 border-gray-200 max-[480px]:pb-0 "></div>
+            {data?.tickets &&
+              data?.tickets.map((ticket: Ticket) => (
+                <div
+                  key={ticket._id}
+                  className={`flex justify-between items-center py-4 border-b border-gray-200 pr-4
+           max-[480px]:justify-evenly max-[480px]:flex-col max-[480px]:border-b-2 max-[480px]:py-4
+         hover:bg-slate-800 
+         last:border-red-600 last:border-b-4
+         `}
+                >
+                  <div className="flex gap-6  max-[768px]:block max-[480px]:flex ">
+                    <Image
+                      className=""
+                      src={ticket.images[0]}
+                      alt={ticket.name}
+                      width={100}
+                      height={100}
+                    />
+                    <div className="flex gap-4 max-[1000px]:block">
+                      <p className="text-lg  max-[480px]:text-[0.8rem] ">
+                        {ticket.date.slice(0, 10)}
+                      </p>
+                      <p className="text-lg font-bold">{ticket.name}</p>
+                      <p className="text-lg max-[480px]:text-[0.9rem]">
+                        {ticket.venue}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4  max-[480px]:mt-4 ">
+                    {/* <p className="text-lg">{ticket.description}</p> */}
+                    <Link
+                      href={`/admin/edit/${ticket._id}`}
+                      className="py-2 px-6 bg-blue-300 
+           hover:scale-110 transition-all duration-300 hover:text-red-800"
+                    >
+                      Edit
+                    </Link>
+                    {/* DELETE */}
+                    <button
+                      // onClick={() => deleteTicket(ticket._id)}
+                      className="py-2 px-6 bg-red-300 
+           hover:scale-110 transition-all duration-300 hover:text-red-800"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
-
-                <div className="flex gap-4  max-[480px]:mt-4 ">
-                  {/* <p className="text-lg">{ticket.description}</p> */}
-                  <Link
-                    href={`/admin/edit/${ticket._id}`}
-                    className="py-2 px-6 bg-blue-300 
-                hover:scale-110 transition-all duration-300 hover:text-red-800"
-                  >
-                    Edit
-                  </Link>
-                  {/* DELETE */}
-                  <button
-                    // onClick={() => deleteTicket(ticket._id)}
-                    className="py-2 px-6 bg-red-300 
-                hover:scale-110 transition-all duration-300 hover:text-red-800"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   ) : (
     "Please Login "
