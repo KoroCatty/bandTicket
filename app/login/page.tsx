@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { redirect } from "next/navigation"; 
+import { redirect } from "next/navigation";
 // next auth
 import {
   signIn,

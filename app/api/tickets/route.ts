@@ -45,16 +45,21 @@ export const GET = async () => {
 //! POST /api/tickets
 //! =========================================================
 export const POST = async (req: any) => {
-  // console.log(req.body);
+  const bandTicketsJWT = req.cookies?.get("BandTicketsJWT") || "";
+  const token = bandTicketsJWT?.value ? bandTicketsJWT.value : "";
+  console.log("token:", !!token);
   try {
     await connectDB();
-    const sessionUser = await getSessionUser();
-    if (!sessionUser || !sessionUser.userId) {
-      console.error("No session user or user ID found.");
-      return new Response("User ID is required", { status: 401 });
-    }
-    const userId = sessionUser.userId;
+    const sessionUser = ((await getSessionUser()) as { userId?: string }) || {};
 
+    // tokenかsessionUserのどちらかが存在する場合にエラーを出さないように条件式を変更
+    if (!token && !sessionUser) {
+      console.error("No session user or token found.");
+      return new Response("User ID or token is required", { status: 401 });
+    }
+
+    const userId = sessionUser.userId || "";
+    console.log("nextAuth ID:", !!userId);
     // フォームデータを格納
     const formData = await req.formData();
 
@@ -65,7 +70,7 @@ export const POST = async (req: any) => {
 
     // Create PropertyData for DB (各フォームの attribute から取得)
     const ticketData = {
-      userId: userId,
+      userId: userId || formData.get("userId"),
       name: formData.get("name"),
       description: formData.get("description"),
       location: {
@@ -144,11 +149,6 @@ export const POST = async (req: any) => {
     // DBに新しいチケット情報を保存
     const newTicket = new Ticket(ticketData);
     await newTicket.save();
-
-    // チケット情報が保存された後、その物件の詳細ページへリダイレクトする
-    // return Response.redirect(
-    //   `${process.env.NEXTAUTH_URL}/admin/tickets/${newTicket._id}`,
-    // );
 
     return new Response(JSON.stringify(ticketData), { status: 201 });
   } catch (error) {

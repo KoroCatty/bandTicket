@@ -3,7 +3,7 @@ import { Schema, model, models } from "mongoose";
 const TicketSchema = new Schema(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId || String,
       ref: "User",
     },
     name: {
