@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, FormEvent, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import AddForms from "@/components/features/Admin/AddForms";
+import AdminForms from "@/components/features/Admin/AdminForms";
 
 // APIのドメインを環境変数から取得またはnullを設定
 const apiDomain = process.env.NEXT_PUBLIC_DOMAIN || null;
@@ -12,7 +12,6 @@ import { useGlobalContext } from "@/context/GlobalContext";
 
 import type { Ticket } from "@/types/ticket";
 import SpinnerClient from "@/components/common/SpinnerClient";
-import GoBackBtn from "@/components/common/GoBackBtn";
 
 type Fields = {
   userId: string;
@@ -34,7 +33,7 @@ type Fields = {
 const AddPage = () => {
   const { adminTicketId }: { adminTicketId: string } = useParams(); // URL ID
   // console.log("adminTicketId:", adminTicketId)
-
+  const [sendLoading, setSendLoading] = useState<boolean>(false);
   const [ticket, setTicket] = useState<Ticket | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -113,6 +112,7 @@ const AddPage = () => {
   //! PUT (UPDATE)
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setSendLoading(true);
     // Create a new FormData instance to send to server
     const formData = new FormData();
     formData.append("userId", fields.userId);
@@ -145,11 +145,12 @@ const AddPage = () => {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      console.log("Ticket added:", result);
       alert("Ticket added successfully");
       router.push("/admin");
     } catch (error) {
       console.error("Error submitting the form:", error);
+    } finally {
+      setSendLoading(false);
     }
   };
 
@@ -209,12 +210,15 @@ const AddPage = () => {
   return (
     mounted && (
       <>
-        <h1 className="text-5xl">EDIT PAGE</h1>
-        <AddForms
+        <AdminForms
           fields={fields}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleImageChange={handleImageChange}
+          pageTitle="Edit Ticket"
+          pageBtnText="UPDATE"
+          sendLoading={sendLoading}
+          imgRequired={false}
         />
       </>
     )

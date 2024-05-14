@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect, FormEvent, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import AddForms from "@/components/features/Admin/AddForms";
-
+import AdminForms from "@/components/features/Admin/AdminForms";
+import { toast } from "react-toastify";
 // コンテキストから httpOnly のログイン状態を取得
 import { useGlobalContext } from "@/context/GlobalContext";
 
@@ -29,6 +29,7 @@ const AddPage = () => {
   // console.log("User ID:", user?.userID);
 
   const router = useRouter();
+  const [sendLoading, setSendLoading] = useState<boolean>(false);
   // server と client のHTMLの不一致を監視
   const [mounted, setMounted] = useState(false);
   // ⬇︎ サーバーに送信するデータを格納するためのstate
@@ -78,6 +79,7 @@ const AddPage = () => {
   //! POST data
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setSendLoading(true);
 
     // Create a new FormData instance to send to server
     const formData = new FormData();
@@ -107,14 +109,18 @@ const AddPage = () => {
       });
 
       if (!response.ok) {
+        toast.error("Failed to add ticket");
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
       console.log("Ticket added:", result);
-      alert("Ticket added successfully");
+      toast.success("Ticket added successfully");
       router.push("/admin");
     } catch (error) {
       console.error("Error submitting the form:", error);
+      toast.error("Failed to add ticket");
+    } finally {
+      setSendLoading(false);
     }
   };
 
@@ -138,12 +144,15 @@ const AddPage = () => {
 
   return (
     mounted && (
-      <AddForms
-        // {...fields} // フォームの全ての内容を渡す
+      <AdminForms
         fields={fields}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleImageChange={handleImageChange}
+        sendLoading={sendLoading}
+        pageTitle="Add Ticket"
+        pageBtnText="Add Ticket"
+        imgRequired={true}
       />
     )
   );

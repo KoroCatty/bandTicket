@@ -2,6 +2,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const LoginForms = () => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const LoginForms = () => {
       });
 
       if (!response.ok) {
+        toast.error("Failed to login");
         throw new Error("Network response was not ok ❌");
       }
 
@@ -30,13 +32,13 @@ const LoginForms = () => {
         const data = await response.json();
         console.log(data);
         setLoggedInData(data);
-        alert(`You logged in as ${data.username}さん`);
+        toast.success(`You logged in as ${data.username}さん`);
       }
-      // router.push('/dashboard');
-      window.location.reload();
+      router.push("/");
+      // window.location.reload();
     } catch (error) {
       console.log("Failed to fetch data:", error);
-      alert("Login failed.");
+      toast.error("Failed to login");
     }
   };
 
@@ -53,15 +55,14 @@ const LoginForms = () => {
     const data = await response.json();
 
     if (response.ok) {
-      // router.push('/dashboard');
       setLoggedInData(data);
       console.log("Logged in as guest:", data);
-      alert("Welcome! You logged in as Guest User");
+      alert("Welcome Guest User!!");
       window.location.reload();
     } else {
       // Handle errors for guest login
       console.log("Failed to login as guest:", data.message);
-      alert("Failed to login as guest. ");
+      toast.error("Failed to login as guest");
     }
   };
 

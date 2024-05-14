@@ -1,4 +1,11 @@
 import { FormEvent, ChangeEvent } from "react";
+import GoBackBtn from "@/components/common/GoBackBtn";
+import Title from "@/components/common/Title";
+// Context (HttpsOnly & Next Auth )
+import { useGlobalContext } from "@/context/GlobalContext";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+
 type Fields = {
   userId: string;
   name: string;
@@ -19,24 +26,37 @@ type Fields = {
 
 type AddFormsProps = {
   fields: Fields;
+  pageTitle: string;
+  pageBtnText: string;
   handleChange: (e: FormEvent<Element>) => void;
   handleImageChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: FormEvent<Element>) => Promise<void>;
+  sendLoading: boolean;
+  imgRequired: boolean;
 };
 
-const AddForms = ({
+const AdminForms = ({
   fields,
   handleChange,
   handleImageChange,
   handleSubmit,
+  sendLoading,
+  pageTitle,
+  pageBtnText,
+  imgRequired,
 }: AddFormsProps) => {
-  return (
+  const { user, userLoading }: any = useGlobalContext();
+  const { data: session } = useSession();
+
+  // Next Auth / HttpOnly Cookie　でログイン確認
+  return (!userLoading && user) || session ? (
     <section className="max-w-[860px] mx-auto px-10 py-10">
+      <GoBackBtn text="Go back to Admin Page" href="/admin" />
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data" // Images
       >
-        <h2 className="text-3xl text-center font-semibold mb-6">Add Ticket</h2>
+        <Title>{pageTitle}</Title>
 
         <div className="mb-4">
           <label htmlFor="status" className="form_label">
@@ -196,11 +216,12 @@ const AddForms = ({
             type="file"
             id="images"
             name="images"
-            className="form_input"
+            className={`form_input disabled:opacity-50 not-allowed:cursor-not-allowed`}
             accept="image/*"
             multiple
             onChange={handleImageChange}
-            // required //! Depend on Update or Add Ticket
+            //! Depend on Update or Add Ticket
+            {...(imgRequired && { required: true })}
           />
         </div>
 
@@ -208,13 +229,28 @@ const AddForms = ({
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
+            disabled={sendLoading}
           >
-            Add ticket
+            {sendLoading ? "Loading..." : pageBtnText}
           </button>
         </div>
       </form>
     </section>
+  ) : (
+    <section className="max-w-[860px] mx-auto px-10 py-[3rem] max-[480px]:pt-0  ">
+      <div className="text-center">
+        <h1 className="text-3xl my-12 ">Please Login</h1>
+        <Link
+          className="py-2 px-4 bg-slate-800 block w-[50%] mx-auto text-white
+        hover:scale-105 transition-all duration-300 hover:opacity-75
+        "
+          href="/login"
+        >
+          Login
+        </Link>
+      </div>
+    </section>
   );
 };
 
-export default AddForms;
+export default AdminForms;

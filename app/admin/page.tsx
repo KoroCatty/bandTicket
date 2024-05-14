@@ -17,14 +17,49 @@ import { useSession } from "next-auth/react";
 
 // components
 import SpinnerClient from "@/components/common/SpinnerClient";
+// react-toastify
+import { toast } from "react-toastify";
 
 const AdminPage = () => {
   const [data, setData] = useState<AllTicketsProps>();
+  console.log("🚀", data);
   const [dataLoading, setDataLoading] = useState<boolean>(true);
   // Contextを発動 (ユーザーデータを取得)
   const { user, userLoading }: any = useGlobalContext();
   // next auth
   const { data: session } = useSession();
+
+  //! Delete Ticket
+  const deleteTicket = async (ticketId: string) => {
+    const confirmed = window.confirm("Are you sure to delete this ticket?");
+    if (!confirmed) return;
+    try {
+      // make DELETE request to server
+      const res = await fetch(`/api/tickets/admin/${ticketId}`, {
+        method: "DELETE", //! explicitly set
+      });
+
+      if (res.status === 200) {
+        const updatedTickets = data?.tickets.filter(
+          (ticket) => ticket._id !== ticketId,
+        );
+        if (updatedTickets) {
+          // data.totalTickets が undefined である場合に安全に減算する
+          setData({
+            tickets: updatedTickets,
+            totalTickets: (data?.totalTickets || 0) - 1,
+          });
+        }
+
+        toast.success("Ticket deleted successfully");
+      } else {
+        toast.error("Failed to delete ticket");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete ticket");
+    }
+  };
 
   // Fetch API Data
   useEffect(() => {
@@ -110,7 +145,7 @@ const AdminPage = () => {
                     </Link>
                     {/* DELETE */}
                     <button
-                      // onClick={() => deleteTicket(ticket._id)}
+                      onClick={() => deleteTicket(ticket._id)}
                       className="py-2 px-6 bg-red-300 
            hover:scale-110 transition-all duration-300 hover:text-red-800"
                     >
@@ -124,7 +159,19 @@ const AdminPage = () => {
       )}
     </section>
   ) : (
-    "Please Login "
+    <section className="max-w-[860px] mx-auto px-10 py-[3rem] max-[480px]:pt-0  ">
+      <div className="text-center">
+        <h1 className="text-3xl my-12 ">Please Login</h1>
+        <Link
+          className="py-2 px-4 bg-slate-800 block w-[50%] mx-auto text-white
+      hover:scale-105 transition-all duration-300 hover:opacity-75
+      "
+          href="/login"
+        >
+          Login
+        </Link>
+      </div>
+    </section>
   );
 };
 
