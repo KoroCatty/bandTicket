@@ -22,7 +22,6 @@ import { toast } from "react-toastify";
 
 const AdminPage = () => {
   const [data, setData] = useState<AllTicketsProps>();
-  console.log("🚀", data);
   const [dataLoading, setDataLoading] = useState<boolean>(true);
   // Contextを発動 (ユーザーデータを取得)
   const { user, userLoading }: any = useGlobalContext();

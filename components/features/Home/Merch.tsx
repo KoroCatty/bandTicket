@@ -67,7 +67,7 @@ const Merch = () => {
   };
 
   return (
-    <section className="py-4rem w-[90%] mx-auto ">
+    <section className="my-section_lg py-4rem w-[90%] mx-auto ">
       <TitleComponent>MERCH</TitleComponent>
       <div
         className="flex overflow-x-scroll gap-6"
@@ -84,6 +84,7 @@ const Merch = () => {
               alt={item.alt}
               width={200}
               height={100}
+              loading="lazy"
               className="hover:opacity-80 max-[480px]:w-[160px] "
             />
             <div className="my-3">

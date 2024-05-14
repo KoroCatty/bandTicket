@@ -32,7 +32,8 @@ const LoginForms = () => {
         const data = await response.json();
         console.log(data);
         setLoggedInData(data);
-        toast.success(`You logged in as ${data.username}さん`);
+        alert(`You logged in as ${data.username}さん`);
+        window.location.reload();
       }
       router.push("/");
       // window.location.reload();

@@ -50,7 +50,7 @@ const allTickets = [
 const Tickets = () => {
   return (
     <>
-      <section className="my-section-lg max-w-[860px] mx-auto max-[480px]:my-section-sm px-10 max-[480px]:px-1">
+      <section className="my-section_lg max-w-[860px] mx-auto max-[480px]:my-section-sm px-10 max-[480px]:px-1">
         <TitleComponent>EVENTS</TitleComponent>
 
         <div className="">

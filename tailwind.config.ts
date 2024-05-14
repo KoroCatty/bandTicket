@@ -17,9 +17,9 @@ const config: Config = {
         'fit-content': 'fit-content'
       },
       margin: {
-        'section-sm': '2rem', 
-        'section-md': '6rem', 
-        'section-lg': '8rem', 
+        'section_sm': '2rem', 
+        'section_md': '6rem', 
+        'section_lg': '8rem', 
       },
       backgroundColor: {
         "AccentBg": "#b490ab",
