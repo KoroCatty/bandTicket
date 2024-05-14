@@ -139,7 +139,8 @@ const AddPage = () => {
   return (
     mounted && (
       <AddForms
-        {...fields} // フォームの全ての内容を渡す
+        // {...fields} // フォームの全ての内容を渡す
+        fields={fields}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleImageChange={handleImageChange}

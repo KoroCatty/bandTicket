@@ -1,8 +1,9 @@
+import { FormEvent, ChangeEvent } from "react";
 type Fields = {
   userId: string;
   name: string;
   description: string;
-  location: {
+  location:  {
     street: string;
     city: string;
     state: string;
@@ -16,14 +17,14 @@ type Fields = {
   [key: string]: any; // Adding an index signature
 };
 
-import type { Ticket } from "@/types/ticket";
+type AddFormsProps = {
+  fields: Fields;
+  handleChange: (e: FormEvent<Element>) => void;
+  handleImageChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (event: FormEvent<Element>) => Promise<void>;
+};
 
-const AddForms = ({
-  fields,
-  handleChange,
-  handleImageChange,
-  handleSubmit,
-}: Fields) => {
+const AddForms = ({ fields, handleChange, handleImageChange, handleSubmit }: AddFormsProps) => {
   return (
     <section className="max-w-[860px] mx-auto px-10 py-10">
       <form
