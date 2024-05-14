@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import Title from "@/components/common/Title";
 // TYPES
 import type { Ticket } from "@/types/ticket";
 type AllTicketsProps = {
@@ -50,14 +50,15 @@ const AdminPage = () => {
 
   // Next Auth / HttpOnly Cookie　でログイン確認
   return (!userLoading && user) || session ? (
-    <section className="w-[100%]  ">
-      <div className="w-[90%] mx-auto mt-12 ">
+    <section className="mt-8 ">
+      <Title>ADMIN</Title>
+      <div className="w-[90%] mx-auto mt-4 ">
         <Link className="bg-blue-400 py-2 px-4" href="/admin/add">
           Add Ticket
         </Link>
-        <h1 className="text-[3rem] font-bold mt-8 max-[480px]:text-[2rem] ">
+        <h2 className="text-[3rem] font-bold mt-8 max-[480px]:text-[2rem] ">
           All {data && data?.totalTickets} Tickets
-        </h1>
+        </h2>
       </div>
 
       {dataLoading ? (

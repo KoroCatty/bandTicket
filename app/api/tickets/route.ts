@@ -6,7 +6,7 @@ import sharp from "sharp"; // Image Processing
 // ユーザー情報を取得する関数
 import { getSessionUser } from "@/utils/getSessionUser";
 //! =========================================================
-//! GET 10 Tickets /api/tickets
+//! GET 10 Tickets /api/tickets/admin
 //! =========================================================
 export const GET = async () => {
   try {
@@ -25,7 +25,9 @@ export const GET = async () => {
 
     //! get limited tickets
     // const tickets = await Ticket.find({});
-    const tickets = await Ticket.find({}).skip(skip).limit(pageSize);
+    const tickets = await Ticket.find({}).skip(skip).limit(pageSize).sort({
+      updatedAt: "desc",
+    });
 
     // 上の２つを結合
     const result = {

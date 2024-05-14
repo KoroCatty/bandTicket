@@ -1,6 +1,5 @@
 import connectDB from "@/config/db";
 import Ticket from "@/models/Tickets"; // Model
-import cloudinary from "@/config/cloudinary"; // Cloudinary
 
 //* Stop Build error
 export const dynamic = "force-dynamic";
@@ -15,7 +14,7 @@ export const GET = async (request: any) => {
     // pagination
     // nextUrl extends the native URL API with additional convenience methods
     const page = request.nextUrl.searchParams.get("page") || 1; // ページの総数
-    const pageSize = request.nextUrl.searchParams.get("pageSize") || 3; // 何個の物件を表示するか
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 5; // 何個の物件を表示するか
 
     // skip some properties
     const skip = (page - 1) * pageSize;
@@ -23,7 +22,9 @@ export const GET = async (request: any) => {
     // DB から全てのチケットの数を取得
     const totalTickets = await Ticket.countDocuments({}); // ex) 5
 
-    const tickets = await Ticket.find({}).skip(skip).limit(pageSize);
+    const tickets = await Ticket.find({}).skip(skip).limit(pageSize).sort({
+      updatedAt: "desc",
+    });
 
     // 上の２つを結合
     const result = {

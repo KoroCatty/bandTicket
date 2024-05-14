@@ -3,7 +3,7 @@ type Fields = {
   userId: string;
   name: string;
   description: string;
-  location:  {
+  location: {
     street: string;
     city: string;
     state: string;
@@ -24,7 +24,12 @@ type AddFormsProps = {
   handleSubmit: (event: FormEvent<Element>) => Promise<void>;
 };
 
-const AddForms = ({ fields, handleChange, handleImageChange, handleSubmit }: AddFormsProps) => {
+const AddForms = ({
+  fields,
+  handleChange,
+  handleImageChange,
+  handleSubmit,
+}: AddFormsProps) => {
   return (
     <section className="max-w-[860px] mx-auto px-10 py-10">
       <form
@@ -195,7 +200,7 @@ const AddForms = ({ fields, handleChange, handleImageChange, handleSubmit }: Add
             accept="image/*"
             multiple
             onChange={handleImageChange}
-            required
+            // required //! Depend on Update or Add Ticket
           />
         </div>
 
