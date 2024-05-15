@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// コンポーネントに渡されるプロパティの型を定義
+// コンポーネントに渡されるチケットの型を定義
 interface HeroTicketDetailsProps {
   image: string;
 }

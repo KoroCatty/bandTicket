@@ -16,7 +16,6 @@ type PropsType = {
   setIsMenuOpen?: (arg0: boolean) => void;
 };
 
-// roleプロパティをオプショナルで受け取る
 const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
   // Contextを発動 (ユーザーデータを取得)
   const { user }: any = useGlobalContext();

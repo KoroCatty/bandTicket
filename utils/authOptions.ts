@@ -8,7 +8,7 @@ import { Session } from "next-auth";
 // カスタムセッション型を定義し、 user.idが追加されたものを作成
 interface CustomSession extends Session {
   user: {
-    id: string; // この行でidプロパティを追加
+    id: string; // この行でidを追加
     name?: string;
     email?: string;
     image?: string;

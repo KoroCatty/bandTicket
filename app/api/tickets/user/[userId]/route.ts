@@ -24,7 +24,6 @@ export const GET = async (request: any, { params }: { params: Params }) => {
     await connectDB();
 
     // フォルダ名と同じ名前の params を取得
-    // const userId = params.userId;
     const userId = params.userId || bandTicketsJWT;
 
     if (!userId) {
