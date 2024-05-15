@@ -26,9 +26,14 @@ export const GET = async (request: any) => {
     const payload = jwt.verify(token, JWT_SECRET!) as {
       userId: string;
       username: string;
+      email: string;
     };
     return new Response(
-      JSON.stringify({ userID: payload.userId, username: payload.username }),
+      JSON.stringify({
+        userID: payload.userId,
+        username: payload.username,
+        email: payload.email,
+      }),
       {
         status: 200,
       },

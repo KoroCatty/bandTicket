@@ -1,41 +1,31 @@
 "use client";
-
 import { useState, useEffect } from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 
-// next-auth (logged in user data)
+// Next-auth & httpOnly token auth
 import { useSession } from "next-auth/react";
+import { useGlobalContext } from "@/context/GlobalContext";
 
-// react-toastify
 import { toast } from "react-toastify";
-
 // components
 import SpinnerClient from "@/components/common/SpinnerClient";
 
-// todo (might need to be adjusted)
-type SessionTypes = {
-  id?: string;
-  name?: string | null;
-  email?: string | null;
-  image?: string | null;
-};
-
 const ProfilePage = () => {
-  // Pull out logged in user data
-  const { data: session } = useSession();
-  const profileImage = session?.user?.image; // get user image from session
-  const profileName = session?.user?.name;
-  const profileEmail = session?.user?.email;
+  // Next Auth & HttpOnly Token
+  const { data: session }: any = useSession();
+  const { user, userLoading }: any = useGlobalContext();
+
+  // HttpOnly Token or Next Auth からユーザー情報を取得
+  const profileImage = session?.user?.image || user?.image;
+  const profileName = session?.user?.name || user?.username;
+  const profileEmail = session?.user?.email || user?.email;
 
   // useState
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // console.log(session?.user);
-
-  //! Delete Tickets›
+  //! Delete Tickets
   const handleDeleteTickets = async (ticketId: string) => {
     const confirmed = window.confirm("Are you sure to delete this ticket?");
     if (!confirmed) return;
@@ -62,14 +52,15 @@ const ProfilePage = () => {
   };
 
   // ログインしているユーザーに関連付けられたチケットをサーバーから取得
-  // ユーザーIDをパラメータとしてAPIエンドポイントにリクエストを送り、そのユーザーのチケット情報を取得
+  //! GET SPECIFIC USER'S TICKETS
   useEffect(() => {
-    const fetchUserTickets = async (cat: SessionTypes) => {
-      const { id } = cat;
-      if (!id) return;
+    const fetchUserTickets = async (userId: string) => {
+      if (!userId) return;
 
       try {
-        const res = await fetch(`/api/tickets/user/${id}`);
+        const res = await fetch(`/api/tickets/user/${userId}`, {
+          credentials: "include",
+        });
         // 成功時
         if (res.status === 200) {
           const data = await res.json();
@@ -81,13 +72,17 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
-    // Fetch user tickets only when session is available
-    if (session?.user) {
-      fetchUserTickets(session.user);
-    }
-  }, [session]);
 
-  // console.log(tickets);
+    // HttpOnly or Next Auth でログイン中のみ関数を発火
+    const userId = session?.user?.id || user?.userID;
+    if (userId) {
+      fetchUserTickets(userId);
+    }
+  }, [session, user]);
+
+  if (userLoading) {
+    return <SpinnerClient />;
+  }
 
   return (
     <section className="">
