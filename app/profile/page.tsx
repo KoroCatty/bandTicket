@@ -8,9 +8,6 @@ import Link from "next/link";
 // next-auth (logged in user data)
 import { useSession } from "next-auth/react";
 
-// default profile Image
-// import profileDefaultImg from "/images/default_icon.png";
-
 // react-toastify
 import { toast } from "react-toastify";
 
@@ -33,53 +30,50 @@ const ProfilePage = () => {
   const profileEmail = session?.user?.email;
 
   // useState
-  const [properties, setProperties] = useState([]);
+  const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // console.log(session?.user);
 
-  //! Delete Property
-  // const handleDeleteProperty = async (propertyId: string) => {
-  //   const confirmed = window.confirm("Are you sure to delete this property?");
-  //   if (!confirmed) return;
-  //   try {
-  //     // make DELETE request to server
-  //     const res = await fetch(`/api/properties/${propertyId}`, {
-  //       method: "DELETE", //! explicitly set
-  //     });
+  //! Delete Tickets›
+  const handleDeleteTickets = async (ticketId: string) => {
+    const confirmed = window.confirm("Are you sure to delete this ticket?");
+    if (!confirmed) return;
+    try {
+      const res = await fetch(`/api/tickets/admin/${ticketId}`, {
+        method: "DELETE",
+      });
 
-  //     if (res.status === 200) {
-  //       // Remove the property from the UI (idと一致しないものだけを残す)
-  //       const updatedProperties = properties.filter(
-  //         (property: any) => property._id !== propertyId,
-  //       );
+      if (res.status === 200) {
+        // Remove the ticket from the UI (idと一致しないものだけを残す)
+        const updatedTickets = tickets.filter(
+          (ticket: any) => ticket._id !== ticketId,
+        );
+        setTickets(updatedTickets);
 
-  //       setProperties(updatedProperties);
+        toast.success("ticket deleted successfully");
+      } else {
+        toast.error("Failed to delete ticket");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete ticket");
+    }
+  };
 
-  //       toast.success("Property deleted successfully");
-  //     } else {
-  //       toast.error("Failed to delete property");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error("Failed to delete property");
-  //   }
-  // };
-
-  // ログインしているユーザーに関連付けられたプロパティをサーバーから取得
-  // ユーザーIDをパラメータとしてAPIエンドポイントにリクエストを送り、そのユーザーのプロパティ情報を取得
+  // ログインしているユーザーに関連付けられたチケットをサーバーから取得
+  // ユーザーIDをパラメータとしてAPIエンドポイントにリクエストを送り、そのユーザーのチケット情報を取得
   useEffect(() => {
-    const fetchUserProperties = async (cat: SessionTypes) => {
+    const fetchUserTickets = async (cat: SessionTypes) => {
       const { id } = cat;
       if (!id) return;
 
       try {
-        // GET リクエスト (このURLのAPIデータは route.ts で取得している)
         const res = await fetch(`/api/tickets/user/${id}`);
         // 成功時
         if (res.status === 200) {
           const data = await res.json();
-          setProperties(data);
+          setTickets(data);
         }
       } catch (error) {
         console.log(error);
@@ -87,19 +81,19 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
-    // Fetch user properties only when session is available
+    // Fetch user tickets only when session is available
     if (session?.user) {
-      fetchUserProperties(session.user);
+      fetchUserTickets(session.user);
     }
   }, [session]);
 
-  // console.log(properties);
+  // console.log(tickets);
 
   return (
-    <section className="bg-blue-50">
+    <section className="">
       <div className="container m-auto py-24">
         {loading && <SpinnerClient />}
-        <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+        <div className="px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
           <h1 className="text-3xl font-bold mb-4">Your Profile</h1>
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/4 mx-20 mt-10">
@@ -126,14 +120,12 @@ const ProfilePage = () => {
             <div className="md:w-3/4 md:pl-4">
               <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
 
-              {/* プロパティーがない場合 */}
-              {!loading && properties.length === 0 && (
-                <p className="text-gray-600">
-                  You have no properties listed yet
-                </p>
+              {/* チケットーがない場合 */}
+              {!loading && tickets.length === 0 && (
+                <p className="text-gray-600">You have no tickets listed yet</p>
               )}
 
-              {/* プロパティーがある場合 */}
+              {/* チケットーがある場合 */}
               {loading ? (
                 <div className="flex items-center justify-center w-56 h-56 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                   <div role="status">
@@ -157,41 +149,48 @@ const ProfilePage = () => {
                   </div>
                 </div>
               ) : (
-                properties.map((property: any) => (
-                  <div key={property._id} className="mb-10">
-                    <Link href={`/properties/${property._id}`}>
+                tickets.map((ticket: any) => (
+                  <div key={ticket._id} className="mb-10">
+                    <Link href={`/tickets/${ticket._id}`}>
                       <Image
                         className="h-32 w-full rounded-md object-cover"
-                        src={property.images[0] || "/images/properties/a1.jpg"}
-                        alt={property.name}
+                        src={ticket.images[0] || "/images/tickets/a1.jpg"}
+                        alt={ticket.name}
                         width={800}
                         height={500}
                         priority
                       />
                     </Link>
                     <div className="mt-2">
-                      <p className="text-lg font-semibold">{property.name}</p>
+                      <p className="text-lg font-semibold">{ticket.name}</p>
                       <p className="text-gray-600">
-                        Address: {property.location.street}{" "}
-                        {property.location.city} {property.location.state}{" "}
+                        Address: {ticket.location.street} {ticket.location.city}{" "}
+                        {ticket.location.state}{" "}
                       </p>
                     </div>
                     <div className="mt-2">
+                      {/* Details Button */}
+                      <Link
+                        href={`/tickets/${ticket._id}`}
+                        className="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
+                      >
+                        Details
+                      </Link>
                       {/* EDIT Button */}
                       <Link
-                        href={`/properties/${property._id}/edit`}
+                        href={`/admin/edit/${ticket._id}`}
                         className="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
                       >
                         Edit
                       </Link>
                       {/* DELETE Button */}
-                      {/* <button
-                        onClick={() => handleDeleteProperty(property._id)}
+                      <button
+                        onClick={() => handleDeleteTickets(ticket._id)}
                         className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
                         type="button"
                       >
                         Delete
-                      </button> */}
+                      </button>
                     </div>
                   </div>
                 ))

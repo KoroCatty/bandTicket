@@ -51,7 +51,8 @@ const AdminForms = ({
   // Next Auth / HttpOnly Cookie　でログイン確認
   return (!userLoading && user) || session ? (
     <section className="max-w-[860px] mx-auto px-10 py-10">
-      <GoBackBtn text="Go back to Admin Page" href="/admin" />
+      <GoBackBtn text="Go back " />
+
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data" // Images

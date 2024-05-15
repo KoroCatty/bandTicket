@@ -60,7 +60,7 @@ const TicketDetailsPage = () => {
       {!loading && ticket ? (
         <>
           <HeroTicketDetails image={ticket.images[0]} />
-          <GoBackBtn href="/tickets" text="Back to Tickets" />
+          <GoBackBtn text="Go back " />
           <TicketDetailsBody ticket={ticket} />
           <TicketDetailsImgs images={ticket.images} />
         </>
