@@ -15,6 +15,7 @@ const ProfilePage = () => {
   // Next Auth & HttpOnly Token
   const { data: session }: any = useSession();
   const { user, userLoading }: any = useGlobalContext();
+  console.log("session:", session);
 
   // HttpOnly Token or Next Auth からユーザー情報を取得
   const profileImage = session?.user?.image || user?.image;

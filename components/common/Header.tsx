@@ -12,22 +12,28 @@ const Header = () => {
   return (
     <header
       // Only Home page has a absolute header
-      className={`max-[480px]:py4 max-[480px]:px-4 px-10 z-10 
+      className={`py-2 max-[480px]:py4 max-[480px]:px-4 px-6 z-10
       ${
         currentPath == "/"
           ? "absolute w-[100%] shadow-cyan-500-lg z-10"
           : "relative"
       }`}
     >
-      <nav className="max-w-[1080px] mx-auto flex justify-between items-center  max-[767px]:hidden">
+      <nav className="max-w-[1080px] mx-auto flex justify-between items-center max-[899px]:hidden">
         <Link href="/">
-          <Image
+          <div
+            className="textShadow_wt mt-2 text-[2.2rem] font-bold text-nowrap max-[1000px]:text-[1.8rem] 
+          hover:opacity-70 transition-all duration-300"
+          >
+            NO NAME
+          </div>
+          {/* <Image
             src="/images/logo.png"
             alt="logo"
-            width={80}
-            height={50}
-            className="d-block max-[480px]:w-[60px] cursor-pointer"
-          />
+            width={140}
+            height={80}
+            className="w-[100px] max-[480px]:w-[60px] cursor-pointer"
+          /> */}
         </Link>
         {/* Component */}
         <NavLinks />

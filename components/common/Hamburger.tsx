@@ -7,10 +7,16 @@ const Hamburger = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="relative px-8 py-4 flex justify-between items-center text-slate-950 md:hidden ">
+    <nav className="relative z-10 pr-8 pl-2 py-2 flex justify-between items-center text-slate-950 min-[900px]:hidden ">
       <Link href="/">
         <div className="text-3xl font-bold leading-none">
-          <Image src="/images/logo.png" alt="logo" width={60} height={60} />
+          {/* <Image src="/images/logo.png" alt="logo" width={60} height={60} /> */}
+          <div
+            className="textShadow_wt mt-4 text-white font-bold text-nowrap max-[1000px]:text-[2.4rem] 
+          max-[768px]:text-[2rem] max-[768px]:mt-2 max-[480px]:text-[1.7rem] max-[480px]:mt-1 "
+          >
+            NO NAME
+          </div>
         </div>
       </Link>
 
@@ -43,12 +49,15 @@ const Hamburger = () => {
             <div className="flex items-center mb-8">
               <Link href="/">
                 <div className="mr-auto text-3xl font-bold leading-none">
-                  <Image
+                  <div className="textShadow_wt text-white text-[2.2rem] font-bold text-nowrap max-[1000px]:text-[1.4rem] ">
+                    NO NAME
+                  </div>
+                  {/* <Image
                     src="/images/logo.png"
                     alt="logo"
                     width={100}
                     height={100}
-                  />
+                  /> */}
                 </div>
               </Link>
               <button

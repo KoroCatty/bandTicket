@@ -12,6 +12,7 @@ interface CustomSession extends Session {
     name?: string;
     email?: string;
     image?: string;
+    isAdmin?: boolean;
   };
 }
 
@@ -54,6 +55,7 @@ export const authOptions: NextAuthOptions = {
           username: username,
           // profileをany型として扱い、pictureにアクセス
           image: (profile as any)?.picture ?? profile?.image,
+          isAdmin: false,
         });
       }
       // 4. return true to allow sign in

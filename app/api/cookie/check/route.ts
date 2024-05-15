@@ -22,17 +22,19 @@ export const GET = async (request: any) => {
   }
 
   try {
-    // payload はトークン内で実際に情報を保持する部分 (pull out userId from it)
+    // payload はトークン内で実際に情報を保持する部分 (body)
     const payload = jwt.verify(token, JWT_SECRET!) as {
       userId: string;
       username: string;
       email: string;
+      isAdmin: boolean;
     };
     return new Response(
       JSON.stringify({
         userID: payload.userId,
         username: payload.username,
         email: payload.email,
+        isAdmin: payload.isAdmin,
       }),
       {
         status: 200,

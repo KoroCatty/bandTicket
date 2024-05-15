@@ -13,6 +13,7 @@ interface User {
   email?: string | null | undefined;
   image?: string | null | undefined;
   bookmarks?: string[] | null | undefined;
+  isAdmin?: boolean | null | undefined;
 }
 
 export const getSessionUser = async () => {
@@ -29,6 +30,7 @@ export const getSessionUser = async () => {
       user: session.user,
       userId: session.user.id,
       bookmarks: session.user.bookmarks,
+      isAdmin: session.user.isAdmin,
     };
   } catch (error) {
     console.log(error);
