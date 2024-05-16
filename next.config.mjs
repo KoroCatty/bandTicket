@@ -23,6 +23,11 @@ const nextConfig = {
         hostname: "res.cloudinary.com", // Cloudinary
         pathname: '**' // Match all paths
       },
+      {
+        protocol: 'https',
+        hostname: "avatars.githubusercontent.com",
+        pathname: '**' // Match all paths
+      }
     ]
   }
 };

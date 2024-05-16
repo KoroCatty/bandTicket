@@ -1,4 +1,5 @@
 import GoogleProvider from "next-auth/providers/google";
+import GihHubProvider from "next-auth/providers/github";
 
 import connectDB from "@/config/db"; // connect to DB
 import User from "@/models/User"; // User model
@@ -32,6 +33,10 @@ export const authOptions: NextAuthOptions = {
           response_type: "code",
         },
       },
+    }),
+    GihHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
     }),
   ],
   // Take 2 callbacks ⬇︎⬇︎

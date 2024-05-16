@@ -92,8 +92,11 @@ const LoginForms = () => {
       <br />
       <button onClick={handleGuestLogin}>Guest Admin Login</button>
 
-      <Link href="/register">
-        <div className="underline">Create an account here </div>
+      <Link
+        href="/register"
+        className="block text-blue-400 underline w-[fit-content] "
+      >
+        Create an account here
       </Link>
     </section>
   );
