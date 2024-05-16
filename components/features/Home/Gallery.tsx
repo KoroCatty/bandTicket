@@ -30,7 +30,7 @@ const Gallery = () => {
           preload="metadata"
         />
         <video
-          src="/videos/resized_band_video2.mp4"
+          src="/videos/resized_band_video4.mp4"
           playsInline
           muted
           autoPlay
@@ -38,7 +38,15 @@ const Gallery = () => {
           preload="metadata"
         />
         <video
-          src="/videos/resized_band_video2.mp4"
+          src="/videos/resized_band_video.mp4"
+          playsInline
+          muted
+          autoPlay
+          loop
+          preload="metadata"
+        />
+        <video
+          src="/videos/resized_band_video5.mp4"
           playsInline
           muted
           autoPlay
