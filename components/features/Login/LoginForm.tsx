@@ -1,19 +1,20 @@
 "use client";
 import { FormEvent, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import SpinnerClient from "@/components/common/SpinnerClient";
 
 const LoginForms = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedInData, setLoggedInData] = useState({} as any);
+  const [loading, setLoading] = useState(false);
 
   //! LOGIN
   const handleLogin = async (event: FormEvent) => {
+    setLoading(true);
     event.preventDefault();
-    // console.log('🔥', password)
     try {
       const response = await fetch("/api/login", {
         method: "POST",
@@ -40,65 +41,81 @@ const LoginForms = () => {
     } catch (error) {
       console.log("Failed to fetch data:", error);
       toast.error("Failed to login");
+    } finally {
+      setLoading(false);
     }
   };
 
   //! GUEST LOGIN
   const handleGuestLogin = async () => {
-    // const response = await fetch("/api/login/guest", {
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: "guest@email.com", password: "1111" }),
-    });
-    const data = await response.json();
+    setLoading(true);
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: "guest@email.com", password: "1111" }),
+      });
+      const data = await response.json();
 
-    if (response.ok) {
-      setLoggedInData(data);
-      console.log("Logged in as guest:", data);
-      alert("Welcome Guest User!!");
-      window.location.reload();
-    } else {
-      // Handle errors for guest login
-      console.log("Failed to login as guest:", data.message);
-      toast.error("Failed to login as guest");
+      if (response.ok) {
+        setLoggedInData(data);
+        alert("Welcome Guest User!!");
+        window.location.reload();
+      } else {
+        // Handle errors for guest login
+        console.log("Failed to login as guest:", data.message);
+        toast.error("Failed to login as guest");
+      }
+    } catch (error) {
+      console.log("Failed to login as guest:", error);
+    } finally {
+      setLoading(false);
     }
   };
+  if (loading) return <SpinnerClient />;
 
   return (
-    <section>
-      <h2 className="text-5xl">Login</h2>
-      <p className="text-red-500">{loggedInData?.username}さん、こんにちは</p>
+    <div className="my-6">
       <form onSubmit={handleLogin}>
         <input
-          className="text-neutral-900"
+          className="form_input mb-10 bg-neutral-900  border-lg border-slate-200 border-2 rounded-md text-white tracking-wider"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Username"
+          placeholder="Email"
           required
         />
         <input
-          className="text-neutral-900"
+          className="form_input bg-neutral-900 border-lg border-slate-200 border-2 rounded-md text-white tracking-wider"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button type="submit">Login</button>
+        <button
+          type="submit"
+          className="block mx-auto mt-12 p-3 w-[50%] bg-slate-950 border-lg text-2xl tracing-wider
+          border-slate-500 border-2  rounded-md hover:opacity-80 hover:translate-y-0.5 transition duration-800 ease-in-out
+          max-[640px]:text-[1.3rem] max-[480px]:text-[1.2rem]  "
+        >
+          LOGIN
+        </button>
       </form>
-      <br />
-      <button onClick={handleGuestLogin}>Guest Admin Login</button>
+      <div className="text-center text-[1.4rem] my-4">OR</div>
 
-      <Link
-        href="/register"
-        className="block text-blue-400 underline w-[fit-content] "
+      {/* GUEST ADMIN LOGIN BUTTON */}
+      <button
+        onClick={handleGuestLogin}
+        className="relative left-[50%] -translate-x-[50%] text-[1.5rem]  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 
+      max-[640px]:text-[1.3rem] max-[480px]:text-[1.2rem] "
       >
-        Create an account here
-      </Link>
-    </section>
+        <span className="relative px-10 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0  ">
+          Guest Admin Login
+        </span>
+      </button>
+    </div>
   );
 };
 

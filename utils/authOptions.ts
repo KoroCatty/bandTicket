@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
             username: username,
             // profileをany型として扱い、pictureにアクセス
             image: (profile as any)?.picture ?? profile?.image,
-            isAdmin: false,
+            isAdmin: true,
           });
         }
         // 4. return true to allow sign in

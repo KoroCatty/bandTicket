@@ -105,6 +105,10 @@ const ProfilePage = () => {
               </div>
               <h2 className="text-2xl mb-4">
                 <span className="font-bold block">Name: </span>
+                {user?.isAdmin || session?.user?.isAdmin ? "Admin" : "User"}
+              </h2>
+              <h2 className="text-2xl mb-4">
+                <span className="font-bold block">Name: </span>
                 {profileName}
               </h2>
               <h2 className="text-2xl">
