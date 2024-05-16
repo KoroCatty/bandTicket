@@ -38,13 +38,13 @@ export const GET = async (request: any) => {
     };
 
     //! Ticket Status 検索
-    // ticketStatus が"All"以外の場合は、プロパティタイプに基づいてさらに絞り込みを行う
+    // ticketStatus が"All"以外の場合は、status に基づいてさらに絞り込みを行う
     if (ticketStatus && ticketStatus !== "All") {
       const statusPattern = new RegExp(ticketStatus, "i"); // case-insensitive
       query.status = statusPattern;
     }
 
-    // 構築したクエリに基づいてデータベースからプロパティを検索し、結果を取得
+    // 構築したクエリに基づいてデータベースからチケットを検索し、結果を取得
     const tickets = await Ticket.find(query);
 
     return new Response(JSON.stringify(tickets), { status: 200 });

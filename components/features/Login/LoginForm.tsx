@@ -90,7 +90,7 @@ const LoginForms = () => {
         <button type="submit">Login</button>
       </form>
       <br />
-      <button onClick={handleGuestLogin}>Login as Guest</button>
+      <button onClick={handleGuestLogin}>Guest Admin Login</button>
 
       <Link href="/register">
         <div className="underline">Create an account here </div>

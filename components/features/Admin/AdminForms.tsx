@@ -46,10 +46,10 @@ const AdminForms = ({
   imgRequired,
 }: AddFormsProps) => {
   const { user, userLoading }: any = useGlobalContext();
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
 
-  // Next Auth / HttpOnly Cookie　でログイン確認
-  return (!userLoading && user) || session ? (
+  // Next Auth / HttpOnly Cookie　でログイン確認 (Admin)
+  return (!userLoading && user?.isAdmin) || session?.user?.isAdmin ? (
     <section className="max-w-[860px] mx-auto px-10 py-10">
       <GoBackBtn text="Go back " />
 
@@ -240,7 +240,7 @@ const AdminForms = ({
   ) : (
     <section className="max-w-[860px] mx-auto px-10 py-[3rem] max-[480px]:pt-0  ">
       <div className="text-center">
-        <h1 className="text-3xl my-12 ">Please Login</h1>
+        <h1 className="text-3xl my-12 ">Please Login as Admin</h1>
         <Link
           className="py-2 px-4 bg-slate-800 block w-[50%] mx-auto text-white
         hover:scale-105 transition-all duration-300 hover:opacity-75

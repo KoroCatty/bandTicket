@@ -3,7 +3,6 @@ import Image from "next/image";
 // photo swipe gallery
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-// コンポーネントに渡されるプロパティの型を定義
 interface TicketDetailsImgsProps {
   images: string[];
 }

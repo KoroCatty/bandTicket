@@ -13,8 +13,7 @@ const UserSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
-      // select: false,// パスワードを取得しないようにする
+      required: false,
     },
     image: {
       type: String,

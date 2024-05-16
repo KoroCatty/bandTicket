@@ -123,7 +123,7 @@ export const POST = async (req: any) => {
 
       // 画像を圧縮
       const resizedImage = await sharp(imageData)
-        .resize(1200, 675)
+        .resize(1280, 720)
         .jpeg({ quality: 85 })
         .toBuffer();
 

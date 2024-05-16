@@ -26,7 +26,7 @@ const AdminPage = () => {
   // Contextを発動 (ユーザーデータを取得)
   const { user, userLoading }: any = useGlobalContext();
   // next auth
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
 
   //! Delete Ticket
   const deleteTicket = async (ticketId: string) => {
@@ -82,8 +82,8 @@ const AdminPage = () => {
     return <SpinnerClient />; // ローディング中の表示
   }
 
-  // Next Auth / HttpOnly Cookie　でログイン確認
-  return (!userLoading && user) || session ? (
+  // Next Auth / HttpOnly Cookie　でログイン確認 (Admin)
+  return (!userLoading && user?.isAdmin) || session?.user?.isAdmin ? (
     <section className="mt-8 ">
       <Title>ADMIN</Title>
       <div className="w-[90%] mx-auto mt-4 ">
@@ -160,7 +160,7 @@ const AdminPage = () => {
   ) : (
     <section className="max-w-[860px] mx-auto px-10 py-[3rem] max-[480px]:pt-0  ">
       <div className="text-center">
-        <h1 className="text-3xl my-12 ">Please Login</h1>
+        <h1 className="text-3xl my-12 ">Please Login as Admin</h1>
         <Link
           className="py-2 px-4 bg-slate-800 block w-[50%] mx-auto text-white
       hover:scale-105 transition-all duration-300 hover:opacity-75

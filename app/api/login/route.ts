@@ -38,11 +38,16 @@ export const POST = async (request: any) => {
     // get rid of password (No Send to Client)
     user.password = undefined;
 
-    // Creating the token (ここで JWT トークンに情報を入れて作成)
-    // userのID & Name をトークンに含め、ログインしてるユーザーのIdとNameを取得 (Add ticket などに活用)
+    // Creating the token (ここで JWT トークンの payload に情報を入れて作成)
+    // DBからの情報をトークンに含め、ログインしてるユーザーに下記の情報を取得 (Add ticket などに活用)
     const jwtSecret = process.env.JWT_SECRET;
     const token = jwt.sign(
-      { username: user.username, userId: user._id },
+      {
+        username: user.username,
+        userId: user._id,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
       jwtSecret!,
       {
         expiresIn: "1h",
