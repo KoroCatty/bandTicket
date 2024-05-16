@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 // Components
@@ -27,18 +25,10 @@ const Header = () => {
           >
             NO NAME
           </div>
-          {/* <Image
-            src="/images/logo.png"
-            alt="logo"
-            width={140}
-            height={80}
-            className="w-[100px] max-[480px]:w-[60px] cursor-pointer"
-          /> */}
         </Link>
         {/* Component */}
         <NavLinks />
       </nav>
-
       <Hamburger />
     </header>
   );

@@ -17,20 +17,25 @@ type PropsType = {
 };
 
 const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
-  // Contextを発動 (ユーザーデータを取得)
-  const { user }: any = useGlobalContext();
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-  // next auth
-  const { data: session } = useSession();
+  const currentPath = usePathname();
+
+  // next auth & HttpOnly
+  const { user }: any = useGlobalContext();
+  const { data: session }: any = useSession();
+
+  // isAdmin の確認
+  const sessionIsAdmin = session?.user?.isAdmin;
+  const userIsAdmin = user?.isAdmin;
 
   const links = [
-    { label: "HOME", href: "/", providers: false, user: false },
-    { label: "ABOUT", href: "/about", providers: false, user: false },
-    { label: "SONGS", href: "/songs", session: false, user: false },
-    { label: "MERCH", href: "/merch", session: false, user: false },
-    { label: "CONTACT", href: "/contact", session: false, user: false },
-    { label: "TICKETS", href: "/tickets", session: false, user: false },
-    { label: "ADMIN", href: "/admin", session: true, user: true },
+    { label: "HOME", href: "/" },
+    { label: "ABOUT", href: "/about" },
+    { label: "SONGS", href: "/songs" },
+    { label: "MERCH", href: "/merch" },
+    { label: "CONTACT", href: "/contact" },
+    { label: "TICKETS", href: "/tickets" },
+    { label: "ADMIN", href: "/admin", admin: true },
   ];
 
   // プロフィール画像を Google / user / default image から取得
@@ -38,7 +43,6 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
     session?.user?.image ||
     (user && "/images/house.png") ||
     "/images/default_icon.png";
-  const currentPath = usePathname();
 
   //! HttpOnly LOGOUT
   const httpOnlySignOut = async () => {
@@ -63,53 +67,32 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
   return (
     <div
       // SP Hamburger Menu 対応
-      className={`flex gap-3 mx-3 max-[767px]:flex-col max-[767px]:text-white 
-      max-[767px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
+      className={`flex gap-3 mx-3 max-[899px]:flex-col max-[899px]:text-white 
+      max-[899px]:gap-9 max-[767px]:w-[fit-content] max-[767px]:last:w-[70%] ${propClass}`}
     >
+      {/* ログイン中のみ ADMIN Link を表示 */}
       {links
-        .filter(
-          (link) =>
-            !link.session ||
-            !link.user ||
-            (link.session || link.user) === !!session ||
-            !!user,
-        ) // ログインしている場合のみ表示
+        .filter((link) => !link.admin || sessionIsAdmin || userIsAdmin)
         .map((link) => (
           <Link
-            //? ハンバーガーメニューを閉じる
+            //? Close hamburger menu
             onClick={() => setIsMenuOpen && setIsMenuOpen(false)}
             href={link.href}
             className={`w-[fit-content] hover:bg-slate-700 hover:text-primary/60 px-3 py-1 rounded-md text-sm font-medium cursor-pointer text-[1.1rem]
-              ${link.session && "bg-red-500 text-white"}
-              ${
-                currentPath == link.href
-                  ? "bg-slate-700 cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
-                  : ""
-              }`}
+            ${link.admin && "bg-red-500 text-white"}
+            ${
+              currentPath == link.href
+                ? "bg-slate-700 cursor-default shadow-1 text-primary/70 hover:text-primary/60 "
+                : ""
+            }`}
             key={link.label}
           >
             {link.label}
           </Link>
         ))}
 
-      {/* どちらも存在しない場合表示 */}
-      {!session && !user ? (
-        <div className="">
-          <Link
-            href="/login"
-            className="flex items-center rounded-md mt-[0.2rem] max-[767px]:w-[fit-content]
-            hover:scale-105 transform transition duration-300 ease-in-out hover:text-blue-500"
-          >
-            <FaGoogle className="mr-1" />
-            LOGIN
-          </Link>
-        </div>
-      ) : (
-        ""
-      )}
-
       {/* <-- Profile dropdown button --> */}
-      <div className="relative ml-3">
+      <div className="relative ml-3 max-[900px]:hidden ">
         <div>
           <button
             onClick={() => setProfileMenuOpen(!profileMenuOpen)} //? メニューを開閉
@@ -141,26 +124,47 @@ const NavLinks = ({ propClass, setIsMenuOpen }: PropsType) => {
             aria-labelledby="user-menu-button"
             tabIndex={-1}
           >
-            <Link
-              onClick={() => setProfileMenuOpen(false)}
-              href="/profile"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="user-menu-item-0"
-            >
-              Your Profile
-            </Link>
-            <Link
-              onClick={() => setProfileMenuOpen(false)}
-              href="/tickets/saved"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="user-menu-item-2"
-            >
-              Saved tickets
-            </Link>
+            {/* ログインしていなければログインリンク表示 */}
+            {(user?.userID || session) && (
+              <>
+                <Link
+                  onClick={() => setProfileMenuOpen(false)}
+                  href="/profile"
+                  className="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="user-menu-item-0"
+                >
+                  Your Profile
+                </Link>
+                <Link
+                  onClick={() => setProfileMenuOpen(false)}
+                  href="/tickets/saved"
+                  className="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="user-menu-item-2"
+                >
+                  Saved tickets
+                </Link>
+              </>
+            )}
+
+            {/* ログインしていなければログインリンク表示 */}
+            {!user && !session && (
+              <Link
+                onClick={() => setProfileMenuOpen(false)}
+                href="/login"
+                className="px-4 py-2 text-lg text-gray-700 flex "
+                role="menuitem"
+                tabIndex={-1}
+                id="user-menu-item-2"
+              >
+                <FaGoogle className="mr-3 mt-1" />
+                LOGIN
+              </Link>
+            )}
+
             {/* Next Auth LOGOUT */}
             {session && (
               <button
