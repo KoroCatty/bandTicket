@@ -13,11 +13,11 @@ export const GET = async (req: any, { params }: { params: ParamsType }) => {
     await connectDB();
     // console.log(params.adminTicketId); // フォルダ名に ID が含まれている
 
-    // URL と同じ ID の property をDBから取得
+    // URL と同じ ID の ticket をDBから取得
     const ticket = await Ticket.findById(params.adminTicketId);
 
     if (!ticket) {
-      return new Response("Property not found", { status: 404 });
+      return new Response("Ticket not found", { status: 404 });
     }
 
     // 取得したデータをフロントに返す
@@ -37,11 +37,11 @@ export const DELETE = async (req: any, { params }: { params: ParamsType }) => {
 
     const ticketId = params.adminTicketId;
 
-    // URL と同じ ID の property をDBから取得
+    // URL と同じ ID の ticket をDBから取得
     const ticket = await Ticket.findById(ticketId);
 
     if (!ticket) {
-      return new Response("Property not found", { status: 404 });
+      return new Response("Ticket not found", { status: 404 });
     }
 
     await ticket.deleteOne(); //! delete Ticket
@@ -70,11 +70,11 @@ export const PUT = async (
     // フォームデータを格納
     const formData = await req.formData();
 
-    // GET property from DB thorough model to update
+    // GET ticket from DB thorough model to update
     const existingTicket = await Ticket.findById(adminTicketId);
 
     if (!existingTicket) {
-      return new Response("Property not found", { status: 404 });
+      return new Response("Ticket not found", { status: 404 });
     }
 
     // Create TicketData for DB (各フォームの attribute から取得)
@@ -93,15 +93,16 @@ export const PUT = async (
       },
     };
 
-    // UPDATE (DBに保存された property のデータを更新)
-    const updatedProperty = await Ticket.findByIdAndUpdate(
+    // UPDATE (DBに保存された ticket のデータを更新)
+    const updatedTicket = await Ticket.findByIdAndUpdate(
       adminTicketId,
       ticketData,
     );
 
     // フロントに成功メッセージを返す
-    return new Response(JSON.stringify(updatedProperty), { status: 200 });
+    return new Response(JSON.stringify(updatedTicket), { status: 200 });
   } catch (error) {
-    return new Response("something went wrong", { status: 500 }); // Internal Server Error
+    console.error("Error updating ticket:", error);
+    return new Response("Something went wrong", { status: 500 }); // Internal Server Error
   }
 };

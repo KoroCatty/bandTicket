@@ -15,11 +15,11 @@ export const GET = async (req: any, { params }: { params: ParamsType }) => {
     await connectDB();
     // console.log(params.ticketId); // URL から取得した ID (ticketId
 
-    // URL と同じ ID の property をDBから取得
+    // URL と同じ ID の ticket をDBから取得
     const ticket = await Ticket.findById(params.ticketId);
 
     if (!ticket) {
-      return new Response("Property not found", { status: 404 });
+      return new Response("Ticket not found", { status: 404 });
     }
 
     // 取得したデータをフロントに返す

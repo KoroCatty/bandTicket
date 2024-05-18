@@ -1,10 +1,11 @@
 import connectDB from "@/config/db";
-import Ticket from "@/models/Tickets"; // Model
-import cloudinary from "@/config/cloudinary"; // Cloudinary
-import sharp from "sharp"; // Image Processing
+import Ticket from "@/models/Tickets";
+import cloudinary from "@/config/cloudinary";
+import sharp from "sharp"; // Image compression
 
 // ユーザー情報を取得する関数
 import { getSessionUser } from "@/utils/getSessionUser";
+
 //! =========================================================
 //! GET 10 Tickets /api/tickets/admin
 //! =========================================================
@@ -70,7 +71,7 @@ export const POST = async (req: any) => {
       .getAll("images")
       .filter((image: any) => image.name !== "");
 
-    // Create PropertyData for DB (各フォームの attribute から取得)
+    // Create TicketData for DB (各フォームの attribute から取得)
     const ticketData = {
       userId: userId || formData.get("userId"),
       name: formData.get("name"),

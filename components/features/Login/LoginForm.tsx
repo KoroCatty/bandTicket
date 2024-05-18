@@ -98,7 +98,7 @@ const LoginForms = () => {
         <button
           type="submit"
           className="block mx-auto mt-12 p-3 w-[50%] bg-slate-950 border-lg text-2xl tracing-wider
-          border-slate-500 border-2  rounded-md hover:opacity-80 hover:translate-y-0.5 transition duration-800 ease-in-out
+          border-slate-500 border-2 rounded-md hover:opacity-80 hover:translate-y-0.5 transition duration-800 ease-in-out
           max-[640px]:text-[1.3rem] max-[480px]:text-[1.2rem]  "
         >
           LOGIN
