@@ -53,16 +53,16 @@ const FeaturedTickets = () => {
                   hover:bg-slate-800 
                  `}
                 >
-                  <div className="flex gap-6  max-[768px]:block max-[480px]:flex ">
+                  <div className="flex gap-6  max-[768px]:block max-[480px]:flex w-full ">
                     <Image
-                      className=""
+                      className="max-[480px]:w-[100px] max-[480px]:h-[100px]  object-cover "
                       src={ticket.images[0]}
                       alt={ticket.name}
                       width={100}
                       height={100}
                       loading="lazy"
                     />
-                    <div className="flex gap-4 max-[1000px]:block">
+                    <div className="flex gap-4 max-[1000px]:block max-[480px]:grow ">
                       <p className="text-lg  max-[480px]:text-[0.8rem] ">
                         {ticket.date.slice(0, 10)}
                       </p>
@@ -70,18 +70,24 @@ const FeaturedTickets = () => {
                       <p className="text-lg max-[480px]:text-[0.9rem]">
                         {ticket.venue}
                       </p>
+                      <Link
+                        href={`/tickets/${ticket._id}`}
+                        className="py-2 px-6 mt-1 block bg-slate-950 border-2 border-slate-300 rounded-sm text-center
+                       min-[481px]:hidden
+                    "
+                      >
+                        Details
+                      </Link>
                     </div>
                   </div>
 
-                  <div className="flex gap-4  max-[480px]:mt-4 ">
-                    <Link
-                      href={`/tickets/${ticket._id}`}
-                      className="py-2 px-6 bg-blue-300 
+                  <Link
+                    href={`/tickets/${ticket._id}`}
+                    className="py-2 px-6 bg-slate-950 border-2 border-slate-300 rounded-sm text-center max-[480px]:mt-4 max-[480px]:hidden
                          hover:scale-110 transition-all duration-300 hover:text-red-800"
-                    >
-                      Details
-                    </Link>
-                  </div>
+                  >
+                    Details
+                  </Link>
                 </div>
               ))}
           </div>

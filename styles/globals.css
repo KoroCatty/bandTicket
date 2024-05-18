@@ -19,6 +19,12 @@ body {
   font-family: "Inter", "sans-serif";
 }
 
+select {
+  -webkit-appearance: none; /* Safari and Chrome */
+  -moz-appearance: none; /* Firefox */
+  appearance: none;
+}
+
 .rainbowText {
   background-image: linear-gradient(
     to left,

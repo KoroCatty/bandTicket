@@ -18,7 +18,7 @@ const SearchForm = () => {
 
   return (
     <>
-      <div className="max-w-[600px] mx-auto max-[480px]:-mb-4 ">
+      <div className="max-w-[600px] mx-auto max-[480px]:-mt-3 max-[480px]:-mb-4">
         <Title>Search</Title>
       </div>
 
@@ -53,7 +53,7 @@ const SearchForm = () => {
               onChange={(e) => setTicketStatus(e.target.value)}
               value={ticketStatus}
               id="ticket-type"
-              className="px-4 py-3.5 rounded-sm bg-neutral-900 border-lg  border-slate-300 border-2 focus:outline-none focus:ring focus:ring-blue-500"
+              className="appearance-none px-4 py-3 rounded-sm bg-neutral-900 border-lg  border-slate-300 border-2 focus:outline-none focus:ring focus:ring-blue-500"
             >
               <option value="All">All</option>
               <option value="Active">Active</option>
@@ -65,10 +65,12 @@ const SearchForm = () => {
 
         <button
           type="submit"
-          className="max-[768px]:w-full 
+          className="max-[768px]:w-[80%] mx-auto block
           md:ml-4 mt-4 md:mt-0 px-6 py-3 rounded-sm  bg-slate-950 border-lg  tracing-wider
-          border-slate-500 border-2 
-           hover:scale-110  transition-all duration-300 focus:outline-none focus:ring focus:ring-blue-500 "
+          border-slate-500 border-2 tracking-wide
+           min-[768px]:hover:scale-110  transition-all duration-300 focus:outline-none focus:ring focus:ring-blue-500 
+           max-[480px]:py-2
+           "
         >
           Search
         </button>
