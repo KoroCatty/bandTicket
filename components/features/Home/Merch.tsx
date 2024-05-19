@@ -9,7 +9,7 @@ import ButtonComponent from "@/components/common/Button";
 
 const MerchData = [
   {
-    src: "/images/item1.jpg",
+    src: "/images/merch/item1.jpg",
     alt: "merchandise-1",
     title: "Merchandise 1",
     price: "$100",

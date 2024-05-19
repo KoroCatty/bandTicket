@@ -37,6 +37,10 @@ const MerchPage = async () => {
     <>
       <div className="max-w-[1080px] mx-auto">
         <HeroMerch />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductList products={clothes} />
+        </Suspense>
+
         {/* <Suspense fallback={<div>Loading...</div>}>
           <ProductList products={clothes} />
           <div className="my-[8rem]"></div>
