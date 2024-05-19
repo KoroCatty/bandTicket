@@ -15,8 +15,8 @@ export const GET = async () => {
     }
 
     return new Response(JSON.stringify(products), { status: 200 });
-  } catch (error:any) {
-    console.error('Error fetching products:', error?.message, error?.stack);
+  } catch (error: any) {
+    console.error("Error fetching products:", error?.message, error?.stack);
     return new Response("something went wrong", { status: 500 }); // Internal Server Error
   }
 };

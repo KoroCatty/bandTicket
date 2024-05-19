@@ -6,8 +6,8 @@ import Title from "./Title";
 
 const SearchForm = () => {
   const router = useRouter();
-  const [location, setLocation] = useState(""); // input
-  const [ticketStatus, setTicketStatus] = useState("All"); // select
+  const [location, setLocation] = useState(""); 
+  const [ticketStatus, setTicketStatus] = useState("All"); 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 

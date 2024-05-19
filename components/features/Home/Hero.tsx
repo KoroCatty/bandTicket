@@ -35,12 +35,13 @@ const Hero = () => {
             </h1> */}
             <Link
               href="/tickets"
-              className="relative mt-[4rem] inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500
-               group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+              className="relative mt-[4rem] inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-400/95 to-pink-400/95
+               group-hover:from-purple-500 group-hover:to-pink-300 hover:text-white dark:text-white  focus:outline-none hover:translate-y-0.5 hover:opacity-90
+               transition-all ease-in duration-400"
             >
               <span
                 className="relative text-[1.2rem] px-[4rem] py-4 transition-all ease-in duration-75 
-               rounded-md bg-opacity-40 hover:bg-neutral-800 shadow-lg  shadow-purple-400/40 "
+               rounded-md bg-opacity-40 shadow-lg  shadow-purple-400/40 "
               >
                 View Tickets
               </span>

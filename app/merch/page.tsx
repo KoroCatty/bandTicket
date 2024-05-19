@@ -45,14 +45,6 @@ const MerchPage = async () => {
             </Suspense>
           </Suspense>
         </Suspense>
-
-        {/* <Suspense fallback={<div>Loading...</div>}>
-          <ProductList products={clothes} />
-          <div className="my-[8rem]"></div>
-          <ProductList products={instruments} />
-          <div className="my-[8rem]"></div>
-          <ProductList products={posters} />
-        </Suspense> */}
       </div>
     </>
   );
