@@ -13,7 +13,6 @@ type Product = {
 
 const fetchProducts = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
-  // const res = await fetch(`/api/products`);
   if (!res.ok) {
     throw new Error("Something went wrong");
   }
@@ -39,6 +38,12 @@ const MerchPage = async () => {
         <HeroMerch />
         <Suspense fallback={<div>Loading...</div>}>
           <ProductList products={clothes} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProductList products={instruments} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <ProductList products={posters} />
+            </Suspense>
+          </Suspense>
         </Suspense>
 
         {/* <Suspense fallback={<div>Loading...</div>}>
