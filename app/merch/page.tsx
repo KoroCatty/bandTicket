@@ -12,7 +12,7 @@ type Product = {
 };
 
 const fetchProducts = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, { cache: 'force-cache' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
   // const res = await fetch(`/api/products`);
   if (!res.ok) {
     throw new Error("Something went wrong");
