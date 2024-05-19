@@ -1,6 +1,9 @@
 import connectDB from "@/config/db";
 import Product from "@/models/Products";
 
+
+//* Stop Build error
+export const dynamic = "force-dynamic";
 //! =========================================================
 //! GET all Products (Merch) /api/products
 //! =========================================================
