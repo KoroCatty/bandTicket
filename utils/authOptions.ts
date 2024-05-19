@@ -1,4 +1,5 @@
 import GoogleProvider from "next-auth/providers/google";
+import GihHubProvider from "next-auth/providers/github";
 
 import connectDB from "@/config/db"; // connect to DB
 import User from "@/models/User"; // User model
@@ -33,6 +34,10 @@ export const authOptions: NextAuthOptions = {
         },
       },
     }),
+    GihHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
+    }),
   ],
   // Take 2 callbacks ⬇︎⬇︎
   callbacks: {
@@ -56,7 +61,7 @@ export const authOptions: NextAuthOptions = {
             username: username,
             // profileをany型として扱い、pictureにアクセス
             image: (profile as any)?.picture ?? profile?.image,
-            isAdmin: false,
+            isAdmin: true,
           });
         }
         // 4. return true to allow sign in
