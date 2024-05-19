@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HeroMerch = () => {
   return (
-    <section className="relative ">
+    <section className="relative mt-[2rem]">
       <div className="absolute top-0 left-0 w-[70%] ">
         <h1 className="text-[4rem] ">
           <span className="block">Official Merchandise</span>
@@ -22,9 +22,10 @@ const HeroMerch = () => {
         <Image
           className="ml-auto "
           src="/images/heroMerch.jpg"
-          alt=""
+          alt="Hero Merch Image"
           width={800}
           height={800}
+          priority
         />
       </div>
     </section>
