@@ -84,7 +84,7 @@ const AdminForms = ({
             id="name"
             name="name"
             className="form_input"
-            placeholder="eg. Beautiful Apartment In Miami"
+            placeholder="Ticket Name"
             required
             value={fields.name}
             onChange={handleChange}
@@ -99,7 +99,7 @@ const AdminForms = ({
             name="description"
             className="form_textarea"
             rows={4}
-            placeholder="Add an optional description of your ticket"
+            placeholder="Description"
             value={fields.description}
             onChange={handleChange}
           ></textarea>
@@ -156,7 +156,7 @@ const AdminForms = ({
             id="price"
             name="price"
             className="form_input"
-            placeholder="Name"
+            placeholder="Price"
             value={fields.price}
             onChange={handleChange}
           />
@@ -171,7 +171,7 @@ const AdminForms = ({
             id="date"
             name="date"
             className="form_input"
-            placeholder="Name"
+            placeholder="When?"
             value={fields.date}
             onChange={handleChange}
           />
@@ -186,7 +186,7 @@ const AdminForms = ({
             id="venue"
             name="venue"
             className="form_input"
-            placeholder="Name"
+            placeholder="Where the venue"
             value={fields.venue}
             onChange={handleChange}
           />

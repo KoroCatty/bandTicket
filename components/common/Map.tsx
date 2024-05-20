@@ -16,12 +16,12 @@ import L from "leaflet";
 
 // マーカーアイコンの設定
 const markerIcon = new L.Icon({
-  iconUrl: "/images/house.png",
+  iconUrl: "/images/pin.svg",
   // iconRetinaUrl: '/marker-icon-2x.png',
-  iconRetinaUrl: "/images/house.png",
+  iconRetinaUrl: "/images/pin.svg",
   // shadowUrl: '/marker-shadow.png',
-  shadowUrl: "/images/house.png",
-  iconSize: [25, 41],
+  // shadowUrl: "/images/house.png",
+  iconSize: [36, 46],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
@@ -86,7 +86,7 @@ const Map = ({ selectedTicket }: MapProps) => {
   }
 
   return (
-    <section className="flex w-[45%] max-[1000px]:w-[80%] max-[480px]:w-[100%] mx-auto mt-8">
+    <section className="flex w-[45%] max-[1000px]:w-[90%] max-[480px]:w-[100%]  max-[1000px]:ml-auto  mt-8">
       <div className="w-[100%]">
         {!position ? (
           <SpinnerClient />

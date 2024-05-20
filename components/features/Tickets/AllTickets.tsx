@@ -26,7 +26,7 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
   };
 
   return (
-    <section className="max-[1000px]:px-8 max-[480px]:px-0 max-[480px]:pt-4 ">
+    <section className="max-[1000px]:px-0 max-[480px]:px-0 max-[480px]:pt-4 ">
       <div className="mt-4 absolute top-[0%] left-[3%] z-[-10] opacity-15 mb-4">
         {selectedTicket?.images.map((image, index) => (
           <Image
@@ -39,10 +39,11 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
           />
         ))}
       </div>
-      <div className="w-[100%] opacity-90 my-[3rem] min-[1000px]:flex max-[1000px]:mt-[1rem] max-[480px]:w-[88%] max-[480px]:ml-auto ">
+      <div className="w-[100%] opacity-90 my-[3rem] min-[1000px]:flex max-[1000px]:mt-[1rem]  max-[480px]:w-[88%] max-[480px]:ml-auto ">
         <div
-          className="w-[60%] h-[680px] overflow-y-scroll overflow-x-hidden pl-[8rem] 
-           max-[1000px]:w-[100%] max-[1000px]:pl-2 max-[480px]:h-[240px] "
+          className="w-[60%] h-[680px] overflow-y-scroll overflow-x-hidden ml-[8rem] 
+          max-[1200px]:ml-[5rem]
+           max-[1000px]:w-[90%] max-[1000px]:h-[320px] max-[1000px]:ml-auto max-[480px]:h-[240px] "
         >
           <h1 className="text-[3rem] font-bold max-[480px]:text-[1.6rem]">
             10 Tickets

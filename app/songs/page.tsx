@@ -1,13 +1,13 @@
 // components
 import HeroSongs from "@/components/features/Songs/HeroSongs";
-import SongsList from "@/components/features/Songs/SongsList";
+import SongList from "@/components/features/Songs/SongList";
 import { Suspense } from "react";
 const SongsPage = () => {
   return (
     <>
       <HeroSongs />
       <Suspense fallback={<div>Loading...</div>}>
-        <SongsList />
+        <SongList />
       </Suspense>
     </>
   );

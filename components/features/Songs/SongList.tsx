@@ -59,7 +59,7 @@ const songs = [
 
 type SongRef = HTMLAudioElement | null;
 
-const LikedSongs = () => {
+const SongList = () => {
   const audioRefs = useRef<SongRef[]>([]);
 
   // 曲の数だけの要素を持つ配列を作成し、全ての要素をfalseで初期化
@@ -81,7 +81,6 @@ const LikedSongs = () => {
         audioRef.currentTime = 0;
         audioRef.play();
       }
-
       setIsPlaying((prevState) => {
         const newState = [...prevState];
         newState[index] = true;
@@ -94,7 +93,6 @@ const LikedSongs = () => {
     const audioRef = audioRefs.current[index];
     if (audioRef) {
       audioRef.pause();
-
       setIsPlaying((prevState) => {
         const newState = [...prevState];
         newState[index] = false;
@@ -103,26 +101,37 @@ const LikedSongs = () => {
     }
   };
 
+  // when the song ends
+  const handleEnded = (index: number) => {
+    setIsPlaying((prevState) => {
+      const newState = [...prevState];
+      newState[index] = false;
+      return newState;
+    });
+  };
+
   return (
     <section className="bg-gray-900 text-white min-h-screen">
-      <div className="container mx-auto p-4 max-w-[1080px]">
+      <div className="container mx-auto p-4 max-w-[1080px] max-[480px]:px-2 ">
         <div className="bg-gradient-to-b">
           <div className="flex items-center">
-            <div className="w-[120px] h-[120px] bg-purple-500 flex-shrink-0 rounded-lg ">
+            <div className="w-[120px] h-[120px] flex-shrink-0 rounded-lg ">
               {isPlaying && (
                 <Image
                   src={isPlayingImg || "/images/cd_colored.png"}
                   alt="Album Cover"
-                  width={120}
-                  height={120}
-                  className="rounded"
+                  width={100}
+                  height={100}
+                  className="max-[350px]:w-[80px] rounded-lg"
                   priority
                 />
               )}
             </div>
             <div className="ml-4">
               {isPlaying && (
-                <h1 className="text-4xl font-bold">{isPlayingTitle}</h1>
+                <h2 className="text-4xl font-bold max-[480px]:text-2xl ">
+                  {isPlayingTitle}
+                </h2>
               )}
               <p className="text-sm text-gray-300"> {songs.length} songs</p>
             </div>
@@ -135,7 +144,7 @@ const LikedSongs = () => {
             </div>
             <div className="flex items-center space-x-8 text-gray-400">
               <p>ALBUM</p>
-              <p>DURATION</p>
+              <p className="max-[480px]:hidden ">DURATION</p>
             </div>
           </div>
 
@@ -143,7 +152,7 @@ const LikedSongs = () => {
             {songs.map((song, index) => (
               <div
                 key={song.id}
-                className="flex items-center justify-between hover:bg-gray-800 p-2 rounded"
+                className="flex items-center justify-between hover:bg-gray-800 py-2"
               >
                 <div className="flex items-center space-x-4">
                   <p className="text-gray-400">{song.id}</p>
@@ -154,7 +163,7 @@ const LikedSongs = () => {
                         alt="Album Cover"
                         width={60}
                         height={60}
-                        className="rounded cursor-pointer"
+                        className="rounded cursor-pointer max-[480px]:w-[40px] "
                         onClick={() =>
                           handlePlay(index, song.image, song.title)
                         }
@@ -168,27 +177,31 @@ const LikedSongs = () => {
                         alt="Stop"
                         width={60}
                         height={60}
-                        className="cursor-pointer relative"
+                        className="cursor-pointer relative max-[480px]:w-[40px]"
                         onClick={() => handlePause(index)}
                       />
                     </>
                   )}
                   <div>
-                    <p>{song.title}</p>
-                    <p className="text-gray-400">{song.artist}</p>
+                    <p className="max-[350px]:text-[0.9rem] ">{song.title}</p>
+                    <p className="max-[350px]:text-[0.9rem] text-gray-400">
+                      {song.artist}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-8">
+                <div className="flex items-center space-x-8 max-[350px]:text-[0.9rem]">
                   <p className="text-gray-400">{song.album}</p>
-
-                  <p className="text-gray-400">{song.duration}</p>
+                  <p className="text-gray-400 max-[480px]:hidden ">
+                    {song.duration}
+                  </p>
                 </div>
                 <audio
                   ref={(audioRef) => {
                     audioRefs.current[index] = audioRef;
                   }}
                   src={song.src}
+                  onEnded={() => handleEnded(index)}
                 ></audio>
               </div>
             ))}
@@ -199,4 +212,4 @@ const LikedSongs = () => {
   );
 };
 
-export default LikedSongs;
+export default SongList;
