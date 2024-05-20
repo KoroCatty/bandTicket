@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
 
         <div className="underline tracking-wide flex center justify-center gap-8 mt-10 text-xl ">
-          <Link href="/privacy" className="hover:text-slate-300">
+          <Link href="/privacyPolicy" className="hover:text-slate-300">
             {" "}
             Privacy Policy{" "}
           </Link>

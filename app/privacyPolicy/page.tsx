@@ -1,4 +1,4 @@
-const PrivacyPage = () => {
+const PrivacyPolicyPage = () => {
   return (
     <>
       <article className="max-w-2xl mx-auto p-8 mt-16">
@@ -141,4 +141,4 @@ const PrivacyPage = () => {
   );
 };
 
-export default PrivacyPage;
+export default PrivacyPolicyPage;
