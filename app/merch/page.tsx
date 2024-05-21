@@ -12,10 +12,10 @@ type Product = {
 };
 
 const fetchProducts = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`,{
-    next: { revalidate: 60 }
-  } );
-  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+    next: { revalidate: 3600 }, // 1h
+  });
+
   if (!res.ok) {
     throw new Error("Something went wrong");
   }
