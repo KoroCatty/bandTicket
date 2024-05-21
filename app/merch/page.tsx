@@ -28,9 +28,6 @@ const MerchPage = async () => {
   const instruments = products.filter(
     (product: Product) => product.category === "instruments",
   );
-  const posters = products.filter(
-    (product: Product) => product.category === "posters",
-  );
 
   return (
     <>
@@ -40,9 +37,6 @@ const MerchPage = async () => {
           <ProductList products={clothes} />
           <Suspense fallback={<div>Loading...</div>}>
             <ProductList products={instruments} />
-            <Suspense fallback={<div>Loading...</div>}>
-              <ProductList products={posters} />
-            </Suspense>
           </Suspense>
         </Suspense>
       </div>
