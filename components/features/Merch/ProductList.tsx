@@ -35,17 +35,19 @@ const ProductList = ({ products }: ProductListProps) => {
                 max-[600px]:min-w-[45%] max-[480px]:min-w-[148px] 
                 "
               >
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  className={`object-cover brightness-75 cursor-pointer h-[320px]
+                <Link href={`/merch/${product._id}`}>
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className={`object-cover brightness-75 cursor-pointer h-[320px]
                   hover:brightness-100 transition duration-300 ease-in-out mx-auto block
                   max-[768px]:h-[260px] max-[480px]:h-[200px] 
                 `}
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                />
+                    width={300}
+                    height={300}
+                    loading="lazy"
+                  />
+                </Link>
                 <div className="w-full bg-black pb-2">
                   <h3 className="text-[1.4rem] font-bold">{product.name}</h3>
                   <p className="w-[]">

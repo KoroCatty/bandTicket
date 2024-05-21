@@ -10,9 +10,8 @@ type AllTicketsProps = {
   totalTickets: number;
 };
 
-// Context (HttpsOnly user login info)
+// Context (HttpsOnly user login info) & next auth
 import { useGlobalContext } from "@/context/GlobalContext";
-// next auth
 import { useSession } from "next-auth/react";
 
 // components

@@ -13,7 +13,6 @@ export async function POST(request: Request, response: Response) {
     // checkout = 決済できるメソッド
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"], // カード払い
-      // 本の情報
       metadata: {
         merchId: merchId,
       },
@@ -22,11 +21,11 @@ export async function POST(request: Request, response: Response) {
       line_items: [
         {
           price_data: {
-            currency: "aud",
+            currency: "AUD",
             product_data: {
               name: name,
             },
-            unit_amount: price,
+            unit_amount: price * 100,
           },
           quantity: 1,
         },
