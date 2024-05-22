@@ -7,14 +7,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request, response: Response) {
   // Get data from incoming request
-  const { name, price, merchId, userId } = await request.json();
+  const { name, price, merchId, userId, ticketId, images, description } =
+    await request.json();
 
   try {
     // checkout = 決済できるメソッド
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"], // カード払い
       metadata: {
-        merchId: merchId,
+        merchId: merchId || ticketId,
       },
       client_reference_id: userId,
       // user 情報
@@ -24,6 +25,8 @@ export async function POST(request: Request, response: Response) {
             currency: "AUD",
             product_data: {
               name: name,
+              images: [images[0]],
+              description: description,
             },
             unit_amount: price * 100,
           },

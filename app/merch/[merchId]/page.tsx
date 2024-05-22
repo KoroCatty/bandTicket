@@ -76,6 +76,8 @@ const MerchDetailsPage = () => {
             price: merchData?.price,
             userId: user?.userID || session?.user?.id,
             merchId: merchId,
+            description: merchData?.description,
+            images: "",
           }),
         },
       );
@@ -97,7 +99,15 @@ const MerchDetailsPage = () => {
       <section className="">
         <GoBackBtn text="Go back to Merch" />
 
-        <div className="justify-center items-start gap-12 my-12 px-8 md:flex bg-gray-900 max-w-[960px] mx-auto py-12 rounded-lg max-[480px]:my-6 max-[480px]:mx-6">
+        <div
+          className="justify-center items-start gap-12 my-12 px-8 md:flex  max-w-[960px] mx-auto py-12 rounded-lg max-[480px]:my-6 max-[480px]:mx-6"
+          style={{
+            backgroundImage: `url('/images/darkBg2.webp')`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "repeat",
+          }}
+        >
           <div className="">
             <Image
               src={merchData?.image || ""}
@@ -134,25 +144,27 @@ const MerchDetailsPage = () => {
           </div>
 
           {isModalOpen && (
-            <div className="absolute top-0 left-0 right-0 bottom-0 bg-slate-900 bg-opacity-50 flex justify-center items-center modal">
-              <div className="bg-black p-8 rounded-lg">
+            <div className="absolute top-0 left-0 right-0 bottom-0 bg-slate-950 bg-opacity-60 flex justify-center items-center modal">
+              <div className="bg-black p-8 rounded-lg max-[480px]:mt-[30rem] ">
                 <h3 className="text-xl mb-4">
                   Are you sure to buy this Product?
                 </h3>
 
-                <button
-                  onClick={handlePurchaseConfirm}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-                >
-                  Buy
-                </button>
+                <div className="flex justify-center gap-5">
+                  <button
+                    onClick={handlePurchaseConfirm}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4 "
+                  >
+                    Buy
+                  </button>
 
-                <button
-                  onClick={() => handleCancel()}
-                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Cancel
-                </button>
+                  <button
+                    onClick={() => handleCancel()}
+                    className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded "
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           )}

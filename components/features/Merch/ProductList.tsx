@@ -25,14 +25,14 @@ const ProductList = ({ products }: ProductListProps) => {
       </h2>
 
       <div className="flex justify-center w-full mx-auto">
-        <div className="flex flex-wrap justify-start w-[95%] gap-4 max-[480px]:flex-nowrap overflow-x-auto ">
+        <div className="flex flex-wrap justify-start w-[95%] gap-4 max-[768px]:flex-nowrap overflow-x-auto ">
           {products &&
             products.length > 0 &&
             products.map((product) => (
               <div
                 key={product._id}
-                className="w-[23%] mx-auto max-[768px]:w-[31%] max-[600px]:w-[45%] 
-                max-[600px]:min-w-[45%] max-[480px]:min-w-[148px] 
+                className="w-[23%] mx-auto max-[768px]:min-w-[31%] max-[600px]:w-[45%] 
+                max-[480px]:min-w-[148px] 
                 "
               >
                 <Link href={`/merch/${product._id}`}>
