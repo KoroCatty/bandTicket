@@ -1,9 +1,8 @@
 import Stripe from "stripe";
-// Stripe の初期化
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-// Next
 import { NextResponse } from "next/server";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: Request, response: Response) {
   // Get data from incoming request
@@ -11,7 +10,7 @@ export async function POST(request: Request, response: Response) {
     await request.json();
 
   try {
-    // checkout = 決済できるメソッド
+    // checkout = 決済メソッド
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"], // カード払い
       metadata: {

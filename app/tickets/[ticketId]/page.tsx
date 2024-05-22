@@ -1,9 +1,6 @@
 "use client";
-
-// APIのドメインを環境変数から取得またはnullを設定
 const apiDomain = process.env.NEXT_PUBLIC_DOMAIN || null;
 
-// コンポーネント内のインポートと定義
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
@@ -62,7 +59,6 @@ const TicketDetailsPage = () => {
             // backgroundSize: 'cover',
             backgroundPosition: "center",
             backgroundRepeat: "repeat",
-            // height: '200vh' // 必要に応じて高さを調整
           }}
         >
           <HeroTicketDetails image={ticket.images[0]} />

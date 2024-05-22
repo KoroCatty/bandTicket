@@ -7,7 +7,6 @@ interface TicketDetailsImgsProps {
   images: string[];
 }
 
-// Dynamic Image Grid
 const TicketDetailsImgs = ({ images }: TicketDetailsImgsProps) => {
   return (
     <Gallery>

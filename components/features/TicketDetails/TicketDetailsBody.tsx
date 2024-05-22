@@ -1,6 +1,5 @@
 "use client";
 import { useParams } from "next/navigation";
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
@@ -23,7 +22,6 @@ const TicketDetailsMap = dynamic(
 import { IoMdTime } from "react-icons/io";
 import { MdLocationCity } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
-import { BiMessageDetail } from "react-icons/bi";
 
 import type { Ticket } from "@/types/ticket";
 
@@ -33,7 +31,6 @@ const TicketDetailsBody = ({ ticket }: { ticket: Ticket }) => {
   const { data: session }: any = useSession();
 
   const { ticketId } = useParams();
-  const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -45,7 +42,6 @@ const TicketDetailsBody = ({ ticket }: { ticket: Ticket }) => {
     "/videos/resized_band_video2.mp4",
     "/videos/resized_band_video4.mp4",
     "/videos/resized_band_video5.mp4",
-    "/videos/resized_band_video3.mp4",
   ];
 
   // HTMLがマウントしてからビデオを読む
