@@ -21,8 +21,6 @@ const TicketDetailsPage = () => {
   const [ticket, setTicket] = useState<Ticket | null>(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(ticket);
-
   // Ticketの詳細データを取得する関数
   async function fetchTicket(ticketId: string) {
     if (!apiDomain) return null;

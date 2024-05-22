@@ -36,14 +36,12 @@ const MerchPage = async () => {
     <div
       style={{
         backgroundImage: `url('/images/darkBg2.webp')`,
-        // backgroundSize: 'cover',
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
-        // height: '200vh' // 必要に応じて高さを調整
       }}
     >
+      <HeroMerch />
       <div className="max-w-[1080px] mx-auto">
-        <HeroMerch />
         <Suspense fallback={<div>Loading...</div>}>
           <ProductList products={clothes} />
           <Suspense fallback={<div>Loading...</div>}>

@@ -113,7 +113,7 @@ const LoginForms = () => {
       max-[640px]:text-[1.3rem] max-[480px]:text-[1.2rem] "
       >
         <span className="relative px-10 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0  ">
-          Guest Admin Login
+          Guest Login
         </span>
       </button>
     </div>

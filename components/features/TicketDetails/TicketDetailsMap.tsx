@@ -62,7 +62,7 @@ const Map = ({ ticket }: { ticket: Ticket }) => {
   }
 
   return (
-    <section className="">
+    <section className="my-10">
       {loading && <SpinnerClient />}
       {!loading && (
         // {/* MapContainerコンポーネントを使って地図のコンテナを作成。ここで地図の初期位置とズームレベルを指定 */}

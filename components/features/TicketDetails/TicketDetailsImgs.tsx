@@ -11,7 +11,7 @@ interface TicketDetailsImgsProps {
 const TicketDetailsImgs = ({ images }: TicketDetailsImgsProps) => {
   return (
     <Gallery>
-      <section className="p-4">
+      <section className="p-4 max-w-[1080px] mx-auto">
         <div className="container mx-auto">
           {images.length === 1 ? (
             <Item
