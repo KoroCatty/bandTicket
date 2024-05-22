@@ -109,16 +109,16 @@ const AddPage = () => {
       });
 
       if (!response.ok) {
-        toast.error("Failed to add ticket");
-        throw new Error("Network response was not ok");
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
+
       const result = await response.json();
-      console.log("Ticket added:", result);
       toast.success("Ticket added successfully");
       router.push("/admin");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting the form:", error);
-      toast.error("Failed to add ticket");
+      toast.error("Failed to add ticket: " + error.message);
     } finally {
       setSendLoading(false);
     }
@@ -128,11 +128,9 @@ const AddPage = () => {
   const handleImageChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { files } = e.target;
-
       if (files) {
         const fileListArray = Array.from(files);
         const updatedImages = [...fields.images, ...fileListArray];
-
         setFields((prev): any => ({
           ...prev,
           images: updatedImages,

@@ -102,6 +102,7 @@ const AdminForms = ({
             placeholder="Description"
             value={fields.description}
             onChange={handleChange}
+            required
           ></textarea>
         </div>
 
@@ -114,6 +115,7 @@ const AdminForms = ({
             className="form_input"
             placeholder="Street"
             value={fields.location.street}
+            required
             onChange={handleChange}
           />
           <input
@@ -143,6 +145,7 @@ const AdminForms = ({
             className="form_input"
             placeholder="Postcode"
             value={fields.location.postcode}
+            required
             onChange={handleChange}
           />
         </div>
@@ -158,6 +161,7 @@ const AdminForms = ({
             className="form_input"
             placeholder="Price"
             value={fields.price}
+            required
             onChange={handleChange}
           />
         </div>
@@ -173,6 +177,7 @@ const AdminForms = ({
             className="form_input"
             placeholder="When?"
             value={fields.date}
+            required
             onChange={handleChange}
           />
         </div>
@@ -188,6 +193,7 @@ const AdminForms = ({
             className="form_input"
             placeholder="Where the venue"
             value={fields.venue}
+            required
             onChange={handleChange}
           />
         </div>
@@ -211,7 +217,7 @@ const AdminForms = ({
 
         <div className="mb-4">
           <label htmlFor="images" className="form_label">
-            Images (Select up to 4 images)
+            Images (Select up to 4 images (max 10MB))
           </label>
           <input
             type="file"
@@ -228,7 +234,7 @@ const AdminForms = ({
 
         <div>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"
             disabled={sendLoading}
           >
