@@ -217,7 +217,7 @@ const AdminForms = ({
 
         <div className="mb-4">
           <label htmlFor="images" className="form_label">
-            Images (Select up to 4 images (max 10MB))
+            Images (Select up to 4 images (max 5MB))
           </label>
           <input
             type="file"

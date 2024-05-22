@@ -117,14 +117,14 @@ export const POST = async (req: any) => {
       // 画像データをArrayBufferとして取得 arrayBufferとは、バイナリデータを扱うためのオブジェクト
       const imageBuffer = await image.arrayBuffer();
 
-      const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
+      const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 10MB
 
-      // 画像のサイズが 10MBを超える場合はエラーを返す
+      // 画像のサイズが 5MBを超える場合はエラーを返す
       if (imageBuffer.byteLength > MAX_IMAGE_SIZE) {
         console.error("Image size too large:", image.name);
         return new Response(
           JSON.stringify({
-            message: "Image size exceeds the maximum limit of 10MB",
+            message: "Image size exceeds the maximum limit of 5MB",
           }),
           { status: 413 },
         );
