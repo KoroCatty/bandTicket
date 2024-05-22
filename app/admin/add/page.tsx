@@ -35,8 +35,8 @@ const AddPage = () => {
   // ⬇︎ サーバーに送信するデータを格納するためのstate
   const [fields, setFields] = useState<Fields>({
     userId: user?.userID || "", // mongoDB で生成されたユーザーID
-    name: "test ticket koro koro",
-    description: "test desc ",
+    name: "",
+    description: "",
     location: {
       street: "Street",
       city: "melbourne",
@@ -46,8 +46,8 @@ const AddPage = () => {
     price: 100,
     images: [],
     status: "active",
-    date: "2022-12-12",
-    venue: "test venue",
+    date: "2022-12-01",
+    venue: "",
     // isFeatured: true,
   });
 
