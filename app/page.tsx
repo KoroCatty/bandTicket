@@ -6,6 +6,7 @@ import FeaturedTickets from "@/components/features/Home/FeaturedTickets";
 import SNS from "@/components/common/SNS";
 import Merch from "@/components/features/Home/Merch";
 import Gallery from "@/components/features/Home/Gallery";
+import MailForm from "@/components/features/Home/MailForm";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <Suspense fallback={<Loading />}>
           <Merch />
         </Suspense>
+        <MailForm />
       </div>
     </section>
   );

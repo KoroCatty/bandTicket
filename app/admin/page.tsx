@@ -10,9 +10,8 @@ type AllTicketsProps = {
   totalTickets: number;
 };
 
-// Context (HttpsOnly user login info)
+// Context (HttpsOnly user login info) & next auth
 import { useGlobalContext } from "@/context/GlobalContext";
-// next auth
 import { useSession } from "next-auth/react";
 
 // components
@@ -109,19 +108,23 @@ const AdminPage = () => {
                 <div
                   key={ticket._id}
                   className={`flex justify-between items-center py-4 border-b border-gray-200 pr-4
-           max-[480px]:justify-evenly max-[480px]:flex-col max-[480px]:border-b-2 max-[480px]:py-4
-         hover:bg-slate-800 
-         last:border-red-600 last:border-b-4
-         `}
+                  max-[480px]:justify-evenly max-[480px]:flex-col max-[480px]:border-b-2 max-[480px]:py-4
+                  hover:bg-slate-800 last:border-red-600 last:border-b-4
+                  `}
                 >
                   <div className="flex gap-6  max-[768px]:block max-[480px]:flex ">
-                    <Image
-                      className=""
-                      src={ticket.images[0]}
-                      alt={ticket.name}
-                      width={100}
-                      height={100}
-                    />
+                    <Link
+                      href={`/tickets/${ticket._id}`}
+                      className="md:hover:translate-y-[5%] transform transition-all duration-400 "
+                    >
+                      <Image
+                        className="md:hover:opacity-70"
+                        src={ticket.images[0]}
+                        alt={ticket.name}
+                        width={100}
+                        height={100}
+                      />
+                    </Link>
                     <div className="flex gap-4 max-[1000px]:block">
                       <p className="text-lg  max-[480px]:text-[0.8rem] ">
                         {ticket.date.slice(0, 10)}
@@ -134,11 +137,10 @@ const AdminPage = () => {
                   </div>
 
                   <div className="flex gap-4  max-[480px]:mt-4 ">
-                    {/* <p className="text-lg">{ticket.description}</p> */}
                     <Link
                       href={`/admin/edit/${ticket._id}`}
                       className="py-2 px-6 bg-blue-300 
-           hover:scale-110 transition-all duration-300 hover:text-red-800"
+                         hover:scale-110 transition-all duration-300 hover:text-red-800"
                     >
                       Edit
                     </Link>
@@ -146,7 +148,7 @@ const AdminPage = () => {
                     <button
                       onClick={() => deleteTicket(ticket._id)}
                       className="py-2 px-6 bg-red-300 
-           hover:scale-110 transition-all duration-300 hover:text-red-800"
+                        hover:scale-110 transition-all duration-300 hover:text-red-800"
                     >
                       Delete
                     </button>

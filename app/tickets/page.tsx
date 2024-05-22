@@ -4,7 +4,7 @@ import AllTickets from "@/components/features/Tickets/AllTickets";
 // Data Fetch
 const allTickets = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tickets`, {
-    next: { revalidate: 21600 }, // 6 hours
+    next: { revalidate: 3600 }, // 1 hours
   });
 
   if (!res.ok) {

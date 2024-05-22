@@ -3,29 +3,27 @@ import Image from "next/image";
 const categories = [
   {
     name: "clothes",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.",
+    description: "Stylish band apparel to show your support.",
     image: "/images/merch/item1.jpg",
   },
   {
     name: "instruments",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.",
+    description: "Quality instruments used by the band.",
     image: "/images/merch/item2.jpg",
   },
   {
     name: "posters",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.",
+    description: "Exclusive posters for true fans only.",
     image: "/images/merch/item3.jpg",
   },
 ];
 
 const Categories = () => {
   return (
-    <section className="my-section_sm">
+    <section className="my-section_sm max-w-[800px] mx-auto ">
       <h2 className="text-[2rem] font-bold">Category</h2>
-      <div className="flex justify-center w-full ">
+
+      <div className="flex justify-center w-full transform translate-x-[10%] ">
         {categories.map((category, index) => (
           <div key={index} className="relative w-[33%] ">
             <Image
@@ -33,11 +31,13 @@ const Categories = () => {
               alt={category.name}
               width={300}
               height={600}
-              className="w-[80%] h-[auto] object-cover"
+              className={`w-[80%] h-[auto] object-cover mr-auto brightness-75 cursor-pointer
+              hover:brightness-100 transition duration-300 ease-in-out
+              `}
             />
-            <div className="absolute top-0 left-0 w-[30%] ">
-              <h3 className="text-[1.5rem] font-bold">{category.name}</h3>
-              <p>{category.description}</p>
+            <div className="absolute bottom-[0] left-[0] w-[100%] bg-black  ">
+              <h3 className="text-[2.4rem] font-bold">{category.name}</h3>
+              <p className="w-[80%] ">{category.description}</p>
             </div>
           </div>
         ))}

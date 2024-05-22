@@ -14,7 +14,7 @@ export const GET = async (request: any) => {
     // pagination
     // nextUrl extends the native URL API with additional convenience methods
     const page = request.nextUrl.searchParams.get("page") || 1; // ページの総数
-    const pageSize = request.nextUrl.searchParams.get("pageSize") || 5; // 何個の物件を表示するか
+    const pageSize = request.nextUrl.searchParams.get("pageSize"); // 何個の物件を表示するか
 
     // skip some properties
     const skip = (page - 1) * pageSize;

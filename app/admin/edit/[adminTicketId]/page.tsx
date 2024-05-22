@@ -12,6 +12,7 @@ import { useGlobalContext } from "@/context/GlobalContext";
 
 import type { Ticket } from "@/types/ticket";
 import SpinnerClient from "@/components/common/SpinnerClient";
+import { toast } from "react-toastify";
 
 type Fields = {
   userId: string;
@@ -145,7 +146,8 @@ const AddPage = () => {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      alert("Ticket added successfully");
+      toast.success(result.message);
+      alert("Ticket Updated successfully");
       router.push("/admin");
     } catch (error) {
       console.error("Error submitting the form:", error);

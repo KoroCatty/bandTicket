@@ -2,6 +2,7 @@
 import Ticket from "@/models/Tickets";
 // DB connection
 import connectDB from "@/config/db";
+import { NextRequest } from "next/server";
 
 type ParamsType = {
   ticketId: string;
@@ -10,7 +11,10 @@ type ParamsType = {
 //* ===========================================================
 //* GET /api/tickets/:id
 //* ===========================================================
-export const GET = async (req: any, { params }: { params: ParamsType }) => {
+export const GET = async (
+  req: NextRequest,
+  { params }: { params: ParamsType },
+) => {
   try {
     await connectDB();
     // console.log(params.ticketId); // URL から取得した ID (ticketId

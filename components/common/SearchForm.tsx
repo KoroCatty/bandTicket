@@ -6,20 +6,19 @@ import Title from "./Title";
 
 const SearchForm = () => {
   const router = useRouter();
-  const [location, setLocation] = useState(""); // input
-  const [ticketStatus, setTicketStatus] = useState("All"); // select
+  const [location, setLocation] = useState("");
+  const [ticketStatus, setTicketStatus] = useState("All");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const query = `?location=${location}&ticketStatus=${ticketStatus}`;
-    // redirecting
-    router.push(`/tickets/search-results${query}`);
+    router.push(`/tickets/search-results${query}`); // redirect
   };
 
   return (
-    <>
+    <section className="mt-8 ">
       <div className="max-w-[600px] mx-auto max-[480px]:-mt-3 max-[480px]:-mb-4">
-        <Title>Search</Title>
+        {/* <Title>Search</Title> */}
       </div>
 
       <form
@@ -75,7 +74,7 @@ const SearchForm = () => {
           Search
         </button>
       </form>
-    </>
+    </section>
   );
 };
 

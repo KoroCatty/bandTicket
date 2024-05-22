@@ -21,8 +21,6 @@ const TicketDetailsPage = () => {
   const [ticket, setTicket] = useState<Ticket | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // console.log(ticket);
-
   // Ticketの詳細データを取得する関数
   async function fetchTicket(ticketId: string) {
     if (!apiDomain) return null;
@@ -58,12 +56,20 @@ const TicketDetailsPage = () => {
     <>
       {loading ? <SpinnerClient loading={loading} /> : null}
       {!loading && ticket ? (
-        <>
+        <div
+          style={{
+            backgroundImage: `url('/images/darkBg.webp')`,
+            // backgroundSize: 'cover',
+            backgroundPosition: "center",
+            backgroundRepeat: "repeat",
+            // height: '200vh' // 必要に応じて高さを調整
+          }}
+        >
           <HeroTicketDetails image={ticket.images[0]} />
           <GoBackBtn text="Go back " />
           <TicketDetailsBody ticket={ticket} />
           <TicketDetailsImgs images={ticket.images} />
-        </>
+        </div>
       ) : null}
     </>
   );

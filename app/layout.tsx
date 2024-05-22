@@ -31,8 +31,12 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <AuthProvider>
         <html lang="en">
           <head>
-            <Script async src={NEXT_PUBLIC_GA_URL}></Script>
-            <Script id="google-analytics">
+            <Script
+              async
+              src={NEXT_PUBLIC_GA_URL}
+              strategy="afterInteractive"
+            ></Script>
+            <Script id="google-analytics" strategy="afterInteractive">
               {`
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
