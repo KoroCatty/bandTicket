@@ -111,7 +111,7 @@ const SongList = () => {
   };
 
   return (
-    <section className="bg-gray-900 text-white min-h-screen">
+    <section className="bg-gray-900 text-white min-h-screen pt-4">
       <div className="container mx-auto p-4 max-w-[1080px] max-[480px]:px-2 ">
         <div className="bg-gradient-to-b">
           <div className="flex items-center">
@@ -137,7 +137,7 @@ const SongList = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center border-b border-gray-700 mt-8">
+          <div className="flex justify-between items-center border-b border-gray-700 mt-4">
             <div className="flex items-center space-x-4 text-gray-400">
               <p>#</p>
               <p>TITLE</p>
