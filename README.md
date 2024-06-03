@@ -23,7 +23,7 @@ This is a full-stack web application that allows users to search for tickets for
 
 <!-- Image -->
 ## Sitemap
-![Sitemap](./GitHub/sitemap.jpg)
+![Sitemap](./GitHub/sitemap.png)
 
 <!-- Image -->
 ## ER
