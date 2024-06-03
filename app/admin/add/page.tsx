@@ -35,8 +35,8 @@ const AddPage = () => {
   // ⬇︎ サーバーに送信するデータを格納するためのstate
   const [fields, setFields] = useState<Fields>({
     userId: user?.userID || "", // mongoDB で生成されたユーザーID
-    name: "test ticket koro koro",
-    description: "test desc ",
+    name: "",
+    description: "",
     location: {
       street: "Street",
       city: "melbourne",
@@ -46,8 +46,8 @@ const AddPage = () => {
     price: 100,
     images: [],
     status: "active",
-    date: "2022-12-12",
-    venue: "test venue",
+    date: "2022-12-01",
+    venue: "",
     // isFeatured: true,
   });
 
@@ -109,16 +109,16 @@ const AddPage = () => {
       });
 
       if (!response.ok) {
-        toast.error("Failed to add ticket");
-        throw new Error("Network response was not ok");
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
+
       const result = await response.json();
-      console.log("Ticket added:", result);
       toast.success("Ticket added successfully");
       router.push("/admin");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting the form:", error);
-      toast.error("Failed to add ticket");
+      toast.error("Failed to add ticket: " + error.message);
     } finally {
       setSendLoading(false);
     }
@@ -128,11 +128,9 @@ const AddPage = () => {
   const handleImageChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { files } = e.target;
-
       if (files) {
         const fileListArray = Array.from(files);
         const updatedImages = [...fields.images, ...fileListArray];
-
         setFields((prev): any => ({
           ...prev,
           images: updatedImages,

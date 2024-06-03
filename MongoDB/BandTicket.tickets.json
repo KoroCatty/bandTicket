@@ -1,0 +1,258 @@
+[{
+  "_id": {
+    "$oid": "6642df7df85eeca6810ea9bd"
+  },
+  "userId": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "name": "Cairns Live",
+  "description": "Cairns Live is a spectacular event showcasing a diverse range of live performances from local and international artists. Attendees will be immersed in a vibrant atmosphere with state-of-the-art sound and lighting, creating an unforgettable experience. The event features a mix of music genres, ensuring there is something for everyone. With food stalls offering delicious local cuisine and interactive activities, Cairns Live is more than just a concert; it's a celebration of culture and community.",
+  "location": {
+    "street": "Gatton St",
+    "city": "Cairns",
+    "state": "QLD",
+    "postcode": "4868"
+  },
+  "price": 80,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715658615/BandTicket/qhbuzbcas7azwc3zlbsi.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715658618/BandTicket/bc5cfbcfqe27z1cab6tc.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715658621/BandTicket/egbnqn0uodlphmphw7ct.jpg"
+  ],
+  "status": "active",
+  "date": "2024-11-18",
+  "venue": "Cairns Convention Centre",
+  "isFeatured": true,
+  "createdAt": {
+    "$date": "2024-05-14T03:50:21.471Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-20T13:47:41.843Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664352849dcb7d160f54a571"
+  },
+  "userId": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "name": "Geelong Live",
+  "description": "Geelong Live is an exciting musical extravaganza that brings together some of the best talents in the music industry. This event promises a night full of energy and entertainment with live performances that will leave you wanting more. Enjoy a variety of music genres from rock to pop, and everything in between. The event also features gourmet food trucks, craft beer stalls, and a vibrant marketplace, ensuring a full-day festival experience. Geelong Live is the perfect opportunity to enjoy great music and good company in a fantastic setting.",
+  "location": {
+    "street": "Moorabool St",
+    "city": "Geelong",
+    "state": "VIC",
+    "postcode": "3220"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715688068/BandTicket/tafpuxxfdkrtlqq8brr9.jpg"
+  ],
+  "status": "active",
+  "date": "2022-12-12",
+  "venue": "Geelong Performing Arts Centre",
+  "isFeatured": true,
+  "createdAt": {
+    "$date": "2024-05-14T12:01:08.837Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-20T13:26:05.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6643fc66231622330777924c"
+  },
+  "userId": {
+    "$oid": "663572fcb73830dde9e1bbc7"
+  },
+  "name": "Melbourne City Live",
+  "description": "Melbourne City Live is the city's premier live music event, attracting top performers from around the world. Set in the heart of Melbourne, this event promises an unforgettable experience with an eclectic mix of music styles, from indie rock to electronic dance music. Attendees can enjoy a dynamic atmosphere, complete with immersive light shows and high-quality sound systems. The event also offers a variety of food and beverage options, making it a perfect outing for friends and families. Melbourne City Live is a must-attend event for any music lover.",
+  "location": {
+    "street": "La Trobe St",
+    "city": "melbourne",
+    "state": "vic",
+    "postcode": "3181"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715731558/BandTicket/acrvp5q7m2ovf6ea2amo.jpg"
+  ],
+  "status": "active",
+  "date": "2025-04-02",
+  "venue": "Melbourne Arena",
+  "isFeatured": true,
+  "createdAt": {
+    "$date": "2024-05-15T00:05:58.987Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T12:19:01.194Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664493674a5198ef5e259a2e"
+  },
+  "userId": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "name": "Adelaide Live",
+  "description": "Adelaide Live is a vibrant music festival that celebrates the rich musical heritage of the city. Featuring a lineup of both established and emerging artists, this event offers something for everyone. From rock and blues to jazz and folk, Adelaide Live spans a wide range of genres. The festival is set in a scenic outdoor venue, providing a perfect backdrop for a day of music and fun. Attendees can enjoy local food and drink vendors, art installations, and interactive experiences. Adelaide Live is a community-focused event that brings people together through the power of music.",
+  "location": {
+    "street": "Goodwood Rd",
+    "city": "Adelaide",
+    "state": "SA",
+    "postcode": "5000"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715770213/BandTicket/n69tcjxc2ziwapr0r2sk.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715770214/BandTicket/zewwoxagrjcij6gmub2p.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715770215/BandTicket/rngeopmxccjyirdnu6ek.jpg"
+  ],
+  "status": "active",
+  "date": "2025-08-25",
+  "venue": "Adelaide Entertainment Centre",
+  "isFeatured": false,
+  "createdAt": {
+    "$date": "2024-05-15T10:50:15.602Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T12:18:42.964Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6644e5b28d12d7a4f21bc1ef"
+  },
+  "userId": {
+    "$oid": "6644e336f9b851780dca9003"
+  },
+  "name": "Sydney concert",
+  "description": "Sydney Concert is a major musical event that attracts thousands of fans from across the region. Set against the iconic backdrop of Sydney's skyline, this concert features a stellar lineup of artists performing a range of music genres. From pop and rock to hip-hop and classical, there is something for every musical taste. The event is designed to be an immersive experience, with cutting-edge stage design, pyrotechnics, and light shows. Sydney Concert also includes food trucks, merchandise stalls, and various entertainment options, making it a full-day event for music lovers of all ages.",
+  "location": {
+    "street": "George St",
+    "city": "Sydney",
+    "state": "NSW",
+    "postcode": "4000"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715791282/BandTicket/fe9veh6nilq7xa6t7nim.jpg"
+  ],
+  "status": "active",
+  "date": "2025-06-02",
+  "venue": "Sydney Opera House",
+  "isFeatured": false,
+  "createdAt": {
+    "$date": "2024-05-15T16:41:22.815Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T12:18:24.356Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66459df7bfbf3845b31de3ac"
+  },
+  "userId": {
+    "$oid": "6644e336f9b851780dca9003"
+  },
+  "name": "Melbourne Live",
+  "description": "Melbourne Live is an iconic music event that brings the city's vibrant culture to life. The event features an impressive lineup of both local and international artists, delivering high-energy performances that keep the audience engaged. The festival's venue is known for its excellent acoustics and state-of-the-art facilities, ensuring a top-notch experience for all attendees. Beyond the music, Melbourne Live offers a variety of food and beverage options, art installations, and interactive activities, making it a comprehensive cultural experience. This event is a highlight of Melbourne's music calendar and a must-attend for any music enthusiast.",
+  "location": {
+    "street": "Elizabeth St",
+    "city": "melbourne",
+    "state": "vic",
+    "postcode": "3080"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1715838454/BandTicket/wlu53ev7pesxbkr9llm7.jpg"
+  ],
+  "status": "finished",
+  "date": "2024-12-12",
+  "venue": "Rod Laver Arena",
+  "isFeatured": false,
+  "createdAt": {
+    "$date": "2024-05-16T05:47:35.289Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T12:18:05.494Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664b47d6083a5916eb43bd4c"
+  },
+  "userId": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "name": "Gold Coast Live",
+  "description": "Gold Coast Live is a vibrant music festival set in the beautiful coastal city of Gold Coast. This event is known for its stunning beachside venue and diverse lineup of artists. Attendees can enjoy a mix of live music, from upbeat pop to soulful blues, all while soaking in the scenic ocean views. The festival also features local food vendors, artisan markets, and a variety of activities for all ages. Gold Coast Live is the perfect blend of sun, sand, and music, creating an idyllic festival experience.",
+  "location": {
+    "street": "Old Burleigh Rd",
+    "city": "Gold Coast",
+    "state": "QLD",
+    "postcode": "4072"
+  },
+  "price": 100,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716209612/BandTicket/ylcw3vieoy6sqnh2tvms.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716209615/BandTicket/kyr3zco2xoe2awsgb3wf.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716209618/BandTicket/lxr4tmvq8dxbwfbatpjw.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716209621/BandTicket/czifocb2fgsyleaxobs3.jpg"
+  ],
+  "status": "active",
+  "date": "2025-04-12",
+  "venue": "Gold Coast Convention and Exhibition Centre",
+  "isFeatured": false,
+  "createdAt": {
+    "$date": "2024-05-20T12:53:42.026Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T12:17:18.185Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664df501e02a77168f5d29ee"
+  },
+  "userId": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "name": "Sydney outdoor live ",
+  "description": "Sydney outdoor live Sydney outdoor live Sydney outdoor live Sydney outdoor live ",
+  "location": {
+    "street": "Street",
+    "city": "Sydney",
+    "state": "NSW",
+    "postcode": "4075"
+  },
+  "price": 75,
+  "images": [
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716385023/BandTicket/vqmlz7kfaoxlk8ctk7sb.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716385024/BandTicket/bnsje70x63jdcglprwax.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716385025/BandTicket/dvjrulpnml8l6xkhmw11.jpg",
+    "https://res.cloudinary.com/duo03b1kn/image/upload/v1716385025/BandTicket/jv3grczm7hpdix2bixf3.jpg"
+  ],
+  "status": "cancelled",
+  "date": "2023-10-01",
+  "venue": "Sydney Venue",
+  "isFeatured": false,
+  "createdAt": {
+    "$date": "2024-05-22T13:37:05.935Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T04:52:41.779Z"
+  },
+  "__v": 0
+}]

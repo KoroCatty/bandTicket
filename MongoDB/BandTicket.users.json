@@ -1,0 +1,114 @@
+[{
+  "_id": {
+    "$oid": "663e481f37075e96ad563da2"
+  },
+  "email": "admin@admin.com",
+  "username": "af",
+  "bookmarks": [],
+  "isAdmin": true,
+  "createdAt": {
+    "$date": "2024-05-10T16:15:27.861Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-10T16:15:27.861Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663e489537075e96ad563da5"
+  },
+  "email": "guest@email.com",
+  "username": "Guest",
+  "bookmarks": [],
+  "isAdmin": true,
+  "createdAt": {
+    "$date": "2024-05-10T16:17:25.821Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-10T16:17:25.821Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6644e336f9b851780dca9003"
+  },
+  "email": "kz.code.dev@gmail.com",
+  "username": "Kazuya",
+  "image": "https://lh3.googleusercontent.com/a/ACg8ocJzyg08d7LbUqLnIybwcuXlRxT4-SwIfEwwYkqw5cFhgGwgXA=s96-c",
+  "bookmarks": [],
+  "createdAt": {
+    "$date": "2024-05-03T23:27:56.407Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-03T23:27:56.407Z"
+  },
+  "__v": 0,
+  "isAdmin": true
+},
+{
+  "_id": {
+    "$oid": "66456fd2add2f9078874a967"
+  },
+  "email": "kojima.website@gmail.com",
+  "username": "kazuya Kojima",
+  "image": "https://lh3.googleusercontent.com/a/ACg8ocI7dEjqniRPK8lgVg4j9vbhIECPnZD3hdJCls1aE3f5_iGfv4o=s96-c",
+  "bookmarks": [],
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2024-05-16T02:30:42.523Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T02:30:42.523Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66457024add2f9078874a973"
+  },
+  "email": "test@email.com",
+  "username": "test@email.com",
+  "bookmarks": [],
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2024-05-16T02:32:04.085Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T02:32:04.085Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6645b55994633b99df153740"
+  },
+  "email": "drumer19861018@gmail.com",
+  "username": "Kay",
+  "bookmarks": [],
+  "isAdmin": true,
+  "createdAt": {
+    "$date": "2024-05-16T07:27:21.244Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T07:27:21.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66472f9d076474724c17bce8"
+  },
+  "email": "postman@email.com",
+  "username": "postman",
+  "bookmarks": [],
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2024-05-17T10:21:17.317Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-17T10:21:17.317Z"
+  },
+  "__v": 0
+}]

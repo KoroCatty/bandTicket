@@ -1,9 +1,6 @@
 "use client";
-
-// APIのドメインを環境変数から取得またはnullを設定
 const apiDomain = process.env.NEXT_PUBLIC_DOMAIN || null;
 
-// コンポーネント内のインポートと定義
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
@@ -56,15 +53,21 @@ const TicketDetailsPage = () => {
     <>
       {loading ? <SpinnerClient loading={loading} /> : null}
       {!loading && ticket ? (
-        <div
-          style={{
-            backgroundImage: `url('/images/darkBg.webp')`,
-            // backgroundSize: 'cover',
-            backgroundPosition: "center",
-            backgroundRepeat: "repeat",
-            // height: '200vh' // 必要に応じて高さを調整
-          }}
-        >
+        <div style={{ position: "relative" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundImage: `url('/images/darkBg.webp')`,
+              backgroundPosition: "center",
+              backgroundRepeat: "repeat",
+              opacity: 0.6, // 背景画像の透明度
+              zIndex: -1,
+            }}
+          ></div>
           <HeroTicketDetails image={ticket.images[0]} />
           <GoBackBtn text="Go back " />
           <TicketDetailsBody ticket={ticket} />

@@ -33,13 +33,21 @@ const MerchPage = async () => {
   );
 
   return (
-    <div
-      style={{
-        backgroundImage: `url('/images/darkBg2.webp')`,
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
-      }}
-    >
+    <div style={{ position: "relative" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url('/images/darkBg2.webp')`,
+          backgroundPosition: "center",
+          backgroundRepeat: "repeat",
+          opacity: 0.4, // 背景画像の透明度
+          zIndex: -1,
+        }}
+      ></div>
       <HeroMerch />
       <div className="max-w-[1080px] mx-auto">
         <Suspense fallback={<div>Loading...</div>}>

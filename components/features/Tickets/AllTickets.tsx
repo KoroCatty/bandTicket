@@ -92,8 +92,7 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
                     href={`/tickets/${ticket._id}`}
                     className="py-2 px-6 bg-slate-950 border-slate-300 border-2
                     max-[480px]:px-3 max-[480px]:text-[0.8rem] rounded-sm
-                    hover:scale-110 transition-all duration-300 
-                  "
+                    hover:scale-110 transition-all duration-300"
                   >
                     Details
                   </Link>
@@ -101,7 +100,6 @@ const AllTickets = ({ allTickets }: AllTicketsProps) => {
               </div>
             ))}
         </div>
-
         <Map selectedTicket={selectedTicket} />
       </div>
     </section>

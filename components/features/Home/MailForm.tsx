@@ -8,7 +8,7 @@ const MailForm = () => {
         <p className="text-base md:text-lg mx-auto mb-6 w-4/5 md:w-3/5">
           Get the latest updates, news and product offers via email
         </p>
-        <form className="py-5 w-11/12 md:w-4/5 mx-auto">
+        <form className="py-5 w-10/12 md:w-3/5 mx-auto">
           <input
             className="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="email"

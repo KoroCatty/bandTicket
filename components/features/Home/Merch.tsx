@@ -11,31 +11,36 @@ const MerchData = [
   {
     src: "/images/merch/item1.jpg",
     alt: "merchandise-1",
-    title: "Merchandise 1",
-    price: "$100",
+    title: "Elegant Red Dress",
+    description: "A luxurious red dress perfect for...",
+    price: "$150",
   },
   {
-    src: "/images/merch/item2.jpg",
-    alt: "merchandise",
-    title: "Merchandise 2",
+    src: "/images/merch/item8.jpg",
+    alt: "merchandise-2",
+    title: "Elegant White Dress",
+    description: " A stunning white dress is great...",
     price: "$200",
   },
   {
-    src: "/images/merch/item1.jpg",
+    src: "/images/merch/item3.jpg",
     alt: "merchandise",
-    title: "Merchandise 3",
+    title: "Princess White Dress",
+    description: "A charming white dress fit for ...",
     price: "$300",
   },
   {
-    src: "/images/merch/item1.jpg",
+    src: "/images/merch/item4.jpg",
     alt: "merchandise",
-    title: "Merchandise 4",
+    title: "Stylish Black Jacket",
+    description: "A trendy black jacket to elevate...",
     price: "$400",
   },
   {
-    src: "/images/merch/item1.jpg",
+    src: "/images/merch/item7.jpg",
     alt: "merchandise",
-    title: "Merchandise 5",
+    title: "Simple White Shirt",
+    description: "A simple white shirt is layer...",
     price: "$500",
   },
 ];
@@ -78,25 +83,25 @@ const Merch = () => {
         style={{ cursor: isDragging ? "grabbing" : "grab" }}
       >
         {MerchData.map((item, index) => (
-          <div key={index} style={{ flex: "0 0 auto" }}>
+          <div key={index} style={{ flex: "0 0 auto" }} className="max-[480px]:w-[140px] max-[380px]:w-[128px]">
             <Image
               src={item.src}
               alt={item.alt}
               width={200}
               height={100}
               loading="lazy"
-              className="hover:opacity-80 max-[480px]:w-[160px] "
+              className="hover:opacity-80 "
             />
-            <div className="my-3">
-              <p className="text-[0.85rem]">Type</p>
-              <p className="my-3 font-bold text-[0.95rem]">{item.title}</p>
-              <p className="border-b-2 border-indigo-300 w-[40%]">
+            <div className="my-3 text-wrap">
+              <p className="my-3 font-bold text-[0.95rem] max-[380px]:my-2 max-[380px]:text-[0.8rem]">{item.title}</p>
+              <p className="text-[0.85rem] mb-2">{item.description}</p>
+              <p className="border-b-2 border-indigo-300 w-[40%] font-bold">
                 {item.price}
               </p>
             </div>
-            <button className="my-3 py-2 px-4 mx-auto w-[100%] bg-blue-500 hover:cursor-pointer hover:opacity-75">
+            {/* <button className="my-3 py-2 px-4 mx-auto w-[100%] bg-blue-500 hover:cursor-pointer hover:opacity-75">
               Details
-            </button>
+            </button> */}
           </div>
         ))}
       </div>

@@ -1,0 +1,160 @@
+[{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6cd"
+  },
+  "name": "Casual White T-Shirt",
+  "description": "A classic white t-shirt suitable for everyday wear.",
+  "image": "/images/merch/item2.jpg",
+  "price": 60,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d2"
+  },
+  "name": "Basic White Shirt",
+  "description": "A simple white shirt perfect for layering.",
+  "image": "/images/merch/item7.jpg",
+  "price": 25,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d3"
+  },
+  "name": "Elegant White Dress",
+  "description": " A stunning white dress perfect for formal occasions and special events. The delicate design and flowing fabric make it a timeless piece.",
+  "image": "/images/merch/item8.jpg",
+  "price": 30,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d8"
+  },
+  "name": "Lute",
+  "description": "Ornate lute with a rich, historical sound.",
+  "image": "/images/merch/item13.jpg",
+  "price": 600,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d1"
+  },
+  "name": "Adventurer's Cape",
+  "description": "A bold red cape for the daring adventurer.",
+  "image": "/images/merch/item6.jpg",
+  "price": 50,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d5"
+  },
+  "name": "Trumpet",
+  "description": "Classic trumpet with a bright and powerful sound.",
+  "image": "/images/merch/item10.jpg",
+  "price": 250,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d6"
+  },
+  "name": "Vintage Microphone",
+  "description": "Retro-style microphone for clear and crisp vocals.",
+  "image": "/images/merch/item11.jpg",
+  "price": 120,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d7"
+  },
+  "name": "Classical Guitar",
+  "description": "Traditional classical guitar with nylon strings.",
+  "image": "/images/merch/item12.jpg",
+  "price": 200,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6da"
+  },
+  "name": "Balalaika",
+  "description": "Traditional Russian stringed instrument.",
+  "image": "/images/merch/item15.jpg",
+  "price": 300,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6db"
+  },
+  "name": "Snare Drum",
+  "description": "Crisp snare drum with excellent response.",
+  "image": "/images/merch/item16.jpg",
+  "price": 150,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6cc"
+  },
+  "name": "Elegant Red Dress",
+  "description": "A luxurious red dress perfect for formal events.",
+  "image": "/images/merch/item1.jpg",
+  "price": 150,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d4"
+  },
+  "name": "Electric Guitar",
+  "description": "High-quality electric guitar with exceptional sound.",
+  "image": "/images/merch/item9.jpg",
+  "price": 350,
+  "category": "instruments"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6ce"
+  },
+  "name": "Princess White Dress",
+  "description": "A charming white dress fit for a princess.",
+  "image": "/images/merch/item3.jpg",
+  "price": 120,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6cf"
+  },
+  "name": "Stylish Black Jacket",
+  "description": "A trendy black jacket to elevate your style.",
+  "image": "/images/merch/item4.jpg",
+  "price": 80,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d0"
+  },
+  "name": "Classic Brown Coat",
+  "description": "A sophisticated brown coat for a polished look.",
+  "image": "/images/merch/item5.jpg",
+  "price": 200,
+  "category": "clothes"
+},
+{
+  "_id": {
+    "$oid": "664c2753e74e40ddef17d6d9"
+  },
+  "name": "Guitar & Cajon",
+  "description": "Set includes a classic acoustic guitar and a cajon.",
+  "image": "/images/merch/item14.jpg",
+  "price": 400,
+  "category": "instruments"
+}]
