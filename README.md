@@ -1,7 +1,7 @@
 # Band Ticket Finder App
 
 <!-- Image -->
-![Band Ticket Finter App](./screenshot_bandTicket.jpg)
+![Band Ticket Finter App](./GitHub/screenshot_bandTicket.jpg)
 [Website](https://band-ticket.vercel.app/)
 
 ## Description
@@ -16,6 +16,18 @@ This is a full-stack web application that allows users to search for tickets for
 - Dynamic map for Ticket location (Leaflet)
 - Contact forms
 - Fully Responsive design
+
+<!-- Image -->
+## Architecture
+![Architecture](./GitHub/architecture.jpg)
+
+<!-- Image -->
+## Sitemap
+![Sitemap](./GitHub/sitemap.jpg)
+
+<!-- Image -->
+## ER
+![Sitemap](./GitHub/ER.jpg)
 
 ## Prerequisites
 Before running this project, make sure you have Node.js installed on your system.
